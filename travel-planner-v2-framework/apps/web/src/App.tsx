@@ -1,24 +1,27 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { LoginResponse } from '@travel/shared';
 import AppShell from './features/shell/AppShell';
+import AuthPage from './features/profile/AuthPage';
 import { createApiClient } from './lib/api-client';
 import { createSessionClient } from './features/trip-create/session-client';
-import { tripErrorMessage } from './features/trip-create/trip-errors';
-import { APP_NAME } from './features/trip-create/branding';
 import { tripEntryFromPath, tripEntryPath, type TripEntry } from './features/trip-create';
 
 const auth = createSessionClient();
 const SESSION_KEY = 'travel:integration-session';
-// 可替换的联调入口；正式软件使用自己的登录页，直接挂载 TripWorkspace。
+function persist(session: LoginResponse | null) {
+  try {
+    if (session) sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
+    else sessionStorage.removeItem(SESSION_KEY);
+  } catch {
+    /* 存储不可用时仍可使用内存会话。 */
+  }
+}
+
 export default function App() {
   const [session, setSession] = useState<LoginResponse | null>(null);
   const [checking, setChecking] = useState(true);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [displayName, setDisplayName] = useState('');
-  const [registering, setRegistering] = useState(false);
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState('');
+  const [notice, setNotice] = useState('');
+  const [signingOut, setSigningOut] = useState(false);
   const [tripEntry, setTripEntry] = useState<TripEntry>(() =>
     tripEntryFromPath(window.location.pathname),
   );
@@ -41,10 +44,14 @@ export default function App() {
         ) as LoginResponse | null;
         if (saved?.accessToken && Date.parse(saved.expiresAt) > Date.now()) {
           const user = await auth.me(saved.accessToken);
-          if (active) setSession({ ...saved, user });
-        }
+          if (active) {
+            setSession({ ...saved, user });
+            persist({ ...saved, user });
+          }
+        } else persist(null);
       } catch {
-        /* 无有效会话时显示登录页。 */
+        persist(null);
+        if (active) setNotice('无法恢复登录状态，请重新登录；若连接失败，请检查后端服务。');
       } finally {
         if (active) setChecking(false);
       }
@@ -54,33 +61,51 @@ export default function App() {
       active = false;
     };
   }, []);
+
+  const token = session?.accessToken;
+  const expiresAt = session?.expiresAt;
   const getAccessToken = useCallback(
-    () => (session && Date.parse(session.expiresAt) > Date.now() ? session.accessToken : null),
-    [session],
+    () => (token && expiresAt && Date.parse(expiresAt) > Date.now() ? token : null),
+    [token, expiresAt],
   );
-  // 全站统一客户端：token 注入与错误码解析都在这里，各页面不再自己拼请求。
   const apiClient = useMemo(() => createApiClient({ getAccessToken }), [getAccessToken]);
-  async function submit(event: React.FormEvent) {
-    event.preventDefault();
-    if (busy) return;
-    setBusy(true);
-    setError('');
+  useEffect(() => {
+    if (!expiresAt) return;
+    const expired = () => {
+      persist(null);
+      setSession(null);
+      setNotice('登录已过期，请重新登录。');
+    };
+    const timer = window.setTimeout(expired, Math.max(0, Date.parse(expiresAt) - Date.now()));
+    window.addEventListener('travel:unauthenticated', expired);
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener('travel:unauthenticated', expired);
+    };
+  }, [expiresAt]);
+
+  async function signOut() {
+    if (!token || signingOut) return;
+    setSigningOut(true);
     try {
-      if (registering) await auth.register(email, password, displayName);
-      const result = await auth.login(email, password);
+      await auth.logout(token);
+      persist(null);
+      setSession(null);
+      setTripEntry({ view: 'list' });
       try {
-        sessionStorage.setItem(SESSION_KEY, JSON.stringify(result));
+        setNotice(sessionStorage.getItem('travel:auth-notice') || '已退出登录。');
+        sessionStorage.removeItem('travel:auth-notice');
       } catch {
-        /* 仍可使用内存会话。 */
+        setNotice('已退出登录。');
       }
-      setPassword('');
-      setSession(result);
-    } catch (error) {
-      setError(tripErrorMessage(error));
+    } catch {
+      // 服务器尚未确认撤销，保留界面供重试。
+      setNotice('退出未完成，无法连接服务器，请稍后重试。');
     } finally {
-      setBusy(false);
+      setSigningOut(false);
     }
   }
+
   if (checking)
     return (
       <main className="trip-login" role="status">
@@ -89,87 +114,41 @@ export default function App() {
     );
   if (session)
     return (
-      <AppShell
-        key={session.user.id}
-        user={session.user}
-        getAccessToken={getAccessToken}
-        client={apiClient}
-        entry={tripEntry}
-        onNavigate={navigateTrip}
-        onSignOut={() => {
-          try {
-            sessionStorage.removeItem(SESSION_KEY);
-          } catch {
-            /* 清理内存会话即可。 */
-          }
-          setSession(null);
-          setTripEntry({ view: 'list' });
-          setError('');
-        }}
-        onUserUpdated={(user) => {
-          setSession((current) => (current ? { ...current, user } : current));
-        }}
-      />
-    );
-  return (
-    <main className="trip-login">
-      <h1>{APP_NAME}</h1>
-      <p>登录后，新建、保存和继续编辑你的行程。</p>
-      <form onSubmit={(event) => void submit(event)}>
-        {registering && (
-          <label>
-            昵称
-            <input
-              required
-              maxLength={80}
-              value={displayName}
-              onChange={(event) => setDisplayName(event.target.value)}
-              autoComplete="nickname"
-            />
-          </label>
-        )}
-        <label>
-          邮箱
-          <input
-            type="email"
-            required
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            autoComplete="username"
-          />
-        </label>
-        <label>
-          密码
-          <input
-            type="password"
-            required
-            minLength={registering ? 12 : 1}
-            maxLength={128}
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            autoComplete={registering ? 'new-password' : 'current-password'}
-          />
-        </label>
-        {registering && <p>密码至少 12 位。</p>}
-        {error && (
-          <p role="alert" className="workspace-error">
-            {error}
+      <>
+        {notice && (
+          <p className="auth-signout-notice" role="alert">
+            {notice}
           </p>
         )}
-        <button className="workspace-primary" disabled={busy}>
-          {busy ? '正在连接…' : registering ? '注册并登录' : '登录'}
-        </button>
-        <button
-          type="button"
-          disabled={busy}
-          onClick={() => {
-            setRegistering(!registering);
-            setError('');
+        <AppShell
+          key={session.user.id}
+          user={session.user}
+          getAccessToken={getAccessToken}
+          client={apiClient}
+          entry={tripEntry}
+          onNavigate={navigateTrip}
+          onSignOut={() => {
+            void signOut();
           }}
-        >
-          {registering ? '已有账号' : '注册账号'}
-        </button>
-      </form>
-    </main>
+          onUserUpdated={(user) => {
+            setSession((current) => {
+              if (!current) return null;
+              const updated = { ...current, user };
+              persist(updated);
+              return updated;
+            });
+          }}
+        />
+      </>
+    );
+  return (
+    <AuthPage
+      notice={notice}
+      onAuthenticated={(result) => {
+        persist(result);
+        setSession(result);
+        setNotice('');
+      }}
+    />
   );
 }

@@ -4,7 +4,11 @@ import { ConfigService } from './config/config.service';
 async function bootstrap() {
   const app = await createApp();
   app.enableShutdownHooks();
-  await app.listen(app.get(ConfigService).values.port, '0.0.0.0');
+  const config = app.get(ConfigService).values;
+  await app.listen(
+    config.port,
+    config.verification.mode === 'local' ? '127.0.0.1' : process.env.API_HOST || '0.0.0.0',
+  );
 }
 
 void bootstrap().catch(() => {

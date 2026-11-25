@@ -36,8 +36,15 @@ module.exports = {
     async (t) => {
       const w = await world(t, { users: false }),
         a = actor();
-      await w.register(a);
-      error(await w.request("POST", "/auth/register", a), 409, "EMAIL_IN_USE");
+      const registered = await w.register(a);
+      error(
+        await w.request("POST", "/auth/register", {
+          ...a,
+          code: registered.code,
+        }),
+        400,
+        "INVALID_CODE",
+      );
       const rows = await w.db.admin.query(
         "SELECT count(*)::int AS n FROM users WHERE email=$1",
         [a.email],
@@ -168,11 +175,12 @@ module.exports = {
     async (t) => {
       const w = await world(t, { users: false }),
         a = actor();
+      const code = await w.registrationCode(a.email);
       const results = await Promise.all([
-        w.request("POST", "/auth/register", a),
-        w.request("POST", "/auth/register", a),
+        w.request("POST", "/auth/register", { ...a, code }),
+        w.request("POST", "/auth/register", { ...a, code }),
       ]);
-      assert.deepEqual(results.map((r) => r.status).sort(), [201, 409]);
+      assert.deepEqual(results.map((r) => r.status).sort(), [201, 400]);
       const counts = await w.db.admin.query(
         "SELECT count(*)::int AS n FROM users WHERE email=$1",
         [a.email],

@@ -5,7 +5,7 @@
  * 不管 HTTP 状态码，因此可以直接用假 fetcher 做纯逻辑测试。
  */
 
-import type { PublicUser } from '@travel/shared';
+import type { PublicUser, UpdateProfileRequest } from '@travel/shared';
 import { ApiError, type ApiClient } from './api-client';
 
 /** 与后端 `users.controller.ts` 的 `requiredString(body.displayName, 'displayName', 1, 80)` 对齐。 */
@@ -24,11 +24,13 @@ export function normalizeDisplayName(value: string): string {
 export interface ProfileApi {
   getMe(): Promise<PublicUser>;
   rename(displayName: string): Promise<PublicUser>;
+  update(input: UpdateProfileRequest): Promise<PublicUser>;
 }
 
 export function createProfileApi(client: ApiClient): ProfileApi {
   return {
     getMe: () => client.request<PublicUser>('/users/me'),
+    update: (input) => client.request<PublicUser>('/users/me', { method: 'PATCH', body: input }),
     // 用 async 包一层：本地校验失败也走 Promise 拒绝，调用方只需一套 try/catch。
     rename: async (displayName) =>
       client.request<PublicUser>('/users/me', {

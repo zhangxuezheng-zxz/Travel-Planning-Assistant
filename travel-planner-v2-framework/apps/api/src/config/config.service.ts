@@ -11,7 +11,23 @@ export interface AppConfig {
   databaseQueryTimeoutMs: number;
   mediaStorageDir: string;
   authTokenSecret: string;
+  authTokenTtlSeconds: number;
+  trustLoopbackProxy: boolean;
   amapWebServiceKey: string;
+  verification: {
+    mode: 'local' | 'provider';
+    smtpHost: string;
+    smtpPort: number;
+    smtpSecure: boolean;
+    smtpUser: string;
+    smtpPassword: string;
+    smtpFrom: string;
+    smsSecretId: string;
+    smsSecretKey: string;
+    smsAppId: string;
+    smsSignName: string;
+    smsTemplateId: string;
+  };
 }
 
 function positiveInteger(value: string, name: string, maximum: number): number {
@@ -50,6 +66,17 @@ export function readConfig(env: NodeJS.ProcessEnv): AppConfig {
     }
     if (!valid) throw new Error('CORS_ORIGIN must contain HTTP or HTTPS origins');
   }
+  if (env.NODE_ENV === 'production' && !env.AUTH_TOKEN_SECRET?.trim()) {
+    throw new Error('AUTH_TOKEN_SECRET is required in production');
+  }
+  const deliveryMode = env.AUTH_DELIVERY_MODE || 'provider';
+  if (env.TRUST_PROXY && !['off', 'loopback'].includes(env.TRUST_PROXY)) {
+    throw new Error('TRUST_PROXY must be off or loopback');
+  }
+  if (!['local', 'provider'].includes(deliveryMode)) throw new Error('Invalid AUTH_DELIVERY_MODE');
+  if (deliveryMode === 'local' && env.NODE_ENV !== 'development' && env.NODE_ENV !== 'test') {
+    throw new Error('Local verification requires NODE_ENV=development or test');
+  }
   const authTokenSecret = env.AUTH_TOKEN_SECRET?.trim() || randomBytes(32).toString('base64url');
   if (Buffer.byteLength(authTokenSecret, 'utf8') < 32) {
     throw new Error('AUTH_TOKEN_SECRET must be at least 32 bytes');
@@ -72,7 +99,27 @@ export function readConfig(env: NodeJS.ProcessEnv): AppConfig {
       env.MEDIA_STORAGE_DIR?.trim() || resolve(__dirname, '../../../../apps/api/.data/media'),
     ),
     authTokenSecret,
+    trustLoopbackProxy: env.TRUST_PROXY === 'loopback',
+    authTokenTtlSeconds: positiveInteger(
+      env.AUTH_TOKEN_TTL_SECONDS ?? '604800',
+      'AUTH_TOKEN_TTL_SECONDS',
+      604800,
+    ),
     amapWebServiceKey: env.AMAP_WEB_SERVICE_KEY?.trim() ?? '',
+    verification: {
+      mode: deliveryMode as 'local' | 'provider',
+      smtpHost: env.SMTP_HOST?.trim() ?? '',
+      smtpPort: positiveInteger(env.SMTP_PORT ?? '465', 'SMTP_PORT', 65535),
+      smtpSecure: env.SMTP_SECURE !== 'false',
+      smtpUser: env.SMTP_USER?.trim() ?? '',
+      smtpPassword: env.SMTP_PASSWORD ?? '',
+      smtpFrom: env.SMTP_FROM?.trim() ?? '',
+      smsSecretId: env.TENCENT_SMS_SECRET_ID?.trim() ?? '',
+      smsSecretKey: env.TENCENT_SMS_SECRET_KEY?.trim() ?? '',
+      smsAppId: env.TENCENT_SMS_APP_ID?.trim() ?? '',
+      smsSignName: env.TENCENT_SMS_SIGN_NAME?.trim() ?? '',
+      smsTemplateId: env.TENCENT_SMS_TEMPLATE_ID?.trim() ?? '',
+    },
   };
 }
 

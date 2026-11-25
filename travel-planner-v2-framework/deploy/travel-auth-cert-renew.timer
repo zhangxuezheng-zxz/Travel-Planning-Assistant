@@ -1,0 +1,11 @@
+[Unit]
+Description=Check shared test HTTPS certificate four times daily
+
+[Timer]
+OnCalendar=*-*-* 00,06,12,18:00:00
+RandomizedDelaySec=300
+Persistent=true
+Unit=travel-auth-cert-renew.service
+
+[Install]
+WantedBy=timers.target

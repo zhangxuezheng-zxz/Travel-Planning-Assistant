@@ -125,6 +125,9 @@ async function world(t, options = {}) {
     CORS_ORIGIN: "http://127.0.0.1:4179",
     MEDIA_STORAGE_DIR: mediaRoot,
     AUTH_TOKEN_TTL_SECONDS: String(options.tokenTtlSeconds ?? 3600),
+    NODE_ENV: "test",
+    AUTH_DELIVERY_MODE: "local",
+    AUTH_TOKEN_SECRET: "app-test-only-secret-with-no-production-use",
     JWT_SECRET: "app-test-only-secret-with-no-production-use",
   };
   const previous = Object.fromEntries(
@@ -211,16 +214,28 @@ async function world(t, options = {}) {
       }
     }
   };
+  w.registrationCode = async (email) => {
+    const response = await request(
+      "POST",
+      "/auth/code",
+      { channel: "email", target: email, purpose: "register" },
+      undefined,
+      200,
+    );
+    assert.match(response.body.developmentCode, /^\d{6}$/);
+    return response.body.developmentCode;
+  };
   w.register = async (identity = actor()) => {
+    const code = await w.registrationCode(identity.email);
     const response = await request(
       "POST",
       "/auth/register",
-      identity,
+      { ...identity, code },
       undefined,
       201,
     );
     uuid(response.body.user.id);
-    return { ...identity, user: response.body.user };
+    return { ...identity, code, user: response.body.user };
   };
   w.login = async (identity) => {
     const response = await request(
