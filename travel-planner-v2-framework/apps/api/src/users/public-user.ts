@@ -13,10 +13,11 @@ export interface AccountRow {
   bio?: string;
   home_city?: string;
   travel_preferences?: Partial<TravelPreferences>;
+  onboarding_completed_at?: Date | null;
 }
 
 export const ACCOUNT_COLUMNS =
-  'id, email, display_name, email_verified_at, phone, phone_verified_at, bio, home_city, travel_preferences';
+  'id, email, display_name, email_verified_at, phone, phone_verified_at, bio, home_city, travel_preferences, onboarding_completed_at';
 
 export function publicUser(row: AccountRow): PublicUser {
   return {
@@ -28,6 +29,7 @@ export function publicUser(row: AccountRow): PublicUser {
     phoneVerified: Boolean(row.phone_verified_at),
     bio: row.bio ?? '',
     homeCity: row.home_city ?? '',
+    onboardingCompleted: Boolean(row.onboarding_completed_at),
     travelPreferences: {
       themes: row.travel_preferences?.themes ?? [],
       pace: row.travel_preferences?.pace ?? 'standard',

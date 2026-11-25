@@ -119,6 +119,23 @@ async function verify() {
       );
     }
     console.log('PASS: places 统一到 B 后，C 的旧目录表已删除');
+    // 升级已有账号时不强制重新引导，升级后新建账号才需要首次偏好设置。
+    await runner({ ...options, count: Infinity });
+    assert.ok(
+      (await testDb.query('SELECT onboarding_completed_at FROM users WHERE id=$1', [owner])).rows[0]
+        .onboarding_completed_at,
+    );
+    const newcomer = randomUUID();
+    await testDb.query('INSERT INTO users(id,email) VALUES($1,$2)', [
+      newcomer,
+      'onboarding-migration@example.invalid',
+    ]);
+    assert.equal(
+      (await testDb.query('SELECT onboarding_completed_at FROM users WHERE id=$1', [newcomer]))
+        .rows[0].onboarding_completed_at,
+      null,
+    );
+    console.log('PASS: 旧账号无需首次引导，新账号保留待设置状态');
   } finally {
     await testDb.end();
     if (created) await admin.query(`DROP DATABASE "${name}"`);

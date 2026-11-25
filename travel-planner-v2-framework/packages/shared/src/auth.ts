@@ -12,6 +12,8 @@ export interface UpdateProfileRequest {
   bio?: string;
   homeCity?: string;
   travelPreferences?: TravelPreferences;
+  /** 完成或主动跳过首次偏好引导；不能将已完成的引导重置。 */
+  onboardingCompleted?: true;
 }
 
 export type ContactChannel = 'email' | 'phone';
@@ -34,6 +36,7 @@ export interface PublicUser {
   bio?: string;
   homeCity?: string;
   travelPreferences?: TravelPreferences;
+  onboardingCompleted?: boolean;
 }
 
 export interface RegisterRequest {

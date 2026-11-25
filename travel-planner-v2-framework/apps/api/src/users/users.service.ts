@@ -29,8 +29,11 @@ export class UsersService {
     if (input.homeCity !== undefined) fields.push(['home_city', input.homeCity]);
     if (input.travelPreferences !== undefined)
       fields.push(['travel_preferences', JSON.stringify(input.travelPreferences)]);
+    const assignments = fields.map(([column], i) => `${column} = $${i + 2}`);
+    if (input.onboardingCompleted)
+      assignments.push('onboarding_completed_at = COALESCE(onboarding_completed_at, now())');
     const result = await this.database.query<AccountRow>(
-      `UPDATE users SET ${fields.map(([column], i) => `${column} = $${i + 2}`).join(', ')},
+      `UPDATE users SET ${assignments.join(', ')},
        updated_at = now() WHERE id = $1 RETURNING ${ACCOUNT_COLUMNS}`,
       [userId, ...fields.map(([, value]) => value)],
     );

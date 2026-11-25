@@ -86,7 +86,7 @@ export default function AuthPage({
       </h2>
       <p>
         {mode === 'register'
-          ? '验证邮箱后注册，行程和偏好会保存在你的账号中。'
+          ? '验证邮箱后，选一选你的旅行偏好，再开始第一份行程。'
           : mode === 'reset'
             ? '使用已验证的邮箱或已绑定的手机号，设置新密码。'
             : mode === 'verify'

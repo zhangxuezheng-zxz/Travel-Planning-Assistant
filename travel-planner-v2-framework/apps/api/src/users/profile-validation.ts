@@ -10,9 +10,19 @@ function invalid(message: string): never {
 }
 
 export function validateProfile(body: Record<string, unknown>): UpdateProfileRequest {
-  rejectUnknownFields(body, ['displayName', 'bio', 'homeCity', 'travelPreferences']);
+  rejectUnknownFields(body, [
+    'displayName',
+    'bio',
+    'homeCity',
+    'travelPreferences',
+    'onboardingCompleted',
+  ]);
   if (!Object.keys(body).length) invalid('请至少修改一项资料');
   const result: UpdateProfileRequest = {};
+  if ('onboardingCompleted' in body) {
+    if (body.onboardingCompleted !== true) invalid('首次偏好引导只能标记为已完成');
+    result.onboardingCompleted = true;
+  }
   if ('displayName' in body)
     result.displayName = requiredString(body.displayName, 'displayName', 1, 80);
   if ('bio' in body) result.bio = requiredString(body.bio, 'bio', 0, 300);

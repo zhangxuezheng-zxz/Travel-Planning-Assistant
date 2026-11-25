@@ -87,6 +87,7 @@ test(
         assert.equal(missing.status, 400);
         user = await register(target);
         assert.equal(user.user.emailVerified, true);
+        assert.equal(user.user.onboardingCompleted, false);
         assert.equal(user.user.password_hash, undefined);
         assert.equal((await me(user.accessToken)).body.id, user.user.id);
         const stored = (
@@ -242,6 +243,80 @@ test(
           ).status,
           400,
         );
+      },
+    );
+    await clearLimits();
+    await t.test(
+      'onboarding persists across login, cannot be reset, and skip preserves preferences',
+      async () => {
+        const newcomer = await register();
+        const preferences = {
+          themes: ['art', 'nature'],
+          pace: 'relaxed',
+          transportMode: 'walking',
+          dailyBudget: 300,
+        };
+        assert.equal(
+          (
+            await request(
+              '/users/me',
+              { onboardingCompleted: true, travelPreferences: { ...preferences, pace: 'invalid' } },
+              newcomer.accessToken,
+              'PATCH',
+            )
+          ).status,
+          400,
+        );
+        assert.equal((await me(newcomer.accessToken)).body.onboardingCompleted, false);
+        const saved = await request(
+          '/users/me',
+          { onboardingCompleted: true, travelPreferences: preferences },
+          newcomer.accessToken,
+          'PATCH',
+        );
+        assert.equal(saved.status, 200);
+        assert.equal(saved.body.onboardingCompleted, true);
+        assert.deepEqual((await me(newcomer.accessToken)).body.travelPreferences, preferences);
+        const firstCompleted = (
+          await pool.query('SELECT onboarding_completed_at FROM users WHERE id=$1', [
+            newcomer.user.id,
+          ])
+        ).rows[0].onboarding_completed_at;
+        await request('/users/me', { onboardingCompleted: true }, newcomer.accessToken, 'PATCH');
+        const repeated = (
+          await pool.query('SELECT onboarding_completed_at FROM users WHERE id=$1', [
+            newcomer.user.id,
+          ])
+        ).rows[0].onboarding_completed_at;
+        assert.deepEqual(repeated, firstCompleted);
+        const login = await request('/auth/login', {
+          email: newcomer.email,
+          password: 'Strong-Password-123',
+        });
+        assert.equal(login.body.user.onboardingCompleted, true);
+        assert.deepEqual(login.body.user.travelPreferences, preferences);
+        assert.equal(
+          (
+            await request(
+              '/users/me',
+              { onboardingCompleted: false },
+              newcomer.accessToken,
+              'PATCH',
+            )
+          ).status,
+          400,
+        );
+        assert.equal((await me(user.accessToken)).body.onboardingCompleted, false);
+        // 已选内容未确认时选择跳过，不应写入未确认的偏好。
+        const beforeSkip = (await me(user.accessToken)).body.travelPreferences;
+        const skipped = await request(
+          '/users/me',
+          { onboardingCompleted: true },
+          user.accessToken,
+          'PATCH',
+        );
+        assert.equal(skipped.body.onboardingCompleted, true);
+        assert.deepEqual(skipped.body.travelPreferences, beforeSkip);
       },
     );
     await clearLimits();

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import type { LoginResponse } from '@travel/shared';
 import AppShell from './features/shell/AppShell';
 import AuthPage from './features/profile/AuthPage';
@@ -7,6 +7,7 @@ import { createSessionClient } from './features/trip-create/session-client';
 import { tripEntryFromPath, tripEntryPath, type TripEntry } from './features/trip-create';
 
 const auth = createSessionClient();
+const PreferenceOnboarding = lazy(() => import('./features/profile/PreferenceOnboarding'));
 const SESSION_KEY = 'travel:integration-session';
 function persist(session: LoginResponse | null) {
   try {
@@ -111,6 +112,36 @@ export default function App() {
       <main className="trip-login" role="status">
         正在检查登录状态…
       </main>
+    );
+  if (session && session.user.onboardingCompleted === false)
+    return (
+      <>
+        {notice && (
+          <p className="auth-signout-notice" role="alert">
+            {notice}
+          </p>
+        )}
+        <Suspense
+          fallback={
+            <main className="trip-login" role="status">
+              正在准备旅行偏好…
+            </main>
+          }
+        >
+          <PreferenceOnboarding
+            key={session.user.id}
+            user={session.user}
+            client={apiClient}
+            onSignOut={signOut}
+            onComplete={(user) => {
+              const updated = { ...session, user };
+              persist(updated);
+              setSession(updated);
+              setNotice('');
+            }}
+          />
+        </Suspense>
+      </>
     );
   if (session)
     return (

@@ -26,6 +26,76 @@ const { tripPreferenceDefaults } = load(
 const { createSessionClient } = load(
   fileURLToPath(new URL('../src/features/trip-create/session-client.ts', import.meta.url)),
 );
+const { readOnboardingDraft, saveOnboardingDraft, clearOnboardingDraft } = load(
+  fileURLToPath(new URL('../src/features/profile/onboarding-draft.ts', import.meta.url)),
+);
+
+test('首次偏好草稿恢复步骤和选择，账号之间隔离，完成后清理草稿', () => {
+  const values = new Map();
+  const storage = {
+    getItem: (key) => values.get(key) ?? null,
+    setItem: (key, value) => values.set(key, value),
+    removeItem: (key) => values.delete(key),
+  };
+  const user = {
+    id: 'first',
+    travelPreferences: { themes: [], pace: 'standard', transportMode: 'transit', dailyBudget: 300 },
+  };
+  const draft = {
+    step: 2,
+    preferences: {
+      themes: ['art', 'nature'],
+      pace: 'relaxed',
+      transportMode: 'walking',
+      dailyBudget: 999,
+    },
+  };
+  saveOnboardingDraft(storage, user.id, draft);
+  const restored = readOnboardingDraft(storage, user);
+  assert.equal(restored.step, 2);
+  assert.deepEqual(restored.preferences.themes, ['art', 'nature']);
+  assert.equal(restored.preferences.dailyBudget, 300, '草稿不覆盖服务器上的预算');
+  assert.equal(readOnboardingDraft(storage, { ...user, id: 'second' }).step, 0);
+  clearOnboardingDraft(storage, user.id);
+  assert.deepEqual(readOnboardingDraft(storage, user).preferences, user.travelPreferences);
+});
+
+test('损坏、非法或不可访问的偏好草稿不阻止账号进入引导', () => {
+  const user = { id: 'first' };
+  for (const value of [
+    '{',
+    JSON.stringify({ step: 9 }),
+    JSON.stringify({
+      step: 1,
+      preferences: { themes: ['art', 'art'], pace: 'relaxed', transportMode: 'walking' },
+    }),
+    JSON.stringify({
+      step: 1,
+      preferences: { themes: ['unknown'], pace: 'relaxed', transportMode: 'walking' },
+    }),
+  ]) {
+    assert.equal(readOnboardingDraft({ getItem: () => value }, user).step, 0);
+  }
+  const unavailable = {
+    getItem: () => {
+      throw Error('disabled');
+    },
+    setItem: () => {
+      throw Error('disabled');
+    },
+    removeItem: () => {
+      throw Error('disabled');
+    },
+  };
+  assert.equal(readOnboardingDraft(unavailable, user).step, 0);
+  assert.doesNotThrow(() =>
+    saveOnboardingDraft(unavailable, user.id, {
+      step: 0,
+      preferences: { themes: [], pace: 'standard', transportMode: 'transit', dailyBudget: null },
+    }),
+  );
+  assert.doesNotThrow(() => clearOnboardingDraft(unavailable, user.id));
+});
 
 test('旅行偏好映射到新行程的六类主题且不修改账号数据', () => {
   const prefs = {
