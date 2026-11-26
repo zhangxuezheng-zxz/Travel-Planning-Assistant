@@ -1,9 +1,11 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
-import type { ChatReply } from '@travel/shared' with { 'resolution-mode': 'import' };
+import type { ChatNotice, ChatReply } from '@travel/shared' with { 'resolution-mode': 'import' };
 import { ApiError } from '../common/api-error';
 import { ChatConfig } from './chat.config';
 import { validateChatRequest } from './chat.dto';
 import { buildSystemPrompt } from './chat.prompt';
+import { DEFAULT_ACCURACY_POLICY, inspectReply } from './chat-accuracy';
+import type { AccuracyCode, AccuracyReport } from './chat-accuracy';
 
 export const CHAT_FETCH = Symbol('CHAT_FETCH');
 export const CHAT_CLOCK = Symbol('CHAT_CLOCK');
@@ -18,6 +20,22 @@ const RATE_WINDOW_MS = 60_000;
 const MAX_TRACKED_USERS = 1000;
 
 const UNAVAILABLE = 'AI 助手暂时不可用，请稍后重试';
+
+const NOTICE_MESSAGES: Record<AccuracyCode, string> = {
+  FABRICATED_PRICE: '回答包含未提供的票价信息，请以官方渠道为准',
+  FABRICATED_HOURS: '回答包含未提供的开放时间，请以官方渠道为准',
+  PLACE_OUTSIDE_CATALOG: '回答提到了当前目录外的地点，请谨慎参考',
+};
+
+/** 重试时追加的纠正指令：只说违反了哪一类，不透露校验实现细节。 */
+function buildCorrection(report: AccuracyReport): string {
+  const labels = [...new Set(report.findings.map((item) => NOTICE_MESSAGES[item.code]))];
+  return [
+    '上一条回答不符合要求：',
+    ...labels.map((label) => `- ${label}`),
+    '请只用本消息给出的景点名称重新回答，不要给出票价、开放时间等具体数字，也不要提到其他城市。',
+  ].join('\n');
+}
 
 /** 固定按 Asia/Shanghai 取「今天」，与行程日期口径一致。 */
 export function todayInShanghai(now: number): string {
@@ -40,6 +58,13 @@ interface ModelPayload {
   choices?: unknown;
   usage?: { prompt_tokens?: unknown; completion_tokens?: unknown };
 }
+
+interface Completion {
+  reply: string;
+  usage: ChatReply['usage'];
+}
+
+type OutgoingMessage = { role: 'system' | 'user' | 'assistant'; content: string };
 
 function tokenCount(value: unknown): number {
   return typeof value === 'number' && Number.isFinite(value) && value >= 0 ? Math.floor(value) : 0;
@@ -67,7 +92,7 @@ export class ChatService {
     const request = validateChatRequest(body, settings);
     this.assertWithinRate(userId);
 
-    const messages = [
+    const messages: OutgoingMessage[] = [
       {
         role: 'system',
         content: buildSystemPrompt({
@@ -77,6 +102,78 @@ export class ChatService {
       },
       ...request.messages,
     ];
+
+    let completion = await this.complete(messages, settings);
+    let report = this.inspect(completion.reply, request.context.placeNames, settings);
+
+    for (
+      let attempt = 0;
+      settings.accuracyMode === 'enforce' &&
+      report.blocking &&
+      attempt < settings.accuracyMaxRetries;
+      attempt += 1
+    ) {
+      this.logger.warn(
+        `chat reply rejected by accuracy guard, retrying: ${report.findings
+          .map((item) => item.code)
+          .join(',')}`,
+      );
+      messages.push(
+        { role: 'assistant', content: completion.reply },
+        { role: 'user', content: buildCorrection(report) },
+      );
+      completion = await this.complete(messages, settings);
+      report = this.inspect(completion.reply, request.context.placeNames, settings);
+    }
+
+    if (settings.accuracyMode === 'enforce' && report.blocking) {
+      this.logger.warn(
+        `chat reply still fails accuracy guard after retries: ${report.findings
+          .map((item) => item.code)
+          .join(',')}`,
+      );
+      throw new ApiError(
+        'DEPENDENCY_UNAVAILABLE',
+        'AI 助手的回答未通过准确性校验，请换个问法或稍后重试',
+        503,
+      );
+    }
+
+    const notices = this.notices(report);
+    return {
+      reply: completion.reply,
+      source: 'llm',
+      requestId: this.nextRequestId(),
+      model: settings.model,
+      usage: completion.usage,
+      ...(notices.length ? { notices } : {}),
+    };
+  }
+
+  /** 准确性校验；关闭时直接放行，连正则都不跑。 */
+  private inspect(
+    reply: string,
+    catalog: readonly string[],
+    settings: ChatConfig['values'],
+  ): AccuracyReport {
+    if (settings.accuracyMode === 'off') return { findings: [], blocking: false };
+    return inspectReply(reply, catalog, DEFAULT_ACCURACY_POLICY);
+  }
+
+  /** 只把非阻断的发现转成给用户看的提示，同一类错误只出现一次。 */
+  private notices(report: AccuracyReport): ChatNotice[] {
+    const codes = [
+      ...new Set(
+        report.findings.filter((item) => item.severity === 'warn').map((item) => item.code),
+      ),
+    ];
+    return codes.map((code) => ({ code, message: NOTICE_MESSAGES[code] }));
+  }
+
+  private async complete(
+    messages: OutgoingMessage[],
+    settings: ChatConfig['values'],
+  ): Promise<Completion> {
     const payload: Record<string, unknown> = {
       model: settings.model,
       messages,
@@ -127,9 +224,6 @@ export class ChatService {
 
     return {
       reply,
-      source: 'llm',
-      requestId: this.nextRequestId(),
-      model: settings.model,
       usage: {
         promptTokens: tokenCount(data?.usage?.prompt_tokens),
         completionTokens: tokenCount(data?.usage?.completion_tokens),

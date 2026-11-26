@@ -20,6 +20,9 @@ export interface ChatConfigValues {
   /** `off` 显式关闭思考模式，`on` 打开，`omit` 不传该字段（供应商不支持时用）。 */
   thinking: 'off' | 'on' | 'omit';
   requestsPerMinute: number;
+  /** 回答准确性校验：`off` 不检查、`warn` 只标注、`enforce` 触发重试并在仍不合格时拒绝。 */
+  accuracyMode: 'off' | 'warn' | 'enforce';
+  accuracyMaxRetries: number;
 }
 
 function integer(
@@ -71,6 +74,9 @@ export function readChatConfig(env: NodeJS.ProcessEnv): ChatConfigValues {
     maxChars: integer(env, 'CHAT_MAX_CHARS', 8000, 20000, 100),
     thinking: choice(env, 'CHAT_LLM_THINKING', ['off', 'on', 'omit'], 'off'),
     requestsPerMinute: integer(env, 'CHAT_RATE_LIMIT_PER_MINUTE', 10, 120),
+    // 规则还没最终确定，默认关闭：打开后行为会变，先由 .env 显式启用。
+    accuracyMode: choice(env, 'CHAT_ACCURACY_MODE', ['off', 'warn', 'enforce'], 'off'),
+    accuracyMaxRetries: integer(env, 'CHAT_ACCURACY_MAX_RETRIES', 1, 2, 0),
   };
 }
 

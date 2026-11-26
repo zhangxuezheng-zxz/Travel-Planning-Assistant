@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import type { ChatMessage, Place } from '@travel/shared';
+import type { ChatMessage, ChatNotice, Place } from '@travel/shared';
 import { ApiError, type ApiClient } from '../../lib/api-client';
 import { isModelUnavailable, isRateLimited, sendChatMessage } from './chat-client';
 import { FALLBACK_NOTE, fallbackReply } from './chat-fallback';
@@ -9,6 +9,8 @@ interface Bubble {
   text: string;
   /** 本地兜底或出错时置位，界面上要明确标注，不能冒充模型回答。 */
   degraded?: boolean;
+  /** 服务端准确性校验的非阻断提示。 */
+  notices?: ChatNotice[];
 }
 
 export interface HomeChatPanelProps {
@@ -59,7 +61,10 @@ export default function HomeChatPanel({ client, cityId, cityName, places }: Home
         },
         signal: controller.signal,
       });
-      setMessages((current) => [...current, { role: 'assistant', text: reply.reply }]);
+      setMessages((current) => [
+        ...current,
+        { role: 'assistant', text: reply.reply, notices: reply.notices },
+      ]);
     } catch (failure) {
       if (failure instanceof DOMException && failure.name === 'AbortError') return;
       if (isModelUnavailable(failure)) {
@@ -97,6 +102,11 @@ export default function HomeChatPanel({ client, cityId, cityName, places }: Home
                 {message.text}
               </p>
               {message.degraded && <p className="chat-note">{FALLBACK_NOTE}</p>}
+              {message.notices?.map((notice) => (
+                <p key={notice.code} className="chat-note">
+                  {notice.message}
+                </p>
+              ))}
             </div>
           ))
         )}

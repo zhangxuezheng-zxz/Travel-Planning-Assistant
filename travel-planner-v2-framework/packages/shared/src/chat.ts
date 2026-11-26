@@ -36,4 +36,11 @@ export interface ChatReply {
     promptTokens: number;
     completionTokens: number;
   };
+  /** 准确性校验的非阻断提示（例如提到了目录外的地点），可能需要展示给用户。 */
+  notices?: ChatNotice[];
+}
+
+export interface ChatNotice {
+  code: string;
+  message: string;
 }

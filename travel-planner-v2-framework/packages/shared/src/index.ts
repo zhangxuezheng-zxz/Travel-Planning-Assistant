@@ -70,4 +70,11 @@ export type {
 
 export type { CreateJournalInput, Journal, JournalListPage } from './journals.js';
 
-export type { ChatContext, ChatMessage, ChatReply, ChatRequest, ChatRole } from './chat.js';
+export type {
+  ChatContext,
+  ChatMessage,
+  ChatNotice,
+  ChatReply,
+  ChatRequest,
+  ChatRole,
+} from './chat.js';
