@@ -5,6 +5,7 @@ import { wgs84ToGcj02 } from '../../lib/coords';
 import { describeGeolocationError } from '../../lib/geo-error';
 import AtlasMap from '../footprints/AtlasMap';
 import CityPostcard from './CityPostcard';
+import HomeChatPanel from './HomeChatPanel';
 import './home.css';
 
 const THEME_LABELS: Record<string, string> = {
@@ -22,31 +23,6 @@ function homeErrorMessage(error: unknown): string {
     return error.message;
   }
   return error instanceof Error ? error.message : '目的地加载失败，请重试。';
-}
-
-interface ChatMessage {
-  role: 'user' | 'assistant';
-  text: string;
-}
-
-function generateReply(input: string, cityName: string | null, places: Place[]): string {
-  const question = input.trim();
-  if (/你好|您好|hi|hello|嗨/i.test(question)) {
-    return '你好呀！可以问我「景点推荐」或「美食推荐」，也可以点上方「定位当前位置」。';
-  }
-  if (/景点|玩|去哪|旅游|推荐.*地方|有什么好/.test(question)) {
-    if (!cityName) return '先点上方「定位当前位置」或选一座城市，我才能推荐当地景点哦。';
-    if (places.length === 0) return `${cityName} 暂时还没有录入景点，等数据补齐就能推荐啦。`;
-    const names = places.map((place) => `· ${place.name}`).join('\n');
-    return `为你推荐 ${cityName} 的 ${places.length} 个景点：\n${names}`;
-  }
-  if (/美食|吃|餐厅|小吃|特产/.test(question)) {
-    return '美食推荐需要接入本地生活数据，目前还没有；先试试「景点推荐」吧。';
-  }
-  if (/天气|行李|带什么/.test(question)) {
-    return '天气和行李清单可以在「行程」页的行程详情里查看（出发提醒与行李清单）。';
-  }
-  return '我可以简单回答「景点推荐」「美食推荐」。试试问一句「有什么景点推荐？」';
 }
 
 export interface HomePageProps {
@@ -67,8 +43,6 @@ export default function HomePage({ client }: HomePageProps) {
   const [locatedPin, setLocatedPin] = useState<{ longitude: number; latitude: number } | null>(
     null,
   );
-  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
-  const [chatInput, setChatInput] = useState('');
 
   async function locate() {
     if (!navigator.geolocation) {
@@ -161,19 +135,6 @@ export default function HomePage({ client }: HomePageProps) {
     },
     [client],
   );
-
-  function sendChat() {
-    const text = chatInput.trim();
-    if (!text) return;
-    const cityName = locatedCity ?? selectedCity?.name ?? null;
-    const reply = generateReply(text, cityName, places);
-    setChatMessages((current) => [
-      ...current,
-      { role: 'user', text },
-      { role: 'assistant', text: reply },
-    ]);
-    setChatInput('');
-  }
 
   return (
     <section className="home-page">
@@ -304,36 +265,12 @@ export default function HomePage({ client }: HomePageProps) {
           </div>
         </div>
 
-        <div className="chat-panel" aria-label="旅行灵感对话">
-          <div className="chat-messages">
-            {chatMessages.length === 0 ? (
-              <p className="chat-hint">问我「景点推荐」「美食推荐」，聊聊想去的地方。</p>
-            ) : (
-              chatMessages.map((message, index) => (
-                <p
-                  key={index}
-                  className={`chat-message ${message.role === 'user' ? 'is-user' : 'is-assistant'}`}
-                >
-                  {message.text}
-                </p>
-              ))
-            )}
-          </div>
-          <div className="chat-input-row">
-            <input
-              type="text"
-              value={chatInput}
-              placeholder="例如：有什么景点推荐？"
-              onChange={(event) => setChatInput(event.target.value)}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter') sendChat();
-              }}
-            />
-            <button type="button" onClick={sendChat}>
-              发送
-            </button>
-          </div>
-        </div>
+        <HomeChatPanel
+          client={client}
+          cityId={selectedCity?.id}
+          cityName={locatedCity ?? selectedCity?.name ?? undefined}
+          places={places}
+        />
       </section>
     </section>
   );

@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '../config/config.service';
+import { validLlmBaseUrl } from '../common/llm-base-url';
 
 export function readBConfig(env: NodeJS.ProcessEnv) {
   function number(name: string, fallback: number, max: number) {
@@ -17,23 +18,7 @@ export function readBConfig(env: NodeJS.ProcessEnv) {
   if (llmEnabled) {
     if (!llmBaseUrl || !llmKey || !llmModel)
       throw new Error('Enabled LLM requires base URL, key and model');
-    let url: URL;
-    try {
-      url = new URL(llmBaseUrl);
-    } catch {
-      throw new Error('Invalid LLM_API_BASE_URL');
-    }
-    if (
-      (url.protocol !== 'https:' &&
-        !(
-          url.protocol === 'http:' && ['localhost', '127.0.0.1', '[::1]'].includes(url.hostname)
-        )) ||
-      url.username ||
-      url.password ||
-      url.search ||
-      url.hash
-    )
-      throw new Error('Invalid LLM_API_BASE_URL');
+    if (!validLlmBaseUrl(llmBaseUrl)) throw new Error('Invalid LLM_API_BASE_URL');
   }
   return {
     amapKey: env.AMAP_WEB_SERVICE_KEY?.trim() || '',

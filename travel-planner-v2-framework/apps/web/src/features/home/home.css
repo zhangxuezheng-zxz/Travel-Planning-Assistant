@@ -160,6 +160,20 @@
   font-size: 11px;
 }
 
+/* 一轮对话：气泡 + 可能存在的降级说明，整体靠左或靠右对齐。 */
+.chat-turn {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 85%;
+  align-self: flex-start;
+}
+
+.chat-turn.is-user {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
 .chat-message {
   margin: 0;
   padding: 8px 10px;
@@ -167,19 +181,39 @@
   font-size: 12px;
   line-height: 1.6;
   white-space: pre-wrap;
-  max-width: 85%;
+  word-break: break-word;
+  max-width: 100%;
 }
 
 .chat-message.is-user {
-  align-self: flex-end;
   background: var(--green);
   color: #fff;
 }
 
 .chat-message.is-assistant {
-  align-self: flex-start;
   background: #f0f2e7;
   color: #304b39;
+}
+
+.chat-message.is-pending {
+  align-self: flex-start;
+  background: #f0f2e7;
+  color: #8a978b;
+  font-style: italic;
+}
+
+.chat-note {
+  margin: 0;
+  color: #9aa397;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.chat-error {
+  margin: 0;
+  padding: 8px 12px 0;
+  color: #b3492f;
+  font-size: 11px;
 }
 
 .chat-input-row {
@@ -207,4 +241,10 @@
   color: #fff;
   font-size: 12px;
   cursor: pointer;
+}
+
+.chat-input-row button:disabled,
+.chat-input-row input:disabled {
+  opacity: 0.6;
+  cursor: default;
 }

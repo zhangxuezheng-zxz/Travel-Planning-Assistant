@@ -135,7 +135,9 @@
 
 ### P1-5 首页「旅行灵感对话」是本地正则
 
-`HomePage.generateReply` 用关键词匹配拼字符串，不是模型调用。演示时若说成"已接入 AI"会被追问。
+`HomePage.generateReply` 用关键词匹配拼字符串，不是模型调用。演示时若说成“已接入 AI”会被追问。
+
+**2026-11-26 已解决**：改为 `POST /api/chat/messages` 走真实模型（DeepSeek `deepseek-flash`），端点见 `apps/api/src/chat/`。规则字符串降级为模型不可用时的兜底，并在界面标注「AI 助手暂不可用」。契约见 [接口与数据约定](../接口与数据约定.md) §3.6。
 
 ### P1-6 `APP_Test` 是"死"的
 
