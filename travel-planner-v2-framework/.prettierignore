@@ -3,6 +3,9 @@ node_modules
 coverage
 package-lock.json
 # Immutable command outputs, raw provider replies and checksummed acceptance evidence.
+# 历史物证归档在 docs/history/acceptance/，按其生成时的原样保存，不参与格式门禁。
+docs/history/acceptance/
+# acceptance:b 默认仍输出到 docs/acceptance/（见 apps/api/scripts/acceptance/run.cjs）。
 docs/acceptance/
 # liuyan 分支 V1 前端快照，按原样保存，不参与格式门禁（见该目录 README）。
 apps/web/legacy-v1/

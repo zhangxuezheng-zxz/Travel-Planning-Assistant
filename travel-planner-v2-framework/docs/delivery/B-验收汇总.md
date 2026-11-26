@@ -5,27 +5,27 @@
 
 ## 一、验收结论（2026-11-02）
 
-| 项目 | 结果 | 说明 |
-| --- | --- | --- |
-| 代码与工程检查 | 12/12 命令组退出码 0 | lint、typecheck、build、format、Git diff 检查、测试 |
-| 快速测试 | 42/42 | 含原有 11 项基础测试，并非 42 个接口 |
-| 真实数据库集成 | 7/7 场景 | 专用 `_test` 库随机 schema，测试后清理 |
-| 扩展 HTTP / 数据库 / 模型场景 | 79/79 | 每场景状态、耗时与请求响应已保存 |
-| 生产入口 HTTP smoke | 14/14 | health/ready + 六接口匿名/伪造 token 拒绝 |
-| 真实模型调用 | 3 次均 HTTP 200 | 中文文本回复；结构化模型+保存；无地图 Key 模型+保存 |
+| 项目                          | 结果                 | 说明                                                |
+| ----------------------------- | -------------------- | --------------------------------------------------- |
+| 代码与工程检查                | 12/12 命令组退出码 0 | lint、typecheck、build、format、Git diff 检查、测试 |
+| 快速测试                      | 42/42                | 含原有 11 项基础测试，并非 42 个接口                |
+| 真实数据库集成                | 7/7 场景             | 专用 `_test` 库随机 schema，测试后清理              |
+| 扩展 HTTP / 数据库 / 模型场景 | 79/79                | 每场景状态、耗时与请求响应已保存                    |
+| 生产入口 HTTP smoke           | 14/14                | health/ready + 六接口匿名/伪造 token 拒绝           |
+| 真实模型调用                  | 3 次均 HTTP 200      | 中文文本回复；结构化模型+保存；无地图 Key 模型+保存 |
 
 测试集合存在交叉覆盖，不能相加为"独立功能总数"；结论仅限已执行场景。
 
 ## 二、六个公开接口（前缀 `/api`，均需服务端认证）
 
-| 方法与路径 | 输入 | 返回 |
-| --- | --- | --- |
-| GET /destinations | level?、parentId?、keyword?、page?、pageSize? | Destination 分页 |
-| GET /places | cityId 必填；keyword?、category?、themes?、page?、pageSize? | Place 分页；themes 为逗号分隔 |
-| GET /places/:id | 平台地点 UUID | Place；未知地点 404 |
-| POST /routes/preview | { from, to, transportMode } | { durationMinutes, source, warnings } |
-| POST /locations/reverse | { coordinates } | { placeName, cityId, cityAdcode, warnings } |
-| POST /recommendations/itinerary | PlanningInput | Proposal（只生成/保存，不写正式 trips） |
+| 方法与路径                      | 输入                                                        | 返回                                        |
+| ------------------------------- | ----------------------------------------------------------- | ------------------------------------------- |
+| GET /destinations               | level?、parentId?、keyword?、page?、pageSize?               | Destination 分页                            |
+| GET /places                     | cityId 必填；keyword?、category?、themes?、page?、pageSize? | Place 分页；themes 为逗号分隔               |
+| GET /places/:id                 | 平台地点 UUID                                               | Place；未知地点 404                         |
+| POST /routes/preview            | { from, to, transportMode }                                 | { durationMinutes, source, warnings }       |
+| POST /locations/reverse         | { coordinates }                                             | { placeName, cityId, cityAdcode, warnings } |
+| POST /recommendations/itinerary | PlanningInput                                               | Proposal（只生成/保存，不写正式 trips）     |
 
 ## 三、实现范围与关键行为
 
@@ -51,12 +51,12 @@
 
 ## 六、待验收项
 
-| 内容 | 现状 | 完成条件 |
-| --- | --- | --- |
-| 高德正式服务 | 适配器已用可控 HTTP 服务测过；正式 Key/权限与实际结果未测 | 提供有效服务端 Key，实测步行/驾车/公交、逆地理、GPS 转换 |
-| C 真实登录接线 | 生产 B 默认拒绝；正向验收注入测试身份 | C 实现真实令牌验证并注册 `B_AUTHENTICATOR` |
-| A/C 正式行程确认 | B 已生成、保存并提供 ProposalReader；未确认成 Trip | 实测归属、过期、输入快照、未安排项与 revision 并发 |
-| D 页面与到访 | D 页面流程未测 | D 完成消费方并联合验收 |
+| 内容             | 现状                                                      | 完成条件                                                 |
+| ---------------- | --------------------------------------------------------- | -------------------------------------------------------- |
+| 高德正式服务     | 适配器已用可控 HTTP 服务测过；正式 Key/权限与实际结果未测 | 提供有效服务端 Key，实测步行/驾车/公交、逆地理、GPS 转换 |
+| C 真实登录接线   | 生产 B 默认拒绝；正向验收注入测试身份                     | C 实现真实令牌验证并注册 `B_AUTHENTICATOR`               |
+| A/C 正式行程确认 | B 已生成、保存并提供 ProposalReader；未确认成 Trip        | 实测归属、过期、输入快照、未安排项与 revision 并发       |
+| D 页面与到访     | D 页面流程未测                                            | D 完成消费方并联合验收                                   |
 
 ## 七、测试流程（历史版本，现由 CI 与 bug.md 取代）
 
