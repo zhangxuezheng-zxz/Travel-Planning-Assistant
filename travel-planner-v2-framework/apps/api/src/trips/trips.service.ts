@@ -1,5 +1,10 @@
 import { isDeepStrictEqual } from 'node:util';
-import { validateSchedule } from '@travel/shared/recommendation-engine';
+import {
+  validateSchedule,
+  estimateTransferMinutes,
+  paceSettings,
+} from '@travel/shared/recommendation-engine';
+import { assertActivitiesFit, minutes, timeOf } from './trip-activity-validation';
 import { ProposalReader } from './proposal-reader';
 import type { PlanningInput, ScheduleDay } from '@travel/shared' with {
   'resolution-mode': 'import',
@@ -115,7 +120,103 @@ export class TripsService {
         },
         editedDays,
       );
-      return { ...current, days: structuredClone(days) };
+      const next = { ...current, days: structuredClone(days) };
+      assertActivitiesFit(next);
+      return next;
+    });
+  }
+  addScenic(ownerId: string, id: string, expectedRevision: number, placeId: string, date: string) {
+    return this.repository.mutate(ownerId, id, expectedRevision, async (current) => {
+      if (current.status !== 'planned')
+        throw new ApiError('INVALID_SCHEDULE', '请先完成行程创建', 422);
+      if (current.planningInput.selectedPlaceIds.includes(placeId))
+        throw new ApiError('VALIDATION_ERROR', '该景点已经在行程中', 400);
+      if (current.planningInput.selectedPlaceIds.length >= 100)
+        throw new ApiError('VALIDATION_ERROR', '每个行程最多选择 100 个景点', 400);
+      await this.catalog.assertPlacesBelongToCity(current.planningInput.cityId, [placeId]);
+      const places = await this.catalog.getCityPlaces(current.planningInput.cityId);
+      const place = places.find((item) => item.id === placeId)!;
+      const next = structuredClone(current);
+      const day = next.days.find((item) => item.date === date);
+      if (!day) throw new ApiError('VALIDATION_ERROR', '请选择行程内的日期', 400);
+      const last = day.items.at(-1);
+      const cfg = paceSettings[current.planningInput.pace];
+      const travel = estimateTransferMinutes(
+        places.find((item) => item.id === last?.placeId) ?? null,
+        place,
+        current.planningInput.transportMode,
+      );
+      let start = last
+        ? minutes(last.startTime) + last.durationMinutes + travel + cfg.rest
+        : cfg.start;
+      for (const activity of [...(next.activities ?? [])]
+        .filter((item) => item.date === date)
+        .sort((a, b) => a.startTime.localeCompare(b.startTime))) {
+        if (
+          start < minutes(activity.startTime) + activity.durationMinutes &&
+          start + place.suggestedDurationMinutes > minutes(activity.startTime)
+        )
+          start = minutes(activity.startTime) + activity.durationMinutes + cfg.rest;
+      }
+      day.items.push({
+        placeId,
+        position: day.items.length,
+        startTime: timeOf(start),
+        durationMinutes: place.suggestedDurationMinutes,
+        travelMinutesFromPrevious: travel,
+        travelTimeSource: last ? 'estimate' : 'none',
+        reason: '用户从景点目录添加，交通为规则预留',
+      });
+      next.planningInput.selectedPlaceIds.push(placeId);
+      // 原有高德交通段来自已确认方案；这里只新增服务端计算的估算段，保留其他时段。
+      await this.checkSchedule(next, next.days, 'proposal');
+      assertActivitiesFit(next);
+      return next;
+    });
+  }
+  removeScenic(ownerId: string, id: string, expectedRevision: number, placeId: string) {
+    return this.repository.mutate(ownerId, id, expectedRevision, async (current) => {
+      if (current.status !== 'planned')
+        throw new ApiError('INVALID_SCHEDULE', '请先完成行程创建', 422);
+      if (!current.planningInput.selectedPlaceIds.includes(placeId))
+        throw new ApiError('NOT_FOUND', '景点不在当前行程中', 404);
+      const next = structuredClone(current);
+      const places = await this.catalog.getCityPlaces(current.planningInput.cityId);
+      const cfg = paceSettings[current.planningInput.pace];
+      next.planningInput.selectedPlaceIds = next.planningInput.selectedPlaceIds.filter(
+        (item) => item !== placeId,
+      );
+      for (const day of next.days) {
+        const original = current.days.find((item) => item.date === day.date)!;
+        day.items = day.items.filter((item) => item.placeId !== placeId);
+        for (const [index, item] of day.items.entries()) {
+          item.position = index;
+          const previous = day.items[index - 1];
+          const oldIndex = original.items.findIndex((old) => old.placeId === item.placeId);
+          if (original.items[oldIndex - 1]?.placeId !== previous?.placeId) {
+            const place = places.find((p) => p.id === item.placeId)!;
+            item.travelMinutesFromPrevious = estimateTransferMinutes(
+              places.find((p) => p.id === previous?.placeId) ?? null,
+              place,
+              current.planningInput.transportMode,
+            );
+            item.travelTimeSource = previous ? 'estimate' : 'none';
+          }
+          if (previous)
+            item.startTime = timeOf(
+              Math.max(
+                minutes(item.startTime),
+                minutes(previous.startTime) +
+                  previous.durationMinutes +
+                  item.travelMinutesFromPrevious +
+                  cfg.rest,
+              ),
+            );
+        }
+      }
+      await this.checkSchedule(next, next.days, 'proposal');
+      assertActivitiesFit(next);
+      return next;
     });
   }
   private async checkSchedule(
@@ -152,6 +253,7 @@ export class TripsService {
           409,
         );
       next.days = [];
+      next.activities = [];
       next.status = 'draft';
     }
     return next;

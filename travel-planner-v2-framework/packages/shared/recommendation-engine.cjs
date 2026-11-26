@@ -255,4 +255,5 @@ module.exports = {
   scheduleGroups,
   validateSchedule,
   paceSettings: settings,
+  estimateTransferMinutes: transfer,
 };

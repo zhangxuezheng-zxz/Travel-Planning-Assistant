@@ -34,6 +34,7 @@ export default function TripPlaceCard({
   onBookingChange,
   onSelect,
   onClose,
+  onRemove,
 }: {
   place: Place;
   visit: { date: string; dayNumber: number; startTime?: string; durationMinutes: number };
@@ -49,6 +50,7 @@ export default function TripPlaceCard({
   onBookingChange: (status: BookingStatus | '') => void;
   onSelect: (id: string) => void;
   onClose: () => void;
+  onRemove?: () => void;
 }) {
   const card = useRef<HTMLElement>(null);
   const titleId = useId();
@@ -269,6 +271,11 @@ export default function TripPlaceCard({
       </div>
 
       <footer>
+        {onRemove && (
+          <button className="trip-stop-delete" type="button" onClick={onRemove}>
+            从行程移除此景点
+          </button>
+        )}
         {(visitInfo || directions) && (
           <div className="trip-place-card-footer">
             {visitInfo && (

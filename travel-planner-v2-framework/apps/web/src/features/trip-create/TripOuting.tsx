@@ -5,6 +5,7 @@ export interface OutingStop {
   directions: string | null;
   hasDetails: boolean;
   reminder?: string;
+  activity?: boolean;
 }
 
 export default function TripOuting({
@@ -52,9 +53,9 @@ export default function TripOuting({
       {count > 0 && (
         <div className="trip-outing-progress">
           <span role="status">
-            已游览 {completed} / {count} 站
+            已完成 {completed} / {count} 站
           </span>
-          <progress max={count} value={completed} aria-label="游览进度" />
+          <progress max={count} value={completed} aria-label="出游进度" />
         </div>
       )}
       {next ? (
@@ -67,7 +68,7 @@ export default function TripOuting({
           <div className="trip-outing-actions">
             {next.hasDetails && (
               <button type="button" onClick={(event) => onOpen(next.id, event.currentTarget)}>
-                看景点
+                {next.activity ? '看活动' : '看景点'}
               </button>
             )}
             {next.directions && (
@@ -76,12 +77,12 @@ export default function TripOuting({
               </a>
             )}
             <button type="button" onClick={() => onComplete(next.id)}>
-              标记已游览
+              {next.activity ? '标记活动完成' : '标记已游览'}
             </button>
           </div>
         </div>
       ) : (
-        <p>{count ? '当天景点已全部游览。' : '当天没有安排景点。'}</p>
+        <p>{count ? '当天安排已全部完成。' : '当天没有安排景点或活动。'}</p>
       )}
       {error && (
         <p className="trip-outing-error" role="alert">

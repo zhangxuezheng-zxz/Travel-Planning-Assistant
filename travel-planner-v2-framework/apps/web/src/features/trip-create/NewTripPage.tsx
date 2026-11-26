@@ -411,7 +411,7 @@ export default function NewTripPage({
               checked={resetControl.allowed}
               onChange={(event) => resetControl.onChange(event.target.checked)}
             />
-            允许重新规划：更改日期、偏好或景点时，保存会替换原每日安排。仅调整顺序无需勾选。
+            允许重新规划：更改日期、偏好或景点时，保存会替换原每日安排并清空活动。仅调整顺序无需勾选。
           </label>
         )}
         {view === 'trip' && (

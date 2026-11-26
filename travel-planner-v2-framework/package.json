@@ -18,6 +18,7 @@
     "lint": "eslint .",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "npm run build --workspace=@travel/api && npm run test --workspaces --if-present",
+    "test:activities": "npm run test:activities --workspace=@travel/api",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "db:migrate": "npm run db:migrate --workspace=@travel/api",

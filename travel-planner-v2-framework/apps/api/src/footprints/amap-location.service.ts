@@ -58,13 +58,17 @@ export class AmapLocationService {
 
   constructor(private readonly config: ConfigService) {}
 
-  async searchPlaces(keyword: string): Promise<FootprintPlaceSearchResult[]> {
+  async searchPlaces(keyword: string, region?: string): Promise<FootprintPlaceSearchResult[]> {
     const key = this.requireKey();
     const url = new URL('https://restapi.amap.com/v5/place/text');
     url.searchParams.set('key', key);
     url.searchParams.set('keywords', keyword);
     url.searchParams.set('page_size', '10');
     url.searchParams.set('page_num', '1');
+    if (region) {
+      url.searchParams.set('region', region);
+      url.searchParams.set('city_limit', 'true');
+    }
     const response = await this.request(url);
     return (response.pois ?? [])
       .map((poi) => this.toSearchResult(poi))
@@ -195,7 +199,13 @@ export class AmapLocationService {
   private toSearchResult(poi: AmapPoi): FootprintPlaceSearchResult | null {
     if (!poi.id || !poi.name || !poi.location) return null;
     const [longitude, latitude] = poi.location.split(',').map(Number);
-    if (!Number.isFinite(longitude) || !Number.isFinite(latitude)) return null;
+    if (
+      !Number.isFinite(longitude) ||
+      !Number.isFinite(latitude) ||
+      Math.abs(longitude) > 180 ||
+      Math.abs(latitude) > 90
+    )
+      return null;
     const regionAdcode = poi.adcode;
     const provinceAdcode =
       poi.pcode && /^\d{6}$/.test(poi.pcode)

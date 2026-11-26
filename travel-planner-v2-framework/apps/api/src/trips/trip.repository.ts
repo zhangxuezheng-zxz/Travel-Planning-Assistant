@@ -32,11 +32,19 @@ interface TripRow {
   transport_mode: Trip['planningInput']['transportMode'];
   selected_place_ids: string[];
   days: Trip['days'];
+  activities?: Trip['activities'];
   created_at: Date;
   updated_at: Date;
 }
 const columns = `id, owner_id, title, city_id, revision, status, start_date::text, end_date::text,
- themes, pace, transport_mode, selected_place_ids, days, created_at, updated_at`;
+ themes, pace, transport_mode, selected_place_ids, days, created_at, updated_at,
+ (SELECT COALESCE(jsonb_agg(jsonb_build_object(
+   'id', a.id, 'title', a.title, 'notes', a.notes, 'date', a.date::text,
+   'startTime', to_char(a.start_time, 'HH24:MI'), 'durationMinutes', a.duration_minutes,
+   'poiId', a.poi_id, 'placeName', a.place_name, 'address', a.address, 'source', 'amap',
+   'coordinates', jsonb_build_object('longitude', a.longitude, 'latitude', a.latitude, 'coordinateSystem', 'GCJ-02')
+ ) ORDER BY a.date, a.start_time, a.id), '[]'::jsonb)
+ FROM trip_activities a WHERE a.trip_id = trip_resources.id) AS activities`;
 const baseColumns = `id, owner_id, title, city_id, revision, status, start_date::text, end_date::text,
  themes, pace, transport_mode, created_at, updated_at`;
 function map(row: TripRow): Trip {
@@ -56,6 +64,12 @@ function map(row: TripRow): Trip {
       selectedPlaceIds: row.selected_place_ids,
     },
     days: row.days,
+    activities: [...(row.activities ?? [])].sort(
+      (a, b) =>
+        a.date.localeCompare(b.date) ||
+        a.startTime.localeCompare(b.startTime) ||
+        a.id.localeCompare(b.id),
+    ),
     createdAt: row.created_at.toISOString(),
     updatedAt: row.updated_at.toISOString(),
   };
@@ -161,7 +175,32 @@ export class PostgresTripRepository extends TripRepository {
             ],
           );
       }
-      return map({ ...updated.rows[0], selected_place_ids: p.selectedPlaceIds, days: next.days });
+      await client.query('DELETE FROM trip_activities WHERE trip_id=$1', [id]);
+      for (const activity of next.activities ?? [])
+        await client.query(
+          `INSERT INTO trip_activities(id,trip_id,title,notes,date,start_time,duration_minutes,poi_id,place_name,address,longitude,latitude)
+           VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`,
+          [
+            activity.id,
+            id,
+            activity.title,
+            activity.notes,
+            activity.date,
+            activity.startTime,
+            activity.durationMinutes,
+            activity.poiId,
+            activity.placeName,
+            activity.address,
+            activity.coordinates.longitude,
+            activity.coordinates.latitude,
+          ],
+        );
+      return map({
+        ...updated.rows[0],
+        selected_place_ids: p.selectedPlaceIds,
+        days: next.days,
+        activities: next.activities,
+      });
     });
   }
   async remove(ownerId: string, id: string, revision: number): Promise<void> {

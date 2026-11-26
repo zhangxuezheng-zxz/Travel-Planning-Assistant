@@ -17,7 +17,7 @@ export interface Attraction {
   suggestedDurationMinutes: number;
   sourceUrl: string;
   verifiedAt: string;
-  source: 'curated';
+  source: 'curated' | 'amap';
 }
 export const beijing: City = catalog.city;
 export function listCities(): City[] {

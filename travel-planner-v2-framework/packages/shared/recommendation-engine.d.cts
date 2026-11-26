@@ -28,3 +28,9 @@ export function validateSchedule(
   input: PlanningInput,
   days: ScheduleDay[],
 ): void;
+/** 固定交通预留，非高德实时路线。 */
+export function estimateTransferMinutes(
+  from: RecommendationPlace | null,
+  to: RecommendationPlace,
+  mode: PlanningInput['transportMode'],
+): number;

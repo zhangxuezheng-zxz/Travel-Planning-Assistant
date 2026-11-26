@@ -34,6 +34,8 @@ export type {
   ScheduleItem,
   ScheduleDay,
   Trip,
+  TripActivity,
+  TripActivityInput,
   CreateTripRequest,
   UpdateTripRequest,
   UpdateTripSelectionsRequest,
