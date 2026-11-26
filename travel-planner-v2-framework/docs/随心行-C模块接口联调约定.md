@@ -19,7 +19,7 @@
 - 注册 `POST /auth/register` 接收 `{ email, password, displayName }`，返回 `{ user }`。接着调用 `POST /auth/login`，用 `{ email, password }` 换取 `{ accessToken, expiresAt, user }`。
 - 业务接口携带 `Authorization: Bearer <accessToken>`。`GET /users/me` 获取当前用户信息。后端通过 `AuthGuard` 和 `@CurrentUser()` 提供 `{ userId }`，业务请求体无需提供用户 ID。
 - 错误格式为 `{ code, message, details? }`。前端按状态码和 `code` 分支，`message` 用于提示。400 处理参数错误，401 引导重新登录，404 处理资源不存在或当前用户无权访问。
-- B/D 的测试可按 [C 开发说明](C-行程业务开发说明.md) 在测试应用内替换令牌验证，再通过真实 Guard 构造身份。
+- B/D 的测试可按 [C 开发说明](development/C-行程业务开发说明.md) 在测试应用内替换令牌验证，再通过真实 Guard 构造身份。
 
 ## 3. A 如何接行程
 

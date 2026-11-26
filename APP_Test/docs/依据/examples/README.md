@@ -1,10 +1,10 @@
-# 四人共用示例数据
+﻿# 四人共用示例数据
 
 本目录是静态开发材料，不启动服务器、不创建账号、不插入数据库，也没有实现图片上传。A 为它编写假客户端，B/C/D 可把它读入测试夹具；真实联调仍需业务实现和种子数据。
 
 ## 文件
 
-- [B-接口测试.postman_collection.json](B-接口测试.postman_collection.json)：32 个手工 HTTP 请求及断言，导入 Postman 后使用；先启动本地 API，当前可运行第一组健康与未认证检查，后续组需 C 的真实认证及各自的地图配置前提。完整步骤见 [B 测试手册](../B-完整测试流程与用例.md)。
+- [B-接口测试.postman_collection.json](../../../../travel-planner-v2-framework/docs/examples/B-接口测试.postman_collection.json)：32 个手工 HTTP 请求及断言，导入 Postman 后使用；先启动本地 API，当前可运行第一组健康与未认证检查，后续组需 C 的真实认证及各自的地图配置前提。完整步骤见 [B 测试手册](../../../../travel-planner-v2-framework/docs/delivery/B-验收汇总.md)。
 
 - [demo-scenario.json](demo-scenario.json)：两位测试用户、一个演示省份/城市、三个景点、两天行程请求、草稿/推荐/正式行程及地图手账示例。
 - [error-cases.json](error-cases.json)：使用上述数据时的异常前提和预期 HTTP 响应。它是测试设计数据，不是能直接运行的测试脚本。

@@ -4,9 +4,9 @@
 
 ## 文件
 
-- [B-接口测试.postman_collection.json](B-接口测试.postman_collection.json)：32 个手工 HTTP 请求及断言，导入 Postman 后使用；先启动本地 API，当前可运行第一组健康与未认证检查，后续组需 C 的真实认证及各自的地图配置前提。完整步骤见 [B 测试手册](../B-完整测试流程与用例.md)。
+- [B-接口测试.postman_collection.json](B-接口测试.postman_collection.json)：32 个手工 HTTP 请求及断言，导入 Postman 后使用；先启动本地 API，当前可运行第一组健康与未认证检查，后续组需 C 的真实认证及各自的地图配置前提。完整步骤见 [B 测试手册](../delivery/B-验收汇总.md)。
 
-- [demo-scenario.json](demo-scenario.json) 包含核实后的三个杭州景点，以及合成的测试用户、行程、足迹和手账示例。景点来源见 [B 组验收记录](../验证记录-B.md)。
+- [demo-scenario.json](demo-scenario.json) 包含核实后的三个杭州景点，以及合成的测试用户、行程、足迹和手账示例。景点来源见 [B 组验收记录](../records/验证记录-B.md)。
 - [error-cases.json](error-cases.json)：使用上述数据时的异常前提和预期 HTTP 响应。它是测试设计数据，不是能直接运行的测试脚本。
 
 ## 使用方法

@@ -1,10 +1,10 @@
-# C：行程业务与基础后端开发说明
+﻿# C：行程业务与基础后端开发说明
 
 ## 1. 你的交付
 
-2026-11-02 调整：C 负责创建行程前端全流程、景点与行程规则推荐、保存读取删除，以及身份认证、校验和迁移协调。A 接入正式页面，B 协作景点数据与地图服务，D 仍负责足迹手账。以下技术设计保留作为验收参考，当前交付状态以 [当前分工与联调交付](当前分工与联调交付.md) 为准。
+2026-11-02 调整：C 负责创建行程前端全流程、景点与行程规则推荐、保存读取删除，以及身份认证、校验和迁移协调。A 接入正式页面，B 协作景点数据与地图服务，D 仍负责足迹手账。以下技术设计保留作为验收参考，当前交付状态以 [当前分工与联调交付](../当前分工与联调交付.md) 为准。
 
-先读 [接口与数据约定](接口与数据约定.md)。已有 ConfigModule、DatabaseModule、createApp 和基础测试可复用；现有 users 表还没有密码字段，trips 表也没有完整业务字段。
+先读 [接口与数据约定](../接口与数据约定.md)。已有 ConfigModule、DatabaseModule、createApp 和基础测试可复用；现有 users 表还没有密码字段，trips 表也没有完整业务字段。
 
 ### 当前 C 公共基础实现
 
@@ -27,7 +27,7 @@ export class SomeController {
 
 ### B/D 的 HTTP 测试身份示例
 
-复用 [行程 HTTP 测试](../apps/api/tests/trips.test.cjs) 的做法。在测试自己创建的 app 上替换 `AuthService.verifyAccessToken`，让真实 `AuthGuard` 继续处理请求并构造 `{ userId }`。
+复用 [行程 HTTP 测试](../../apps/api/tests/trips.test.cjs) 的做法。在测试自己创建的 app 上替换 `AuthService.verifyAccessToken`，让真实 `AuthGuard` 继续处理请求并构造 `{ userId }`。
 
 ```js
 // 放在 HTTP 测试中，createApp 之后、app.listen 之前。
@@ -123,7 +123,7 @@ B/D 在你完成前可用测试 provider 注入 actor，不能在公共 HTTP 接
 | HTTP 测试      | createApp 或测试装配、仅测试用身份 provider     | 参数校验、认证、状态码与错误格式 |
 | 数据库集成测试 | 独立 PostgreSQL 测试库、真实仓库与迁移          | SQL、约束、回滚、原子版本更新    |
 
-只用假数据库无法证明真实事务与并发行为。至少准备两个测试用户，固定演示 UUID 见 [统一示例](examples/README.md)，实际插入用户时使用测试密码哈希，不把 JSON actor 当作真实登录账号。
+只用假数据库无法证明真实事务与并发行为。至少准备两个测试用户，固定演示 UUID 见 [统一示例](../examples/README.md)，实际插入用户时使用测试密码哈希，不把 JSON actor 当作真实登录账号。
 
 重点场景：
 
