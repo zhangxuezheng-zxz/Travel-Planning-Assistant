@@ -41,7 +41,7 @@
 - `apps/api/tests/migration-status.test.cjs`：将新迁移纳入迁移状态测试预期。
 - `apps/web/src/App.tsx`、`apps/web/src/style.css`：将足迹表单接入当前开发页并添加样式。
 - `packages/shared/src/index.ts`：导出新增共享类型。
-- `docs/D-足迹与地图手账开发说明.md`、`docs/接口与数据约定.md`：同步首轮范围、字段、接口和媒体限制。
+- `docs/development/D-足迹与地图手账开发说明.md`、`docs/接口与数据约定.md`：同步首轮范围、字段、接口和媒体限制。
 
 ## 配置与使用说明
 

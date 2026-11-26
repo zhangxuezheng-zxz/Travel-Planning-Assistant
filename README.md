@@ -1,4 +1,4 @@
-﻿# Travel Planning Assistant
+# Travel Planning Assistant
 
 旅行规划助手的完整工程位于 `travel-planner-v2-framework/`，全软件 TDD 测试位于 `APP_Test/`。
 
