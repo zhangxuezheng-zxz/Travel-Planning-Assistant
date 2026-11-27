@@ -24,6 +24,11 @@ export type {
   PublicUser,
   RegisterRequest,
   RegisterResponse,
+  TravelPreferences,
+  UpdateProfileRequest,
+  ContactChannel,
+  VerificationPurpose,
+  VerificationResponse,
 } from './auth.js';
 
 export type {

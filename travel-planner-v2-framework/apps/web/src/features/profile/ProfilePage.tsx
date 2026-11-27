@@ -3,6 +3,10 @@ import type { PublicUser } from '@travel/shared';
 import type { ApiClient } from '../../lib/api-client';
 import { createProfileApi, MAX_DISPLAY_NAME, profileErrorMessage } from '../../lib/profile-client';
 import './profile.css';
+import './auth.css';
+import ProfileFields from './ProfileFields';
+import AccountSecurity from './AccountSecurity';
+import { defaultPreferences, themeLabels, paceLabels, transportLabels } from './travel-preferences';
 
 export interface ProfilePageProps {
   /** 登录时得到的用户，用作首屏内容，避免白屏等待。 */
@@ -34,6 +38,9 @@ export default function ProfilePage({
 }: ProfilePageProps) {
   const [current, setCurrent] = useState<PublicUser>(user);
   const [displayName, setDisplayName] = useState(user.displayName ?? '');
+  const [bio, setBio] = useState(user.bio ?? '');
+  const [homeCity, setHomeCity] = useState(user.homeCity ?? '');
+  const [preferences, setPreferences] = useState(() => defaultPreferences(user.travelPreferences));
   const [counts, setCounts] = useState<Counts>({ trips: null, footprints: null });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -71,6 +78,9 @@ export default function ProfilePage({
         if (!active) return;
         setCurrent(fresh);
         setDisplayName(fresh.displayName ?? '');
+        setBio(fresh.bio ?? '');
+        setHomeCity(fresh.homeCity ?? '');
+        setPreferences(defaultPreferences(fresh.travelPreferences));
       })
       .catch((failure: unknown) => {
         if (active) setError(profileErrorMessage(failure));
@@ -108,12 +118,20 @@ export default function ProfilePage({
     setError('');
     setNotice('');
     try {
-      const updated = await createProfileApi(client).rename(displayName);
+      const updated = await createProfileApi(client).update({
+        displayName: displayName.trim(),
+        bio: bio.trim(),
+        homeCity: homeCity.trim(),
+        travelPreferences: preferences,
+      });
       setCurrent(updated);
       setDisplayName(updated.displayName ?? '');
+      setBio(updated.bio ?? '');
+      setHomeCity(updated.homeCity ?? '');
+      setPreferences(defaultPreferences(updated.travelPreferences));
       onUpdated(updated);
       setEditing(false);
-      setNotice('昵称已保存');
+      setNotice('个人资料和旅行偏好已保存');
     } catch (failure) {
       setError(profileErrorMessage(failure));
     } finally {
@@ -152,6 +170,7 @@ export default function ProfilePage({
             <div>
               <h2>{current.displayName ?? '未设置昵称'}</h2>
               <p>{current.email}</p>
+              {current.homeCity && <p>常住 · {current.homeCity}</p>}
             </div>
             <button
               type="button"
@@ -184,7 +203,7 @@ export default function ProfilePage({
 
           {editing && (
             <form className="settings-card profile-form" onSubmit={(event) => void save(event)}>
-              <h3>修改昵称</h3>
+              <h3>个人资料与旅行偏好</h3>
               <label>
                 昵称
                 <input
@@ -196,20 +215,55 @@ export default function ProfilePage({
                   onChange={(event) => setDisplayName(event.target.value)}
                 />
               </label>
-              <p className="profile-hint">
-                最多 {MAX_DISPLAY_NAME} 个字符，首尾空格会被自动去掉；数据来自{' '}
-                <code>GET /api/users/me</code>。
-              </p>
+              <ProfileFields
+                bio={bio}
+                setBio={setBio}
+                homeCity={homeCity}
+                setHomeCity={setHomeCity}
+                preferences={preferences}
+                setPreferences={setPreferences}
+                disabled={saving}
+              />
               <div className="profile-actions">
-                <button type="button" disabled={saving} onClick={() => setEditing(false)}>
+                <button
+                  type="button"
+                  disabled={saving}
+                  onClick={() => {
+                    setDisplayName(current.displayName ?? '');
+                    setBio(current.bio ?? '');
+                    setHomeCity(current.homeCity ?? '');
+                    setPreferences(defaultPreferences(current.travelPreferences));
+                    setEditing(false);
+                  }}
+                >
                   取消
                 </button>
                 <button type="submit" disabled={saving}>
-                  {saving ? '正在保存…' : '保存昵称'}
+                  {saving ? '正在保存…' : '保存资料'}
                 </button>
               </div>
             </form>
           )}
+
+          {!editing && (
+            <div className="settings-card profile-preference-summary">
+              <h3>我的旅行偏好</h3>
+              {current.bio && <p className="profile-bio">{current.bio}</p>}
+              <p>
+                {defaultPreferences(current.travelPreferences)
+                  .themes.map((item) => themeLabels[item])
+                  .join(' · ') || '尚未选择旅行主题'}
+              </p>
+              <p>
+                {paceLabels[defaultPreferences(current.travelPreferences).pace]} ·{' '}
+                {transportLabels[defaultPreferences(current.travelPreferences).transportMode]}
+              </p>
+              {current.travelPreferences?.dailyBudget != null && (
+                <p>每日预算 · ¥{current.travelPreferences.dailyBudget} / 人</p>
+              )}
+            </div>
+          )}
+          <AccountSecurity user={current} client={client} onSignOut={onSignOut} />
 
           <div className="settings-card">
             <h3>账号</h3>

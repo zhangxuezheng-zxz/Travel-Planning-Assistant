@@ -32,6 +32,7 @@ test(
     Object.assign(process.env, {
       DATABASE_URL: databaseUrl,
       NODE_ENV: 'test',
+      AUTH_DELIVERY_MODE: 'local',
       AUTH_TOKEN_SECRET: 'trip-activity-integration-only-secret-32bytes',
       AMAP_WEB_SERVICE_KEY: '',
       B_LLM_ENABLED: 'false',
@@ -98,12 +99,25 @@ test(
     async function register() {
       const email = randomUUID() + '@trip-test.invalid';
       accounts.push(email);
-      const result = await request('/auth/register', {
+      const credentials = {
         email,
         password: 'Strong-Travel-Password-2026',
         displayName: '活动测试',
+      };
+      assert.equal((await request('/auth/register', credentials)).status, 400);
+      const verification = await request('/auth/code', {
+        channel: 'email',
+        target: email,
+        purpose: 'register',
+      });
+      assert.equal(verification.status, 200);
+      assert.match(verification.body.developmentCode, /^\d{6}$/);
+      const result = await request('/auth/register', {
+        ...credentials,
+        code: verification.body.developmentCode,
       });
       assert.equal(result.status, 201);
+      assert.equal(result.body.user.emailVerified, true);
       return result.body;
     }
     const owner = await register(),
