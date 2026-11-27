@@ -18,7 +18,7 @@ export interface Place extends RecommendationPlace {
   category: string;
   sourceUrl: string;
   verifiedAt: string;
-  source: 'curated';
+  source: 'curated' | 'amap';
   coordinates: Coordinates | null;
   openingHours: string | null;
 }

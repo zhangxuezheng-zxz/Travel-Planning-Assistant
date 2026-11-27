@@ -8,6 +8,7 @@
     "build": "tsc -p tsconfig.build.json",
     "start": "node dist/main.js",
     "test": "node --test tests/*.test.cjs",
+    "test:activities": "npm run build && node scripts/test-trip-activities.cjs",
     "test:auth": "npm run build && node scripts/test-auth-profile.cjs",
     "auth:email:check": "npm run build && node scripts/check-email.cjs",
     "typecheck": "tsc --noEmit",

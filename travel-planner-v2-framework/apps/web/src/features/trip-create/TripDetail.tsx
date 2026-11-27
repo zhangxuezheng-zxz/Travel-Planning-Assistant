@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type RefObject } from 'react';
-import type { BPlaces, Destination, Place, ScheduleDay, Trip } from '@travel/shared';
+import type { BPlaces, Destination, Place, ScheduleDay, Trip, TripActivity } from '@travel/shared';
+import TripAddDialog from './TripAddDialog';
 import { getBeijingVisitInfo } from '../../data/beijing';
 import { movePlace, reorderPlace, type LocalDay } from '../../data/planner';
 import { notifyHost, type TripHostEvents } from './host-integration';
@@ -12,7 +13,7 @@ import TripTools from './TripTools';
 import TripTransitSteps from './TripTransitSteps';
 import TripPreparation from './TripPreparation';
 import { bookingLabels, type BookingStatus } from './trip-booking';
-import { destinationDate } from './trip-day';
+import { destinationDate, scheduleMinutes } from './trip-day';
 import type { TripDraftApi } from './trip-draft-client';
 import { tripErrorMessage } from './trip-errors';
 import { previewScheduleChanges, scheduleWindow } from './trip-schedule-preview';
@@ -27,6 +28,7 @@ import {
   transitSummary,
   transportNames,
   type RouteResult,
+  outingProgress,
 } from './trip-map-routes';
 import './trip-detail.css';
 import './trip-day.css';
@@ -58,6 +60,8 @@ function TripSchedule({
   onSaveSchedule,
   getState,
   saveState,
+  api,
+  onMutated,
 }: {
   trip: Trip;
   places: Place[];
@@ -70,6 +74,8 @@ function TripSchedule({
   onSaveSchedule: (days: ScheduleDay[]) => Promise<void>;
   getState: TripDraftApi['getState'];
   saveState: TripDraftApi['saveState'];
+  api: TripDraftApi;
+  onMutated: (trip: Trip) => void;
 }) {
   const [date, setDate] = useState<string | null>(null);
   const [outing, setOuting] = useState(false);
@@ -83,6 +89,25 @@ function TripSchedule({
   const [saved, setSaved] = useState(false);
   const [attempt, setAttempt] = useState(0);
   const [bookings, setBookings] = useState<Record<string, BookingStatus>>({});
+  const [addition, setAddition] = useState<{ activity?: TripActivity } | null>(null);
+  const [deletion, setDeletion] = useState<{
+    kind: 'activity' | 'scenic';
+    id: string;
+    title: string;
+  } | null>(null);
+  const [deleteError, setDeleteError] = useState('');
+  const deletionDialog = useRef<HTMLDialogElement>(null);
+  const activityCard = useRef<HTMLElement>(null);
+  useEffect(() => {
+    if (deletion && !deletionDialog.current?.open) deletionDialog.current?.showModal();
+    else if (!deletion) deletionDialog.current?.close();
+  }, [deletion]);
+  useEffect(() => {
+    const card = activityCard.current;
+    card?.focus({ preventScroll: true });
+    if (card && getComputedStyle(card).getPropertyValue('--trip-inline-card').trim() === '1')
+      card.scrollIntoView({ block: 'start' });
+  }, [selected]);
 
   // 勾选“去过”和预约状态都存在服务端 trip_state，换设备也能看到；
   // 读取失败时降级为空并在界面上提示，不再静默丢数据。
@@ -117,12 +142,12 @@ function TripSchedule({
     [trip, places, originalOrder],
   );
   const placeNames = useMemo(
-    () => new Map(places.map((place) => [place.id, place.name])),
-    [places],
-  );
-  const days = useMemo(
-    () => (draft ? buildDays(trip, places, draft) : originalDays),
-    [trip, places, draft, originalDays],
+    () =>
+      new Map([
+        ...places.map((place) => [place.id, place.name] as const),
+        ...(trip.activities ?? []).map((item) => [item.id, item.title] as const),
+      ]),
+    [places, trip.activities],
   );
   const changedDays = useMemo(
     () =>
@@ -147,17 +172,21 @@ function TripSchedule({
       return null;
     }
   }, [changedDays, draft, places, trip]);
+  const days = useMemo(
+    () => (draft ? buildDays(trip, places, draft, draftPreview?.days) : originalDays),
+    [trip, places, draft, draftPreview, originalDays],
+  );
   const itemsByPlace = useMemo(
     () =>
       new Map(
-        (draftPreview?.days ?? trip.days).flatMap((day) =>
-          (!draftPreview && changedDays.has(day.date) ? [] : day.items).map((item) => [
-            item.placeId,
-            item,
-          ]),
+        days.flatMap((day) =>
+          (!draftPreview || draftPreview.unassigned.length
+            ? day.stops.filter((stop) => stop.activity || !changedDays.has(day.date))
+            : day.stops
+          ).map((item) => [item.placeId, item]),
         ),
       ),
-    [changedDays, draftPreview, trip.days],
+    [changedDays, draftPreview, days],
   );
   const conflicts = useMemo(
     () =>
@@ -289,11 +318,8 @@ function TripSchedule({
   }
   const outingDay = outing && !draft ? visibleDays.find((day) => day.date === date) : undefined;
   const today = destinationDate(timeZone);
-  const upcoming = outingDay?.stops.find(
-    (stop) => !visited.has(`${outingDay.date}:${stop.placeId}`),
-  );
-  const visitedCount =
-    outingDay?.stops.filter((stop) => visited.has(`${outingDay.date}:${stop.placeId}`)).length ?? 0;
+  const outingState = outingProgress(outingDay, visited);
+  const upcoming = outingState.next;
 
   function enterOuting() {
     const day = date ?? days.find((day) => day.date >= today)?.date ?? days.at(-1)?.date;
@@ -331,6 +357,7 @@ function TripSchedule({
             ? [
                 {
                   place: stop.place,
+                  activity: stop.activity,
                   date: day.date,
                   dayNumber: day.number,
                   startTime: itemsByPlace.get(stop.placeId)?.startTime,
@@ -346,6 +373,24 @@ function TripSchedule({
   const activeStopIndex = visibleStops.findIndex(({ place }) => place.id === selected);
   const activeStop = visibleStops[activeStopIndex];
   const activePlace = activeStop?.place;
+  const activeActivity = activeStop?.activity;
+  const activityTravelWarnings = activeActivity
+    ? visibleLegs.flatMap((leg) => {
+        if (leg.from.placeId !== activeActivity.id && leg.to.placeId !== activeActivity.id)
+          return [];
+        const route = routes.get(leg.key);
+        if (!route || route === 'unavailable') return [];
+        const gap =
+          scheduleMinutes(leg.to.startTime) -
+          scheduleMinutes(leg.from.startTime) -
+          leg.from.durationMinutes;
+        return gap < route.durationMinutes
+          ? [
+              `${leg.to.placeId === activeActivity.id ? '前一站到活动' : '活动到下一站'}约需 ${route.durationMinutes} 分钟，当前只预留 ${Math.max(0, gap)} 分钟，请调整时间。`,
+            ]
+          : [];
+      })
+    : [];
   const activeBookingKey = activeStop && `${activeStop.date}:${activeStop.place.id}`;
   const activeLeg = visibleLegs.find((leg) => leg.key === selectedLeg);
   const activeRoute = activeLeg && routes.get(activeLeg.key);
@@ -419,8 +464,15 @@ function TripSchedule({
       ? draftPreview
         ? `当前日期或路线无法安排：${draftPreview.unassigned.map((id) => placeNames.get(id) ?? id).join('、')}。请调整日期或顺序。`
         : '暂时无法生成时间预览，请检查景点目录或取消调整。'
-      : '';
-  const canSave = !saving && !editDisabled && draftPreview && !draftPreview.unassigned.length;
+      : draftPreview?.activityConflicts.length
+        ? `调整后的景点时间与活动冲突：${draftPreview.activityConflicts.map((id) => placeNames.get(id) ?? id).join('、')}。请取消调整或先修改活动时间。`
+        : '';
+  const canSave =
+    !saving &&
+    !editDisabled &&
+    draftPreview &&
+    !draftPreview.unassigned.length &&
+    !draftPreview.activityConflicts.length;
 
   function cancelOrder() {
     setDraft(null);
@@ -443,9 +495,76 @@ function TripSchedule({
       setSaving(false);
     }
   }
+  async function deleteStop() {
+    if (!deletion || saving) return;
+    setSaving(true);
+    setDeleteError('');
+    try {
+      const updated =
+        deletion.kind === 'activity'
+          ? await api.removeActivity(trip.id, trip.revision, deletion.id)
+          : await api.removeScenic(trip.id, trip.revision, deletion.id);
+      onMutated(updated);
+      setDeletion(null);
+      setSelected(null);
+      setSelectedLeg(null);
+      setSaved(true);
+    } catch (failure) {
+      setDeleteError(tripErrorMessage(failure));
+    } finally {
+      setSaving(false);
+    }
+  }
 
   return (
     <div className="trip-detail-layout">
+      {addition && (
+        <TripAddDialog
+          trip={trip}
+          places={places}
+          api={api}
+          initialDate={date}
+          activity={addition.activity}
+          onClose={() => setAddition(null)}
+          onSaved={(updated, selectedId) => {
+            onMutated(updated);
+            setAddition(null);
+            setSelected(selectedId || null);
+            setSelectedLeg(null);
+            setSaved(true);
+          }}
+        />
+      )}
+      <dialog
+        className="trip-delete-stop-dialog"
+        ref={deletionDialog}
+        aria-labelledby="trip-delete-stop-title"
+        onCancel={(event) => {
+          event.preventDefault();
+          if (!saving) setDeletion(null);
+        }}
+      >
+        <h2 id="trip-delete-stop-title">移除{deletion?.kind === 'activity' ? '活动' : '景点'}？</h2>
+        <p>
+          将从此行程移除“{deletion?.title}”。
+          {deletion?.kind === 'scenic'
+            ? '不会删除景点目录中的资料；其余安排会保留。'
+            : '其余景点与活动会保留。'}
+        </p>
+        {deleteError && (
+          <p className="trip-add-error" role="alert">
+            {deleteError}
+          </p>
+        )}
+        <footer>
+          <button type="button" disabled={saving} onClick={() => setDeletion(null)}>
+            取消
+          </button>
+          <button type="button" disabled={saving} onClick={() => void deleteStop()}>
+            {saving ? '正在移除…' : '确认移除'}
+          </button>
+        </footer>
+      </dialog>
       <section className="trip-detail-agenda" aria-label="每日行程" ref={agenda} tabIndex={-1}>
         <header className="trip-detail-section-header">
           <h2>每日行程</h2>
@@ -482,8 +601,12 @@ function TripSchedule({
             </>
           ) : (
             <>
-              <button type="button" onClick={onEdit} disabled={editDisabled}>
-                <span aria-hidden="true">＋ </span>添加景点
+              <button
+                type="button"
+                onClick={() => setAddition({})}
+                disabled={editDisabled || saving}
+              >
+                <span aria-hidden="true">＋ </span>添加
               </button>
               <button
                 className="trip-order-toggle"
@@ -578,7 +701,7 @@ function TripSchedule({
                       )}
                       <div className="trip-stop-row">
                         <button
-                          className="trip-stop"
+                          className={`trip-stop ${stop.activity ? 'trip-stop-activity' : ''}`}
                           type="button"
                           data-place-id={stop.placeId}
                           data-completed={completed}
@@ -593,10 +716,13 @@ function TripSchedule({
                             {stop.number}
                           </span>
                           <span>
-                            <strong>{place?.name ?? '景点资料不可用'}</strong>
+                            <strong>
+                              {stop.activity && <span className="trip-stop-kind">活动</span>}
+                              {place?.name ?? '景点资料不可用'}
+                            </strong>
                             <span className="trip-detail-muted">
                               {timing
-                                ? `${timing.startTime} · 游览 ${timing.durationMinutes} 分钟`
+                                ? `${timing.startTime} · ${stop.activity ? '活动' : '游览'} ${timing.durationMinutes} 分钟`
                                 : '时间待调整'}
                             </span>
                             {warning && <span className="trip-visit-badge">{warning.label}</span>}
@@ -612,33 +738,44 @@ function TripSchedule({
                             <input
                               type="checkbox"
                               checked={completed}
-                              aria-label={`已游览${place?.name ?? `景点 ${stop.number}`}`}
+                              aria-label={`${stop.activity ? '已完成活动' : '已游览'}${place?.name ?? `地点 ${stop.number}`}`}
                               onChange={(event) =>
                                 changeVisited(day.date, stop.placeId, event.target.checked)
                               }
                             />
                           </label>
                         )}
-                        {draft && day.stops.length > 1 && (
-                          <div className="trip-order-arrows">
-                            <button
-                              type="button"
-                              aria-label={`上移${place?.name ?? stop.number}`}
-                              disabled={saving || index === 0}
-                              onClick={() => moveStop(stop.placeId, -1, day.date)}
-                            >
-                              ↑
-                            </button>
-                            <button
-                              type="button"
-                              aria-label={`下移${place?.name ?? stop.number}`}
-                              disabled={saving || index === day.stops.length - 1}
-                              onClick={() => moveStop(stop.placeId, 1, day.date)}
-                            >
-                              ↓
-                            </button>
-                          </div>
-                        )}
+                        {draft &&
+                          !stop.activity &&
+                          (draft.find((item) => item.date === day.date)?.placeIds.length ?? 0) >
+                            1 && (
+                            <div className="trip-order-arrows">
+                              <button
+                                type="button"
+                                aria-label={`上移${place?.name ?? stop.number}`}
+                                disabled={
+                                  saving ||
+                                  draft.find((item) => item.date === day.date)?.placeIds[0] ===
+                                    stop.placeId
+                                }
+                                onClick={() => moveStop(stop.placeId, -1, day.date)}
+                              >
+                                ↑
+                              </button>
+                              <button
+                                type="button"
+                                aria-label={`下移${place?.name ?? stop.number}`}
+                                disabled={
+                                  saving ||
+                                  draft.find((item) => item.date === day.date)?.placeIds.at(-1) ===
+                                    stop.placeId
+                                }
+                                onClick={() => moveStop(stop.placeId, 1, day.date)}
+                              >
+                                ↓
+                              </button>
+                            </div>
+                          )}
                       </div>
                     </li>
                   );
@@ -679,8 +816,8 @@ function TripSchedule({
             days={days}
             date={outingDay.date}
             today={today}
-            count={outingDay.stops.length}
-            completed={visitedCount}
+            count={outingState.count}
+            completed={outingState.completed}
             next={
               upcoming && {
                 id: upcoming.placeId,
@@ -688,6 +825,7 @@ function TripSchedule({
                 time: upcoming.startTime,
                 directions: upcoming.place ? navigationUrl(upcoming.place, transportMode) : null,
                 hasDetails: Boolean(upcoming.place),
+                activity: Boolean(upcoming.activity),
                 reminder: conflicts.get(upcoming.placeId)?.[0]?.label,
               }
             }
@@ -823,7 +961,82 @@ function TripSchedule({
           ) : (
             <p className="trip-map-status">所选日期没有可显示的景点坐标。</p>
           )}
-          {activeStop && activeBookingKey && (
+          {activeActivity && (
+            <section
+              className="trip-map-info trip-place-card trip-activity-card"
+              aria-label="活动详情"
+              ref={activityCard}
+              tabIndex={-1}
+              onKeyDown={(event) => {
+                if (event.key === 'Escape') {
+                  event.stopPropagation();
+                  closePlace();
+                }
+              }}
+            >
+              <button
+                type="button"
+                className="trip-map-info-close"
+                aria-label="关闭活动详情"
+                onClick={closePlace}
+              >
+                ×
+              </button>
+              <span className="trip-stop-kind">活动 · 高德地点</span>
+              <h3>{activeActivity.title}</h3>
+              <p>
+                <strong>{activeActivity.placeName}</strong>
+                <br />
+                {activeActivity.address}
+              </p>
+              <p>
+                {activeActivity.date} · {activeActivity.startTime} ·{' '}
+                {activeActivity.durationMinutes} 分钟
+              </p>
+              {activeActivity.notes && (
+                <p className="trip-activity-notes">{activeActivity.notes}</p>
+              )}
+              <p>活动时间由你安排，往返交通请查看站间路线。</p>
+              {activityTravelWarnings.map((message, i) => (
+                <p className="trip-add-error" role="status" key={i}>
+                  {message}
+                </p>
+              ))}
+              <div className="trip-activity-card-actions">
+                <button
+                  type="button"
+                  disabled={saving || editDisabled || Boolean(draft)}
+                  onClick={() => setAddition({ activity: activeActivity })}
+                >
+                  编辑活动
+                </button>
+                <button
+                  type="button"
+                  disabled={saving || editDisabled || Boolean(draft)}
+                  onClick={() => {
+                    setDeleteError('');
+                    setDeletion({
+                      kind: 'activity',
+                      id: activeActivity.id,
+                      title: activeActivity.title,
+                    });
+                  }}
+                >
+                  删除活动
+                </button>
+                {activePlace && (
+                  <a
+                    href={navigationUrl(activePlace, transportMode) ?? undefined}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    高德导航 ↗
+                  </a>
+                )}
+              </div>
+            </section>
+          )}
+          {activeStop && activeBookingKey && !activeActivity && (
             <TripPlaceCard
               key={activeBookingKey}
               place={activeStop.place}
@@ -851,6 +1064,18 @@ function TripSchedule({
               onBookingChange={(status) => changeBooking(activeBookingKey, status)}
               onSelect={focusStop}
               onClose={closePlace}
+              onRemove={
+                saving || editDisabled || Boolean(draft)
+                  ? undefined
+                  : () => {
+                      setDeleteError('');
+                      setDeletion({
+                        kind: 'scenic',
+                        id: activeStop.place.id,
+                        title: activeStop.place.name,
+                      });
+                    }
+              }
             />
           )}
           {activeLeg && (
@@ -1041,6 +1266,11 @@ export default function TripDetail({
           editDisabled={editDisabled}
           getState={api.getState}
           saveState={api.saveState}
+          api={api}
+          onMutated={(updated) => {
+            setData({ trip: updated, places: data.places });
+            notifyHost(onSaved, updated);
+          }}
           onSaveSchedule={async (days) => {
             const { trip: current, places } = data;
             const updated = await api.updateSchedule(current.id, current.revision, days);

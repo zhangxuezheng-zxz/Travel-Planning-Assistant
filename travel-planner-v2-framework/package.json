@@ -20,6 +20,7 @@
     "lint": "eslint .",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "npm run build --workspace=@travel/api && npm run test --workspaces --if-present",
+    "test:activities": "npm run test:activities --workspace=@travel/api",
     "test:auth": "npm run test:auth --workspace=@travel/api",
     "auth:email:check": "npm run auth:email:check --workspace=@travel/api",
     "format": "prettier --write .",

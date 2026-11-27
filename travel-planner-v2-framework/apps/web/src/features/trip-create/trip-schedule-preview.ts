@@ -32,10 +32,25 @@ export function previewScheduleChanges(
     },
     groups,
   );
+  const days = plan.days.map((day, index) =>
+    changedDates.has(day.date) ? day : (trip.days[index] ?? day),
+  );
+  const activityConflicts = (trip.activities ?? [])
+    .filter((activity) => {
+      const start = scheduleMinutes(activity.startTime);
+      const end = start + activity.durationMinutes;
+      return days
+        .find((day) => day.date === activity.date)
+        ?.items.some(
+          (item) =>
+            start < scheduleMinutes(item.startTime) + item.durationMinutes &&
+            end > scheduleMinutes(item.startTime),
+        );
+    })
+    .map((activity) => activity.id);
   return {
     unassigned: plan.unassignedPlaceIds,
-    days: plan.days.map((day, index) =>
-      changedDates.has(day.date) ? day : (trip.days[index] ?? day),
-    ),
+    days,
+    activityConflicts,
   };
 }

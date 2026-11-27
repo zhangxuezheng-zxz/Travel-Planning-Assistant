@@ -58,7 +58,7 @@ async function seedBeijing(client) {
           point.coordinateSystem,
           place.suggestedDurationMinutes,
           info.overview,
-          info.hours.map((row) => `${row.label}：${row.time}`).join('\n'),
+          info.openingHoursText ?? info.hours.map((row) => `${row.label}：${row.time}`).join('\n'),
         ],
       );
       assert.equal(inserted.rowCount, 1, `Conflicting catalog entry for ${place.name}`);

@@ -10,12 +10,15 @@ import { TripRepository, PostgresTripRepository } from './trip.repository';
 import { TripStateService } from './trip-state.service';
 import { TripsController } from './trips.controller';
 import { TripsService } from './trips.service';
+import { TripActivitiesService } from './trip-activities.service';
+import { TripAdditionsController } from './trip-additions.controller';
 
 @Module({
   imports: [AuthModule, DatabaseModule, FootprintsModule],
-  controllers: [TripsController],
+  controllers: [TripsController, TripAdditionsController],
   providers: [
     TripsService,
+    TripActivitiesService,
     TripStateService,
     ProposalsRepository,
     { provide: TripRepository, useClass: PostgresTripRepository },

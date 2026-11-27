@@ -31,8 +31,32 @@ export interface Trip {
   status: 'draft' | 'planned';
   planningInput: DraftPlanningInput;
   days: ScheduleDay[];
+  /** 用户安排的高德地点活动，独立于数据库景点与自动推荐。 */
+  activities?: TripActivity[];
   createdAt: string;
   updatedAt: string;
+}
+export interface TripActivity {
+  id: string;
+  title: string;
+  notes: string;
+  date: string;
+  startTime: string;
+  durationMinutes: number;
+  poiId: string;
+  placeName: string;
+  address: string;
+  coordinates: { longitude: number; latitude: number; coordinateSystem: 'GCJ-02' };
+  source: 'amap';
+}
+export interface TripActivityInput {
+  expectedRevision: number;
+  title: string;
+  notes: string;
+  date: string;
+  startTime: string;
+  durationMinutes: number;
+  poiId: string;
 }
 export interface CreateTripRequest {
   title: string;

@@ -32,6 +32,8 @@ jobs:
           --health-interval 5s --health-timeout 3s --health-retries 20
     env:
       DATABASE_URL: postgresql://travel_planner:ci-password@localhost:5432/travel_planner
+      TRIP_TEST_DATABASE_URL: postgresql://travel_planner:ci-password@localhost:5432/travel_trip_management_test
+      AUTH_TEST_DATABASE_URL: postgresql://travel_planner:ci-password@localhost:5432/travel_auth_profile_test
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -46,5 +48,21 @@ jobs:
       - run: npm run typecheck
       - run: npm run build
       - run: npm run test --workspaces --if-present
+      - name: Prepare isolated integration databases
+        run: |
+          node --input-type=commonjs <<'JS'
+          const { Client } = require('pg');
+          (async () => {
+            const client = new Client({ connectionString: process.env.DATABASE_URL });
+            await client.connect();
+            try {
+              await client.query('CREATE DATABASE travel_trip_management_test');
+              await client.query('CREATE DATABASE travel_auth_profile_test');
+            }
+            finally { await client.end(); }
+          })().catch(() => { console.error('Unable to prepare isolated integration databases'); process.exitCode = 1; });
+          JS
+      - run: npm run test:activities
+      - run: npm run test:auth
       - run: node apps/api/scripts/verify-trip-persistence.cjs
       - run: node apps/api/scripts/verify-catalog-migration.cjs
