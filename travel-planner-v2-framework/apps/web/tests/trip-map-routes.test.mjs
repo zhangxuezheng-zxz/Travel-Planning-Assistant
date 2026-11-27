@@ -20,7 +20,110 @@ const {
   savedOrder,
   summarizeRoutes,
   transitSummary,
+  outingProgress,
 } = mod.exports;
+
+test('出游模式包含只有活动的日期，完成后正常推进而不是提示空行程', () => {
+  const activity = {
+    id: 'activity',
+    title: '午餐',
+    date: '2026-12-01',
+    startTime: '12:00',
+    durationMinutes: 60,
+    poiId: 'POI',
+    notes: '',
+    placeName: '餐厅',
+    address: '',
+    coordinates: { longitude: 116, latitude: 40, coordinateSystem: 'GCJ-02' },
+    source: 'amap',
+  };
+  const trip = {
+    planningInput: { cityId: 'city', transportMode: 'walking' },
+    days: [{ date: activity.date, items: [] }],
+    activities: [activity],
+  };
+  const day = buildDays(trip, [], savedOrder(trip))[0];
+  const pending = outingProgress(day, new Set());
+  assert.equal(pending.count, 1);
+  assert.equal(pending.completed, 0);
+  assert.equal(pending.next.activity.id, activity.id);
+  const finished = outingProgress(day, new Set([`${activity.date}:${activity.id}`]));
+  assert.equal(finished.count, 1);
+  assert.equal(finished.completed, 1);
+  assert.equal(finished.next, undefined);
+});
+
+test('活动按时间合并到地图站点，重连前后路线但不混入数据库景点顺序', () => {
+  const trip = {
+    planningInput: { cityId: 'city', transportMode: 'walking' },
+    days: [
+      {
+        date: '2026-12-01',
+        items: [
+          { placeId: 'a', position: 0, startTime: '09:00', durationMinutes: 60 },
+          {
+            placeId: 'b',
+            position: 1,
+            startTime: '14:00',
+            durationMinutes: 60,
+            travelMinutesFromPrevious: 30,
+            travelTimeSource: 'estimate',
+          },
+        ],
+      },
+    ],
+    activities: [
+      {
+        id: 'activity',
+        title: '午餐',
+        notes: '备注',
+        date: '2026-12-01',
+        startTime: '12:00',
+        durationMinutes: 60,
+        poiId: 'POI',
+        placeName: '餐厅',
+        address: '地址',
+        coordinates: { longitude: 116, latitude: 40, coordinateSystem: 'GCJ-02' },
+        source: 'amap',
+      },
+    ],
+  };
+  const order = savedOrder(trip);
+  assert.deepEqual(order[0].placeIds, ['a', 'b']);
+  const day = buildDays(trip, [{ id: 'a' }, { id: 'b' }], order)[0];
+  assert.deepEqual(
+    day.stops.map((item) => item.placeId),
+    ['a', 'activity', 'b'],
+  );
+  assert.equal(day.stops[1].place.source, 'amap');
+  assert.equal(day.stops[1].activity.title, '午餐');
+  assert.equal(day.stops[1].number, 2);
+  assert.deepEqual(
+    day.legs.map((leg) => [leg.from.placeId, leg.to.placeId]),
+    [
+      ['a', 'activity'],
+      ['activity', 'b'],
+    ],
+  );
+  assert.equal(day.stops[2].travelMinutesFromPrevious, 0, '旧景点间交通预留不能用于活动后的新路段');
+  const moved = {
+    ...trip,
+    activities: [
+      {
+        ...trip.activities[0],
+        coordinates: { longitude: 117, latitude: 40, coordinateSystem: 'GCJ-02' },
+      },
+    ],
+  };
+  assert.notEqual(
+    buildDays(moved, [{ id: 'a' }, { id: 'b' }], order)[0].legs[0].key,
+    day.legs[0].key,
+  );
+  assert.deepEqual(
+    trip.days[0].items.map((item) => item.placeId),
+    ['a', 'b'],
+  );
+});
 
 test('调序只变更相关的有向路段，单景点日期保持独立', () => {
   const trip = {

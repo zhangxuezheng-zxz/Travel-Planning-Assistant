@@ -53,7 +53,13 @@ async function verify() {
   const starts = [];
   async function start() {
     child = fork(resolve(__dirname, 'verify-trip-persistence.cjs'), ['--worker'], {
-      env: { ...process.env, AUTH_TOKEN_SECRET: secret },
+      // 仅在回环地址上的测试进程使用本地验证码，不依赖或调用真实邮件服务。
+      env: {
+        ...process.env,
+        NODE_ENV: 'test',
+        AUTH_DELIVERY_MODE: 'local',
+        AUTH_TOKEN_SECRET: secret,
+      },
       stdio: ['ignore', 'ignore', 'pipe', 'ipc'],
     });
     // 不输出环境变量、密码、令牌或数据库连接串。
@@ -105,6 +111,22 @@ async function verify() {
     assert.equal(response.status, expected, `${method} ${path} HTTP status`);
     return response.json();
   }
+  async function register(base, credentials) {
+    const verification = await request(base, '/auth/code', 'POST', {
+      channel: 'email',
+      target: credentials.email,
+      purpose: 'register',
+    });
+    assert.match(verification.developmentCode, /^\d{6}$/, '测试进程应返回本地验证码');
+    return request(
+      base,
+      '/auth/register',
+      'POST',
+      { ...credentials, code: verification.developmentCode },
+      undefined,
+      201,
+    );
+  }
   try {
     await pool.query('SELECT 1');
     const cityId = await ensureCatalog(pool);
@@ -121,7 +143,7 @@ async function verify() {
       password: randomBytes(24).toString('base64url'),
       displayName: '草稿持久化验证',
     };
-    const user = await request(base, '/auth/register', 'POST', credentials, undefined, 201);
+    const user = await register(base, credentials);
     createdUsers.push(user.user.id);
     createdEmails.push(credentials.email);
     const login = await request(base, '/auth/login', 'POST', {
@@ -297,7 +319,7 @@ async function verify() {
       password: randomBytes(24).toString('base64url'),
       displayName: '权限验证',
     };
-    const second = await request(base, '/auth/register', 'POST', secondCredentials, undefined, 201);
+    const second = await register(base, secondCredentials);
     createdUsers.push(second.user.id);
     createdEmails.push(secondCredentials.email);
     const secondLogin = await request(base, '/auth/login', 'POST', {

@@ -95,6 +95,11 @@ export default function TripCover({
             <dd>
               {trip.planningInput.selectedPlaceIds.length}
               <span> 处</span>
+              {Boolean(trip.activities?.length) && (
+                <small className="trip-cover-activities">
+                  另有 {trip.activities?.length} 项活动
+                </small>
+              )}
             </dd>
           </div>
           <div>

@@ -21,130 +21,3196 @@
   ],
   "places": [
     {
-      "id": "11000000-0000-4000-8001-000000000001",
-      "name": "故宫博物院",
-      "longitude": 116.397029,
-      "latitude": 39.917839,
-      "coordinateSystem": "GCJ-02"
-    },
-    {
       "id": "11000000-0000-4000-8001-000000000002",
       "name": "天坛公园",
-      "longitude": 116.410829,
-      "latitude": 39.881913,
-      "coordinateSystem": "GCJ-02"
+      "longitude": 116.397785,
+      "latitude": 39.883907,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
     },
     {
-      "id": "11000000-0000-4000-8001-000000000003",
-      "name": "颐和园",
-      "longitude": 116.275179,
-      "latitude": 39.999617,
-      "coordinateSystem": "GCJ-02"
+      "id": "11000000-0000-4000-8001-000000000001",
+      "name": "故宫博物院",
+      "longitude": 116.397176,
+      "latitude": 39.918095,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
     },
     {
-      "id": "11000000-0000-4000-8001-000000000004",
-      "name": "圆明园遗址公园",
-      "longitude": 116.300875,
-      "latitude": 40.006502,
-      "coordinateSystem": "GCJ-02"
-    },
-    {
-      "id": "11000000-0000-4000-8001-000000000005",
-      "name": "八达岭长城",
-      "longitude": 116.016802,
-      "latitude": 40.356188,
-      "coordinateSystem": "GCJ-02"
-    },
-    {
-      "id": "11000000-0000-4000-8001-000000000006",
-      "name": "慕田峪长城",
-      "longitude": 116.565052,
-      "latitude": 40.431668,
-      "coordinateSystem": "GCJ-02"
-    },
-    {
-      "id": "11000000-0000-4000-8001-000000000007",
-      "name": "景山公园",
-      "longitude": 116.396551,
-      "latitude": 39.925875,
-      "coordinateSystem": "GCJ-02"
-    },
-    {
-      "id": "11000000-0000-4000-8001-000000000008",
-      "name": "北海公园",
-      "longitude": 116.391802,
-      "latitude": 39.928775,
-      "coordinateSystem": "GCJ-02"
-    },
-    {
-      "id": "11000000-0000-4000-8001-000000000009",
-      "name": "中山公园",
-      "longitude": 116.394407,
-      "latitude": 39.910707,
-      "coordinateSystem": "GCJ-02"
-    },
-    {
-      "id": "11000000-0000-4000-8001-000000000010",
-      "name": "地坛公园",
-      "longitude": 116.414443,
-      "latitude": 39.953777,
-      "coordinateSystem": "GCJ-02"
-    },
-    {
-      "id": "11000000-0000-4000-8001-000000000011",
-      "name": "北京动物园",
-      "longitude": 116.336701,
-      "latitude": 39.942105,
-      "coordinateSystem": "GCJ-02"
-    },
-    {
-      "id": "11000000-0000-4000-8001-000000000012",
-      "name": "北京天文馆",
-      "longitude": 116.336833,
-      "latitude": 39.937306,
-      "coordinateSystem": "GCJ-02"
-    },
-    {
-      "id": "11000000-0000-4000-8001-000000000013",
-      "name": "首都博物馆",
-      "longitude": 116.342067,
-      "latitude": 39.906412,
-      "coordinateSystem": "GCJ-02"
+      "id": "9b844641-c6e8-5053-a330-df6f64b9710f",
+      "name": "恭王府博物馆",
+      "longitude": 116.386567,
+      "latitude": 39.935749,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
     },
     {
       "id": "11000000-0000-4000-8001-000000000014",
       "name": "北京奥林匹克公园",
-      "longitude": 116.393096,
-      "latitude": 40.009926,
-      "coordinateSystem": "GCJ-02"
+      "longitude": 116.390407,
+      "latitude": 40.01895,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
     },
     {
-      "id": "11000000-0000-4000-8001-000000000015",
-      "name": "香山公园",
-      "longitude": 116.188746,
-      "latitude": 39.990107,
-      "coordinateSystem": "GCJ-02"
+      "id": "11000000-0000-4000-8001-000000000004",
+      "name": "圆明园遗址公园",
+      "longitude": 116.318042,
+      "latitude": 40.012702,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
     },
     {
-      "id": "11000000-0000-4000-8001-000000000016",
-      "name": "玉渊潭公园",
-      "longitude": 116.319932,
-      "latitude": 39.91662,
-      "coordinateSystem": "GCJ-02"
+      "id": "11000000-0000-4000-8001-000000000003",
+      "name": "颐和园",
+      "longitude": 116.269599,
+      "latitude": 39.985159,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "47ab917a-c61d-5bed-becb-73126ac389eb",
+      "name": "明十三陵",
+      "longitude": 116.227879,
+      "latitude": 40.294298,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "11000000-0000-4000-8001-000000000006",
+      "name": "慕田峪长城",
+      "longitude": 116.563435,
+      "latitude": 40.432234,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "11000000-0000-4000-8001-000000000005",
+      "name": "八达岭长城",
+      "longitude": 116.484574,
+      "latitude": 40.637187,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "11000000-0000-4000-8001-000000000010",
+      "name": "地坛公园",
+      "longitude": 116.409136,
+      "latitude": 39.968451,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "9d1cc9ad-41e0-540d-aae4-109fca9b4745",
+      "name": "孔庙和国子监博物馆",
+      "longitude": 116.414757,
+      "latitude": 39.945662,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "11000000-0000-4000-8001-000000000009",
+      "name": "中山公园",
+      "longitude": 116.394095,
+      "latitude": 39.911632,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "6a758262-9b8d-5a31-a349-c58d77a993a9",
+      "name": "明城墙遗址公园",
+      "longitude": 116.433543,
+      "latitude": 39.901085,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "367a0fa0-af99-5cf5-8100-647364992cfa",
+      "name": "龙潭公园",
+      "longitude": 116.443607,
+      "latitude": 39.881431,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "f2a9df17-2942-50fd-97d6-6be39a1a2111",
+      "name": "北京海洋馆",
+      "longitude": 116.340139,
+      "latitude": 39.946493,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "11000000-0000-4000-8001-000000000013",
+      "name": "首都博物馆",
+      "longitude": 116.343282,
+      "latitude": 39.906499,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
     },
     {
       "id": "11000000-0000-4000-8001-000000000017",
       "name": "陶然亭公园",
-      "longitude": 116.381921,
-      "latitude": 39.874496,
-      "coordinateSystem": "GCJ-02"
+      "longitude": 116.387697,
+      "latitude": 39.873898,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "11000000-0000-4000-8001-000000000008",
+      "name": "北海公园",
+      "longitude": 116.391184,
+      "latitude": 39.925816,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "11000000-0000-4000-8001-000000000012",
+      "name": "北京天文馆",
+      "longitude": 116.337371,
+      "latitude": 39.937918,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "11000000-0000-4000-8001-000000000007",
+      "name": "景山公园",
+      "longitude": 116.396773,
+      "latitude": 39.925287,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "11000000-0000-4000-8001-000000000011",
+      "name": "北京动物园",
+      "longitude": 116.338955,
+      "latitude": 39.938814,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "e7c09e42-1a65-52ba-aaeb-2b1d63e993a8",
+      "name": "朝阳公园",
+      "longitude": 116.515318,
+      "latitude": 39.952617,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "a2d45fd9-1b53-5fda-b641-bc7beaf21479",
+      "name": "北京欢乐谷",
+      "longitude": 116.501955,
+      "latitude": 39.867337,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "95484e0d-bd3a-549e-8a0c-6e554e4c9bae",
+      "name": "中国人民抗日战争纪念馆",
+      "longitude": 116.226035,
+      "latitude": 39.851514,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "eeef62be-9c65-5bc0-884a-ff86fcc63758",
+      "name": "北京园博园",
+      "longitude": 116.171225,
+      "latitude": 39.876253,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "3480dde5-bb5b-56e0-8ff7-5c0637141464",
+      "name": "北京汽车博物馆",
+      "longitude": 116.301708,
+      "latitude": 39.830158,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "34f3dcfe-2a1e-5091-8e37-650c41c49858",
+      "name": "北京市丰台区北宫国家森林公园",
+      "longitude": 116.122386,
+      "latitude": 39.859715,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "8a2b0145-9bb3-5558-b871-5c7a6e06092b",
+      "name": "北京世界公园",
+      "longitude": 116.290327,
+      "latitude": 39.812645,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "310e76fb-9bb6-5ce6-937d-80c3bbacc56b",
+      "name": "世界花卉大观园",
+      "longitude": 116.353064,
+      "latitude": 39.831346,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "d3523bb6-c900-540a-ac7f-944d2475f898",
+      "name": "南宫旅游景区",
+      "longitude": 116.150879,
+      "latitude": 39.794595,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "7c214827-3215-5850-8794-fea6ceaa059b",
+      "name": "中国园林博物馆",
+      "longitude": 116.17733,
+      "latitude": 39.879117,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "04fe9c78-6622-5e0d-9818-7c7411b4d1e9",
+      "name": "八大处公园",
+      "longitude": 116.19996,
+      "latitude": 39.946551,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "58a3ad10-eca3-514a-b9fe-639ed93de6f0",
+      "name": "石景山游乐园",
+      "longitude": 116.208432,
+      "latitude": 39.908898,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "11000000-0000-4000-8001-000000000016",
+      "name": "玉渊潭公园",
+      "longitude": 116.314254,
+      "latitude": 39.920704,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "909175b8-3682-58bc-954d-f358465133c9",
+      "name": "国家植物园",
+      "longitude": 116.207047,
+      "latitude": 39.998845,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "4355731d-5c3e-509a-8fdc-2e1f6e9408bf",
+      "name": "凤凰岭自然风景区",
+      "longitude": 116.091349,
+      "latitude": 40.100674,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "11000000-0000-4000-8001-000000000015",
+      "name": "香山公园",
+      "longitude": 116.194443,
+      "latitude": 39.990194,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "8d3da95c-8485-5064-9e76-ab3cfed6b1a1",
+      "name": "紫竹院公园",
+      "longitude": 116.322799,
+      "latitude": 39.939387,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "94ec5353-3592-5328-a9c1-e14d9c201e09",
+      "name": "中央电视塔",
+      "longitude": 116.307378,
+      "latitude": 39.919251,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "8dc1b895-c4d8-536e-8782-dac49d2cad5d",
+      "name": "戒台寺",
+      "longitude": 116.110636,
+      "latitude": 39.903115,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "0fc94f57-75d2-5e8b-9f77-f7d69f7d3c4d",
+      "name": "潭柘寺",
+      "longitude": 116.03008,
+      "latitude": 39.878529,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "ae74a435-80e8-583e-a8cb-711821f70d12",
+      "name": "八奇洞风景区",
+      "longitude": 116.026428,
+      "latitude": 39.892846,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "842e7e58-b15e-56d9-85bd-90275e5e2009",
+      "name": "北京十渡风景名胜区",
+      "longitude": 115.589536,
+      "latitude": 39.640126,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "56277578-2321-5df6-8c77-306edb3cdc53",
+      "name": "云居寺",
+      "longitude": 115.774776,
+      "latitude": 39.609371,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "cba9f2fa-6755-5b89-85df-cc929d1d4297",
+      "name": "石花洞",
+      "longitude": 115.952164,
+      "latitude": 39.798208,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "ba633b28-1568-5820-ba33-ed87061b9455",
+      "name": "周口店遗址",
+      "longitude": 115.932902,
+      "latitude": 39.690471,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "6554c747-e88b-522c-a11a-dac9b866f7c1",
+      "name": "圣莲山旅游度假区",
+      "longitude": 115.721961,
+      "latitude": 39.833065,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "d7b83614-8854-5825-b2a7-1ef59729c1be",
+      "name": "北京韩美林艺术馆",
+      "longitude": 116.677819,
+      "latitude": 39.875696,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "76ff6110-deb7-5291-9fd5-8c4d9c6f2f7b",
+      "name": "北京奥林匹克水上公园",
+      "longitude": 116.728489,
+      "latitude": 40.199959,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "bab3ab77-07e9-53da-87d8-dfca4d75e29e",
+      "name": "北京顺义国际鲜花港",
+      "longitude": 116.829824,
+      "latitude": 40.152581,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "221425e7-161b-5e14-98ee-be53a2f6ce88",
+      "name": "龙脉温泉度假村",
+      "longitude": 116.399844,
+      "latitude": 40.17731,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
     },
     {
       "id": "11000000-0000-4000-8001-000000000018",
       "name": "居庸关长城",
-      "longitude": 116.073088,
-      "latitude": 40.291161,
-      "coordinateSystem": "GCJ-02"
+      "longitude": 116.135636,
+      "latitude": 40.246956,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "a498787c-2205-5927-b4fd-e7d07c2b0ac7",
+      "name": "银山塔林风景区",
+      "longitude": 116.327744,
+      "latitude": 40.319825,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "5191e61d-c26e-52f2-a27f-e0ed77ab58ae",
+      "name": "中国航空博物馆",
+      "longitude": 116.363134,
+      "latitude": 40.183011,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "5358b16f-0638-5c10-8ac8-cc774f278cb4",
+      "name": "小汤山现代农业示范园区",
+      "longitude": 116.441651,
+      "latitude": 40.157407,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "3d18c7d0-4871-5c03-91f0-7cad0aab310c",
+      "name": "乐多港假日广场",
+      "longitude": 116.182747,
+      "latitude": 40.22662,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "148b9310-fd09-56d9-91d6-06e2de8d3c92",
+      "name": "北京野生动物园",
+      "longitude": 116.315421,
+      "latitude": 39.510697,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "0d0d5c40-2581-5191-936e-bf093e79e88b",
+      "name": "青龙峡旅游度假区",
+      "longitude": 116.672969,
+      "latitude": 40.463616,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "c27e9ee3-5548-5933-b702-6d3ff745f890",
+      "name": "北京黄花城水长城旅游区",
+      "longitude": 115.722139,
+      "latitude": 39.97092,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "2e2e25e8-4e63-5996-95f8-507aeed770ed",
+      "name": "雁栖湖旅游区",
+      "longitude": 116.686326,
+      "latitude": 40.397426,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "58039fef-0ddc-5c02-89af-a59cc9805ded",
+      "name": "红螺寺",
+      "longitude": 116.625077,
+      "latitude": 40.374806,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "70e64809-672a-5c9d-9cf5-6b75b6322935",
+      "name": "金海湖风景区",
+      "longitude": 117.284023,
+      "latitude": 40.182798,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "b4e6cf66-bb6a-5598-afea-bdec3b820f32",
+      "name": "京东大峡谷旅游区",
+      "longitude": 117.157539,
+      "latitude": 40.247382,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "3ceaaad9-c377-52f7-847a-86f13a393766",
+      "name": "京东石林峡风景区",
+      "longitude": 117.251255,
+      "latitude": 40.261419,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "dfd2123a-f701-544e-b331-78023123ee35",
+      "name": "丫髻山景区",
+      "longitude": 116.98188,
+      "latitude": 40.269143,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "dbab5383-79d4-53db-9f9c-6f1dc1f9f820",
+      "name": "仙居谷风景区",
+      "longitude": 117.232239,
+      "latitude": 40.579007,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "d79cedb8-a6f7-5b15-b0fe-e2d1d3f5281b",
+      "name": "司马台长城风景区",
+      "longitude": 117.277673,
+      "latitude": 40.654431,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "cc0641e0-8851-5602-be4a-94aaefbd6503",
+      "name": "张裕爱斐堡国际酒庄",
+      "longitude": 116.915606,
+      "latitude": 40.38243,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "a675edab-cf0c-5852-91a3-ae8e8f1a964a",
+      "name": "黑龙潭旅游区",
+      "longitude": 116.802726,
+      "latitude": 40.563875,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "9db32fbb-a727-59e0-8b75-9eae6d7c9d8b",
+      "name": "野鸭湖国家湿地公园",
+      "longitude": 115.851535,
+      "latitude": 40.410037,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "5ef9622d-df1f-5b5a-991b-8ed8182e5854",
+      "name": "龙庆峡旅游区",
+      "longitude": 116.003394,
+      "latitude": 40.551885,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "35d8f8ad-17a0-5a28-9e8e-032eaef9dce1",
+      "name": "延庆百里山水画廊景区",
+      "longitude": 115.980982,
+      "latitude": 40.436509,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "abe70b6d-6f1c-5f1f-bd08-003facabfd10",
+      "name": "八达岭水关长城景区",
+      "longitude": 115.977929,
+      "latitude": 40.36243,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "d46a1676-a2c7-5deb-aa91-9496e5710864",
+      "name": "北京世园公园",
+      "longitude": 115.950939,
+      "latitude": 40.444331,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "cc9fdf96-4ee7-556d-9582-a55751804771",
+      "name": "北京市劳动人民文化宫",
+      "longitude": 116.397561,
+      "latitude": 39.90575,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "ed968411-5893-5f90-b823-ebf9f480004f",
+      "name": "前门大街景区",
+      "longitude": 116.398445,
+      "latitude": 39.897466,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "549edee5-365d-5823-8cc5-559127e41cd7",
+      "name": "北京市东城区青年湖公园",
+      "longitude": 116.400467,
+      "latitude": 39.953725,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "265dc8db-1a63-50c6-bfa2-334369241ebf",
+      "name": "中国地质博物馆",
+      "longitude": 116.372544,
+      "latitude": 39.923079,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "e23b4f8c-30d0-59c6-8caa-07d23d84146f",
+      "name": "北京月坛公园",
+      "longitude": 116.353313,
+      "latitude": 39.915623,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "0161bf5d-b9fb-5d1d-a366-33b1e6913f25",
+      "name": "北京大观园",
+      "longitude": 116.353979,
+      "latitude": 39.873485,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "e6ac8e5b-4d9c-5862-b98d-cb3b423e1623",
+      "name": "北京市宣武艺园",
+      "longitude": 116.359497,
+      "latitude": 39.896118,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "f7995d33-b307-50ab-b48a-c131caded7e5",
+      "name": "北京宣南文化博物馆",
+      "longitude": 116.365066,
+      "latitude": 39.892867,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "cdf4c9ae-7271-5e13-aaa7-105682c52521",
+      "name": "金中都公园",
+      "longitude": 116.356561,
+      "latitude": 39.881266,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "aaf8dc91-3607-5a12-822b-a62348cfa95b",
+      "name": "宋庆龄故居",
+      "longitude": 116.383436,
+      "latitude": 39.944697,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "67fb4640-6cc6-5375-bb63-4040bf8b6f1c",
+      "name": "北京老舍茶馆",
+      "longitude": 116.386313,
+      "latitude": 39.899287,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "87424407-ef03-5c1a-8f33-0abf21b4dd33",
+      "name": "北京湖广会馆大戏楼",
+      "longitude": 116.384633,
+      "latitude": 39.888969,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "c01fbd96-760c-5001-84dd-a464cb20983b",
+      "name": "北京市朝阳区日坛公园",
+      "longitude": 116.442648,
+      "latitude": 39.917588,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "ce8fbb56-876f-5c13-8f8d-15dfed9b5b8b",
+      "name": "团结湖公园",
+      "longitude": 116.461921,
+      "latitude": 39.926005,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "2a262ad0-fffb-5b0a-b960-2934196e148e",
+      "name": "红领巾公园",
+      "longitude": 116.495719,
+      "latitude": 39.926792,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "f2ab0724-8fc8-5f61-9e60-649aff3a0de1",
+      "name": "将府公园",
+      "longitude": 116.5116,
+      "latitude": 39.969924,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "8906b1ab-268a-5526-a559-241780d266b7",
+      "name": "四得公园",
+      "longitude": 116.477069,
+      "latitude": 39.973134,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "370c3276-4a71-5aa3-a506-7a81a83aab9f",
+      "name": "北京市朝阳区大望京公园",
+      "longitude": 116.49762,
+      "latitude": 39.994294,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "174448e4-3710-569d-a9ca-97947d9b25b5",
+      "name": "北小河公园",
+      "longitude": 116.454599,
+      "latitude": 40.004798,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "f2e3954e-2d49-5a39-9a7c-d89cc933ed01",
+      "name": "白鹿公园",
+      "longitude": 116.547897,
+      "latitude": 39.872307,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "e54041e9-57f9-5a6b-9e97-c4c165060633",
+      "name": "兴隆公园",
+      "longitude": 116.52947,
+      "latitude": 39.912744,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "a9e03378-148e-5452-a28c-bbd202dbe5cf",
+      "name": "北京蓝调庄园",
+      "longitude": 116.60189,
+      "latitude": 39.96484,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "9d4dc6e3-262a-5f77-a457-dc040619a42c",
+      "name": "西藏文化博物馆",
+      "longitude": 116.414305,
+      "latitude": 39.989606,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "20f92a1f-b267-5309-9236-1d00005367bb",
+      "name": "庆丰公园",
+      "longitude": 116.462897,
+      "latitude": 39.902859,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "04720b80-3b2e-53a4-b940-fd6fe8feef96",
+      "name": "京城梨园",
+      "longitude": 116.55001,
+      "latitude": 39.934474,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "4d7e71e4-d305-535d-9720-efb3347cb80c",
+      "name": "北京陶瓷艺术馆",
+      "longitude": 116.469561,
+      "latitude": 39.849953,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "f6dc7ee1-b123-5d07-80d4-4f2a317d00ce",
+      "name": "古塔公园",
+      "longitude": 116.53568,
+      "latitude": 39.878984,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "864bc32d-944a-5830-8d71-3350f5569ae3",
+      "name": "青龙湖公园",
+      "longitude": 116.129022,
+      "latitude": 39.802182,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "4bbc3330-e6e2-543b-88e5-4f6a471a2625",
+      "name": "抗日战争雕塑园",
+      "longitude": 116.227034,
+      "latitude": 39.847778,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "45a15267-e448-5b02-9181-656f4f37b414",
+      "name": "首钢工业文化旅游区",
+      "longitude": 116.149442,
+      "latitude": 39.918185,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "08ccacc7-47d9-53dd-a3e6-741425c8bdc3",
+      "name": "北京大觉寺与团城管理处（大觉寺）",
+      "longitude": 116.106849,
+      "latitude": 40.052656,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "d432d851-81f6-5d7c-9b9d-3b80bf4c6a8a",
+      "name": "北京鹫峰国家森林公园",
+      "longitude": 116.102966,
+      "latitude": 40.062864,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "5fa3e4ce-63b6-5254-94bb-ec0378c0a6ad",
+      "name": "百望山森林公园",
+      "longitude": 116.265015,
+      "latitude": 40.027069,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "b5897e28-1137-59ad-880b-78740cd33c06",
+      "name": "阳台山自然风景区",
+      "longitude": 116.122063,
+      "latitude": 40.065401,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "41988b5e-cdf0-5763-bb06-03993de3ce93",
+      "name": "北京西山国家森林公园",
+      "longitude": 116.19683,
+      "latitude": 39.965863,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "f5b4ad88-cbbd-5cec-a870-6007a14cfa00",
+      "name": "皇家菜博物馆",
+      "longitude": 116.270765,
+      "latitude": 39.945677,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "1c81da0e-1f74-50fc-914c-503d094c03cf",
+      "name": "太平洋海底世界博览馆",
+      "longitude": 116.307378,
+      "latitude": 39.919251,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "b650e208-5b7d-5238-b7a2-7bbc5f0edde9",
+      "name": "神泉峡景区",
+      "longitude": 116.803218,
+      "latitude": 40.348567,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "71ff02d5-9773-57fd-8105-468f0905921b",
+      "name": "百花山（门头沟入口）",
+      "longitude": 115.561107,
+      "latitude": 39.846607,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "052a0ead-1c55-51af-a4e9-d0518a738bc5",
+      "name": "北京京西古道景区管理中心",
+      "longitude": 116.048405,
+      "latitude": 39.966076,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "ffb4d31a-5627-50a1-81b0-feeab55ed185",
+      "name": "北京双龙峡自然风景区",
+      "longitude": 116.549481,
+      "latitude": 39.958717,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "ffda0395-ef8f-505a-9072-dc06778777ba",
+      "name": "妙峰山风景名胜区",
+      "longitude": 116.019511,
+      "latitude": 40.075524,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "79eef52c-b0f6-5e84-9365-04e127b67507",
+      "name": "十八潭景区",
+      "longitude": 115.943645,
+      "latitude": 40.007084,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "af696555-bc4a-526a-bbce-a0184577d1f7",
+      "name": "北京爨柏景区管理中心",
+      "longitude": 115.696391,
+      "latitude": 39.972378,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "246bd8be-3a34-59fd-8e74-3e8cdb0cf87b",
+      "name": "黄芩仙谷景区",
+      "longitude": 116.10131,
+      "latitude": 39.942673,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "59dce834-f92c-5bc5-8964-b2a26a5ac8fe",
+      "name": "定都阁景区",
+      "longitude": 116.049474,
+      "latitude": 39.900509,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "fab5519d-a1d4-5df4-888b-731d5356a088",
+      "name": "聚灵峡景区",
+      "longitude": 115.483419,
+      "latitude": 39.993908,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "68f8947a-a477-5fc9-ac1f-50336658174a",
+      "name": "南石洋大峡谷森林公园",
+      "longitude": 115.804103,
+      "latitude": 40.125513,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "f3e91d42-2290-5bff-9d1f-7ec3375818c5",
+      "name": "灵水举人村",
+      "longitude": 115.73776,
+      "latitude": 40.003857,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "4bcf155b-8867-54f4-9aba-2e740380db75",
+      "name": "檀谷景区",
+      "longitude": 116.053577,
+      "latitude": 39.88373,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "7e4693fc-8e8e-5ef2-9c90-6306d3f06e72",
+      "name": "上方山国家森林公园",
+      "longitude": 115.823192,
+      "latitude": 39.665045,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "37029510-810f-5364-a695-d43b1be49c0a",
+      "name": "北京市房山世界地质公园博物馆",
+      "longitude": 115.875721,
+      "latitude": 39.585214,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "60607254-c4bb-55b6-bb9a-5ac8422e9b50",
+      "name": "韩村河景区",
+      "longitude": 115.954978,
+      "latitude": 39.597652,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "a868c9aa-78a1-5d14-a7b4-86d4df0d3816",
+      "name": "龙门生态园景区",
+      "longitude": 115.89611,
+      "latitude": 39.617481,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "b99a7345-cd75-5a86-80da-301f113eb805",
+      "name": "白草畔自然风景区",
+      "longitude": 115.603575,
+      "latitude": 39.808952,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "ce1dcc75-ee6f-59c2-8951-3bd0d952ad03",
+      "name": "坡峰岭风景区",
+      "longitude": 115.842191,
+      "latitude": 39.694557,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "a5a368de-da23-5106-aa52-0aa053864ec8",
+      "name": "仙栖洞景区",
+      "longitude": 115.743504,
+      "latitude": 39.649146,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "39dc9d06-706c-5970-878c-52566671ce51",
+      "name": "金水湖",
+      "longitude": 115.725384,
+      "latitude": 39.716157,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "bf6a9a23-1cae-5863-b789-31381ad89f90",
+      "name": "房山区乐谷银滩风景区",
+      "longitude": 117.066172,
+      "latitude": 40.498267,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "f0c320f7-825b-5acd-8447-00821a75eca8",
+      "name": "北京焦庄户地道战遗址纪念馆",
+      "longitude": 116.872063,
+      "latitude": 40.233906,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "49fe284b-e0b2-5ca9-83df-977751a4f479",
+      "name": "北京顺义汉石桥湿地景区",
+      "longitude": 116.829824,
+      "latitude": 40.152581,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "3fcd6ff5-b4ad-5bf7-910e-20517691a550",
+      "name": "北京河北村民俗园",
+      "longitude": 116.728998,
+      "latitude": 40.131931,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "1cbf1342-ad86-5bfc-81ac-5ec3266a18e3",
+      "name": "北京草莓博览园",
+      "longitude": 116.406306,
+      "latitude": 40.202541,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "88cc12a4-34d7-5358-b16c-3b7f1aa3af46",
+      "name": "艺麓园",
+      "longitude": 116.157598,
+      "latitude": 40.239805,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "8563a7b7-af97-5a5e-9858-25d195091a6b",
+      "name": "静之湖度假区",
+      "longitude": 116.441314,
+      "latitude": 40.241913,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "ce581503-8f5e-55eb-abcf-623d064ab926",
+      "name": "留民营生态农场",
+      "longitude": 116.574344,
+      "latitude": 39.693306,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "e74d30f1-0e80-50c4-af7e-f4bc28c1f62c",
+      "name": "北京南海子麋鹿苑博物馆",
+      "longitude": 116.392801,
+      "latitude": 39.805414,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "cb95bec1-a542-5137-9cd7-7562531ce815",
+      "name": "中国印刷博物馆",
+      "longitude": 116.330007,
+      "latitude": 39.743092,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "05d61ecb-ad42-5817-a30b-a41dccf73de7",
+      "name": "北京二锅头酒博物馆",
+      "longitude": 116.664776,
+      "latitude": 40.325974,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "f56ff508-b287-5d09-b1f6-449fb4908e10",
+      "name": "生存岛新概念旅游基地",
+      "longitude": 116.640941,
+      "latitude": 40.362579,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "56e56e18-f5ce-552e-8090-7a3180a6e519",
+      "name": "北京圣泉山旅游风景区",
+      "longitude": 116.581699,
+      "latitude": 40.365552,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "fb6a905a-b06d-545d-9ae4-8e72cefd68e6",
+      "name": "响水湖旅游区",
+      "longitude": 116.445525,
+      "latitude": 40.450025,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "00f41745-980a-51bf-abde-8b70e75b0c95",
+      "name": "北京九谷口自然风景区",
+      "longitude": 116.674802,
+      "latitude": 40.434547,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "f1a0ca98-e905-52a7-a011-8328a92858de",
+      "name": "幽谷神潭自然风景区",
+      "longitude": 116.673094,
+      "latitude": 40.530958,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "7c6a8279-4b7d-5e65-9050-e51bcacaca16",
+      "name": "云梦仙境景区",
+      "longitude": 116.693472,
+      "latitude": 40.6192,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "3f8606ec-9502-55c4-9622-8212bbc885f0",
+      "name": "石门山景区",
+      "longitude": 116.663263,
+      "latitude": 40.484586,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "15c35810-2afc-5cff-a466-6b32824abc91",
+      "name": "北京喇叭沟原始森林公园",
+      "longitude": 116.622042,
+      "latitude": 40.902417,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "86163d3d-7c5e-5e0d-a0cf-81972a4a426d",
+      "name": "冶仙塔景区",
+      "longitude": 116.872345,
+      "latitude": 40.402342,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "36561348-c914-56ff-a367-e19c2ff31718",
+      "name": "云峰山自然风景区",
+      "longitude": 116.961342,
+      "latitude": 40.563701,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "0d263ee2-142c-5830-a3cb-2f3228af504f",
+      "name": "雾灵西峰景区",
+      "longitude": 117.362591,
+      "latitude": 40.633869,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "d7eba507-197f-5edf-b9de-8e3e879a926a",
+      "name": "清凉谷旅游风景区",
+      "longitude": 116.584261,
+      "latitude": 40.445756,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "81049747-b9df-5435-9c58-2847df3874fc",
+      "name": "桃源仙谷自然风景区",
+      "longitude": 116.821665,
+      "latitude": 40.542331,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "03db000a-53c4-5177-aaaa-146bc487505d",
+      "name": "密云云龙涧景区",
+      "longitude": 116.810931,
+      "latitude": 40.480504,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "0e5da921-57be-5cd7-a4af-a9b9b4be6c22",
+      "name": "捧河湾自然风景区",
+      "longitude": 116.813784,
+      "latitude": 40.614714,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "948bea23-3452-5a4a-8107-63cfb8789296",
+      "name": "北京密云玫瑰情园景区",
+      "longitude": 116.90521,
+      "latitude": 40.350646,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "656e1ab5-268f-5708-b619-3fbba70f3fcf",
+      "name": "密云区蜜蜂大世界景区",
+      "longitude": 117.066172,
+      "latitude": 40.498267,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "280a5951-65a5-5fe7-b378-e54893cac309",
+      "name": "八达岭古长城",
+      "longitude": 115.988455,
+      "latitude": 40.348196,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "c9332a58-f16f-593a-a4e5-4c869a6699d4",
+      "name": "古崖居原始部落旅游度假区",
+      "longitude": 115.791811,
+      "latitude": 40.450905,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "f5148588-818b-5277-b95e-e84bccd0b545",
+      "name": "延庆区八达岭野生动物世界",
+      "longitude": 115.994234,
+      "latitude": 40.355762,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "5d0c857a-fe2b-5fe6-803c-ca428acbd16d",
+      "name": "延庆区碓臼石景区",
+      "longitude": 116.108008,
+      "latitude": 40.368374,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "14583982-e2eb-5b55-a43f-fc78cdc974ae",
+      "name": "蟒山国家森林公园",
+      "longitude": 116.217099,
+      "latitude": 40.249631,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "b15f7699-a187-5105-a9d8-cd2fe7b5ac0c",
+      "name": "历代帝王庙",
+      "longitude": 116.383436,
+      "latitude": 39.944697,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "4198a87d-162e-52a8-91ba-0d90b513051a",
+      "name": "莲花池公园",
+      "longitude": 116.31513,
+      "latitude": 39.892069,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "024c124a-c485-5e44-b657-b47f5c63886d",
+      "name": "万芳亭公园",
+      "longitude": 116.36957,
+      "latitude": 39.852652,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "215a16cb-4370-5bb0-ab7a-f6aeda3887c0",
+      "name": "丰台花园",
+      "longitude": 116.283778,
+      "latitude": 39.862762,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "12f5ed50-2ed9-54ad-a634-028205fc24ab",
+      "name": "稻香湖公园",
+      "longitude": 116.175143,
+      "latitude": 40.086535,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "464fb30a-9a52-572b-a84b-398223cd5ab8",
+      "name": "北京瓜草地",
+      "longitude": 115.968775,
+      "latitude": 39.942936,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "8638be4e-6420-5752-ac48-b8d2525e0849",
+      "name": "没有共产党就没有新中国纪念馆",
+      "longitude": 115.584282,
+      "latitude": 39.780672,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "645e9d9b-dc55-535c-86ad-f0bd5ece42de",
+      "name": "银狐洞",
+      "longitude": 115.895862,
+      "latitude": 39.80213,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "9cc94db7-9ae0-544d-96b0-fa6273422aef",
+      "name": "中华石雕艺术园",
+      "longitude": 115.818615,
+      "latitude": 39.558779,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "0efea3b6-d6a4-59e5-8885-485540ff311a",
+      "name": "大岭沟猕猴桃谷风景区",
+      "longitude": 116.220383,
+      "latitude": 40.366523,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "6fdce346-0d35-5e99-958f-49fe2658d53e",
+      "name": "昌平区十三陵林下经济体验园",
+      "longitude": 116.207314,
+      "latitude": 40.283033,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "2ef17795-d1d6-5079-afc0-54c1582aad2e",
+      "name": "虎峪自然风景区",
+      "longitude": 116.155447,
+      "latitude": 40.266511,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "d6309d63-c2c9-5dab-a9c1-b027c3018a7a",
+      "name": "百泉山风景区",
+      "longitude": 116.636263,
+      "latitude": 40.487475,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "fdc5ec3b-92f9-51a0-bd35-bffbc0c072ca",
+      "name": "神堂峪自然风景区",
+      "longitude": 116.622467,
+      "latitude": 40.448799,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "67fff112-ed18-5b6f-a34c-5b507b8762be",
+      "name": "鹿世界主题园景区",
+      "longitude": 116.695336,
+      "latitude": 40.289237,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "ce71dae9-24cc-5404-982b-04e97ec20013",
+      "name": "北京丛海逸园景区",
+      "longitude": 117.027084,
+      "latitude": 40.256918,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "a4a54a24-2428-53ad-b901-1ba270ddd296",
+      "name": "湖洞水旅游区",
+      "longitude": 117.244938,
+      "latitude": 40.206246,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "26ddca78-2889-563c-a2a3-e2c8b90fd878",
+      "name": "云岫谷游猎自然风景区",
+      "longitude": 117.379199,
+      "latitude": 40.635294,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "4a2f0f17-2975-57d1-991b-e4f82f3895d3",
+      "name": "北京天门山旅游风景区（密云）",
+      "longitude": 116.783069,
+      "latitude": 40.589315,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "6b59eb48-2d1f-5a2e-8790-6456591a77cd",
+      "name": "玉渡山风景区",
+      "longitude": 116.009589,
+      "latitude": 40.54855,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "3471ef88-44be-55d0-828a-54bef1ee5529",
+      "name": "北京云蒙山长城遗址公园",
+      "longitude": 116.821029,
+      "latitude": 40.54124,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "cef6df54-ac01-5c29-b354-1ac8bf7a50b7",
+      "name": "京都第一瀑景区",
+      "longitude": 116.783081,
+      "latitude": 40.589529,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "59dd7724-98ed-52ae-984a-32906a50e1cc",
+      "name": "北京后花园风景区",
+      "longitude": 116.120355,
+      "latitude": 40.13031,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "5a9a2808-ba33-5509-8b6a-19b19d0024d9",
+      "name": "延庆区双秀湖星谷景区",
+      "longitude": 116.180194,
+      "latitude": 40.381503,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "0a2244f5-1eda-5934-900b-29562abc76c3",
+      "name": "中国国家博物馆",
+      "longitude": 116.401424,
+      "latitude": 39.905747,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "f263a83f-a800-5c6c-863d-5e77d00396c7",
+      "name": "北京鲁迅博物馆",
+      "longitude": 116.358806,
+      "latitude": 39.925352,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "f954d531-1a95-544d-87d6-3fd6916b145a",
+      "name": "中国美术馆",
+      "longitude": 116.40923,
+      "latitude": 39.92454,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "081d4234-b269-5f92-bdf6-48d72426fdd3",
+      "name": "毛主席纪念堂",
+      "longitude": 116.411452,
+      "latitude": 39.905375,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "aae2e587-05c1-5414-96e1-1240e12cebf1",
+      "name": "民族文化宫博物馆",
+      "longitude": 116.368969,
+      "latitude": 39.908231,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "cf1b0098-e08d-5d92-b90f-a58a3b4c8da3",
+      "name": "中国农业博物馆",
+      "longitude": 116.464226,
+      "latitude": 39.941343,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "786fad0a-645f-551d-a73a-9c3ba171ae8f",
+      "name": "中国古动物馆",
+      "longitude": 116.334049,
+      "latitude": 39.93774,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "337c3105-bef8-5c40-ae14-aff7f8434da1",
+      "name": "中国航天博物馆",
+      "longitude": 116.416327,
+      "latitude": 39.797911,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "9d6782c1-32c9-5999-bccf-224f1ab4b0a6",
+      "name": "中国科学技术馆",
+      "longitude": 116.39864,
+      "latitude": 40.006055,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "4421dea4-4582-5a6e-9de4-91ded19e0e79",
+      "name": "中国人民革命军事博物馆",
+      "longitude": 116.323985,
+      "latitude": 39.909086,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "b7a3292f-833b-5f9a-8ef4-22755b885dbf",
+      "name": "国家自然博物馆",
+      "longitude": 116.399666,
+      "latitude": 39.88325,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "bdd679a8-c950-5921-a1a1-829458d838f6",
+      "name": "大钟寺古钟博物馆",
+      "longitude": 116.337985,
+      "latitude": 39.968162,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "13870f46-5ace-54c1-9868-ae8ae40be4d1",
+      "name": "北京艺术博物馆",
+      "longitude": 116.311029,
+      "latitude": 39.946178,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "210e931a-dfd8-5db6-ad41-aaabb6b138d9",
+      "name": "北京古代建筑博物馆",
+      "longitude": 116.385652,
+      "latitude": 39.871261,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "65201b02-69da-5080-acc7-f97629c7586c",
+      "name": "北京石刻艺术博物馆",
+      "longitude": 116.330187,
+      "latitude": 39.94499,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "a4ba8001-427b-5e6e-9dc8-cdb41960c0cb",
+      "name": "徐悲鸿纪念馆",
+      "longitude": 116.372031,
+      "latitude": 39.945099,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "b51e64e1-02f5-5467-aa05-0563c6ed87c6",
+      "name": "炎黄艺术馆",
+      "longitude": 116.407789,
+      "latitude": 39.996991,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "fe574172-a76c-59a5-977e-e6c95dc89f1e",
+      "name": "北京古观象台",
+      "longitude": 116.434238,
+      "latitude": 39.907522,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "0ea14c75-9814-5a8e-87b8-11697098d6ba",
+      "name": "郭沫若纪念馆",
+      "longitude": 116.389454,
+      "latitude": 39.934849,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "953aa087-cf5e-5aed-90b5-60c1b2e9b326",
+      "name": "梅兰芳纪念馆",
+      "longitude": 116.37947,
+      "latitude": 39.935505,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "71df0c9a-d7d4-58d3-aa81-d83331478861",
+      "name": "雍和宫",
+      "longitude": 116.416869,
+      "latitude": 39.947182,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "8d41efa4-3cd9-529d-bc64-2377d6a79891",
+      "name": "北京考古遗址博物馆",
+      "longitude": 116.293609,
+      "latitude": 39.803741,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "3827c419-a35b-56f1-858f-03da73e54a4e",
+      "name": "北京大学赛克勒考古与艺术博物馆",
+      "longitude": 116.305907,
+      "latitude": 39.995515,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "cb3632d4-d9c0-5c53-a285-93c2979c64e9",
+      "name": "白塔寺",
+      "longitude": 116.358052,
+      "latitude": 39.905779,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "7c1a6f82-36d5-5134-b2f1-0438d3910665",
+      "name": "李大钊烈士陵园",
+      "longitude": 116.233347,
+      "latitude": 39.982475,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "c6204249-1c75-57c5-a917-1d174abc382c",
+      "name": "詹天佑纪念馆",
+      "longitude": 115.976874,
+      "latitude": 40.362175,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "6f7d71a4-9169-5e39-84b9-813ac6c45baa",
+      "name": "中央民族大学民族博物馆",
+      "longitude": 116.318017,
+      "latitude": 39.949207,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "8d99724f-0ab8-5785-8096-de2c57ecae0f",
+      "name": "北京航空航天博物馆",
+      "longitude": 116.350663,
+      "latitude": 39.98191,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "d77b22f7-3927-5355-b759-e2ea241fef55",
+      "name": "密云区博物馆",
+      "longitude": 116.833402,
+      "latitude": 40.374265,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "64e1fc7b-c857-5e4f-bcb8-697b182d65c5",
+      "name": "昌平区博物馆",
+      "longitude": 116.253504,
+      "latitude": 40.22393,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "916e65d5-de23-5e97-9e9f-0515814db578",
+      "name": "通州区博物馆",
+      "longitude": 116.667427,
+      "latitude": 39.9082,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "d831dc48-fb66-58b1-a82c-0536fd9e1e9a",
+      "name": "山戎文化陈列馆",
+      "longitude": 115.899534,
+      "latitude": 40.514815,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "ad607cd7-5007-5899-8706-5d2819ad0a37",
+      "name": "北京长辛店二·七纪念馆",
+      "longitude": 116.205647,
+      "latitude": 39.830828,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "af63ddb2-a227-572d-a72d-f0475ce335d6",
+      "name": "上宅文化陈列馆",
+      "longitude": 117.302832,
+      "latitude": 40.186795,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "45d71320-e4ae-56f8-a0b2-aaa14587f86c",
+      "name": "北京郭守敬纪念馆",
+      "longitude": 116.373848,
+      "latitude": 39.948451,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "82bf82a2-9584-57b8-a90f-d0f42e0e216f",
+      "name": "中国第四纪冰川遗迹陈列馆",
+      "longitude": 116.165497,
+      "latitude": 39.937184,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "084cded1-7063-5077-8d79-5e0a31847349",
+      "name": "中国工艺美术馆（中国非物质文化遗产馆）",
+      "longitude": 116.393599,
+      "latitude": 40.003666,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "d7a003b1-14d8-59ed-ba41-a1524667400c",
+      "name": "北京红楼文化艺术博物馆",
+      "longitude": 116.355806,
+      "latitude": 39.869777,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "a8194d0c-4632-5ecf-8255-83c519d8df59",
+      "name": "北京正阳门",
+      "longitude": 116.397842,
+      "latitude": 39.901007,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "639fbd7b-8ac8-56b6-bef2-ee3749865a62",
+      "name": "北京大觉寺与团城管理处（团城演武厅）",
+      "longitude": 116.207908,
+      "latitude": 39.984437,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "df2fd044-da5a-5ca3-b600-967f8268fc9a",
+      "name": "文天祥祠",
+      "longitude": 116.410458,
+      "latitude": 39.935873,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "553a81dc-4d96-5ddb-af54-9358a4ae7d5a",
+      "name": "永定河文化博物馆",
+      "longitude": 116.093401,
+      "latitude": 39.944333,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "d78c7885-9415-51ec-a698-769c7ed8f065",
+      "name": "北京市钟鼓楼文物保管所",
+      "longitude": 116.395904,
+      "latitude": 39.941086,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "72da4786-9da2-5d7f-b659-5d296e96b3d7",
+      "name": "北京法海寺博物馆",
+      "longitude": 116.161539,
+      "latitude": 39.936299,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "e26183b1-2b21-559f-8272-be688f9a9f5e",
+      "name": "中国国家画院美术馆",
+      "longitude": 116.310846,
+      "latitude": 39.937966,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "617f3cf6-bbeb-5f26-a7fb-6a75ee284e16",
+      "name": "圆明园展览馆",
+      "longitude": 116.313472,
+      "latitude": 40.014062,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "16a62f6b-f634-59f6-a112-1e65a4c0f28f",
+      "name": "茅盾故居",
+      "longitude": 116.404783,
+      "latitude": 39.938707,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "0d8da7b5-11e7-5ff5-9ee6-a64ae478df7d",
+      "name": "北京中华民族博物院",
+      "longitude": 116.390876,
+      "latitude": 39.979197,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "2d8e269e-b307-5ef9-888b-31f4da0e958d",
+      "name": "观复博物馆",
+      "longitude": 116.536852,
+      "latitude": 40.00776,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "7951e98c-cf4d-503b-8eb3-9a375c0b7f27",
+      "name": "古陶文明博物馆",
+      "longitude": 116.354379,
+      "latitude": 39.87308,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "1d951821-e224-5f0b-bf7d-638f13f17ab8",
+      "name": "中国钱币博物馆",
+      "longitude": 116.395017,
+      "latitude": 39.902064,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "606b9f47-9d9f-529a-a324-ec89078e4a05",
+      "name": "中国现代文学馆",
+      "longitude": 116.430122,
+      "latitude": 39.983681,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "490ca01c-e3ba-57a6-8b35-fa8fde17a1e4",
+      "name": "慈悲庵",
+      "longitude": 116.38132,
+      "latitude": 39.873237,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "bf74e12b-8a7d-50bc-b708-047045aad799",
+      "name": "中国蜜蜂博物馆",
+      "longitude": 116.205793,
+      "latitude": 40.006314,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "75c65d4e-a031-5ae5-858e-468c31420422",
+      "name": "平北抗日战争纪念馆",
+      "longitude": 116.013541,
+      "latitude": 40.533943,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "9becbf82-3c85-5755-bed9-8450692fb91c",
+      "name": "卢沟桥历史博物馆",
+      "longitude": 116.220498,
+      "latitude": 39.85067,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "c4861b9c-e3db-59c4-b393-63682ee2ffb2",
+      "name": "曹雪芹纪念馆",
+      "longitude": 116.212688,
+      "latitude": 39.998342,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "dfe649ba-6b33-5588-ac34-8563f36de9fc",
+      "name": "冀热察挺进军司令部旧址陈列馆",
+      "longitude": 115.69482,
+      "latitude": 39.937186,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "34be3fdb-8a16-5335-9edf-ff10bd842f0d",
+      "name": "北京中医药大学中医药博物馆",
+      "longitude": 116.427719,
+      "latitude": 39.969923,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "ae6a3d80-a902-5a25-89d9-f690f255bf7c",
+      "name": "香山双清别墅",
+      "longitude": 116.194598,
+      "latitude": 39.986825,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "2c2ead96-a926-5ab4-8d1e-00fb72ea4dff",
+      "name": "老舍纪念馆",
+      "longitude": 116.408375,
+      "latitude": 39.918569,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "824f4e0e-4e1d-5ab8-b952-bcfc8db07f21",
+      "name": "老甲艺术馆",
+      "longitude": 116.368122,
+      "latitude": 40.078828,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "784f167e-8a6c-5851-8456-c54929f22a61",
+      "name": "北京戏曲博物馆",
+      "longitude": 116.384406,
+      "latitude": 39.888767,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "3f85c97a-af2c-58f5-bd34-9ffa590e50b9",
+      "name": "保利艺术博物馆",
+      "longitude": 116.435573,
+      "latitude": 39.934426,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "95e3a120-5768-5087-9ca7-ac5ec790e83f",
+      "name": "北京民俗博物馆",
+      "longitude": 116.444062,
+      "latitude": 39.923885,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "46ca24b2-3f77-5142-9eaa-40ff46538040",
+      "name": "北京王府井古人类文化遗址博物馆",
+      "longitude": 116.41261,
+      "latitude": 39.909034,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "286a7ebc-9f8d-5981-a664-af913ac85c6c",
+      "name": "北京金台艺术馆",
+      "longitude": 116.475078,
+      "latitude": 39.935744,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "6e8841c1-736d-5094-8591-c9357fd0ec0c",
+      "name": "中国铁道博物馆（东郊展馆）",
+      "longitude": 116.521579,
+      "latitude": 39.984374,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "5c36a455-52aa-50d3-81bd-28e62d65daf3",
+      "name": "中国铁道博物馆正阳门展馆",
+      "longitude": 116.400078,
+      "latitude": 39.899868,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "d50b1a0f-ae3d-5082-a880-5af0be0b37ba",
+      "name": "北京皇城艺术馆",
+      "longitude": 116.402324,
+      "latitude": 39.90879,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "3a4f4429-c70d-5233-82ac-b2666e6169bb",
+      "name": "北京御生堂中医药博物馆",
+      "longitude": 116.407857,
+      "latitude": 40.104782,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "edb143c3-8f6b-5677-b670-031e3a377b7f",
+      "name": "居庸关长城博物馆",
+      "longitude": 116.076538,
+      "latitude": 40.288175,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "841e2e82-1a1a-5d21-8e99-09eca662a448",
+      "name": "北京人民艺术剧院戏剧博物馆",
+      "longitude": 116.411219,
+      "latitude": 39.921732,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "33bebda3-b91c-5993-9fbd-5d5ac3558424",
+      "name": "北京市海淀区三山五园文化艺术中心（北京市海淀区博物馆）",
+      "longitude": 116.318868,
+      "latitude": 39.976512,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "fc499917-ec10-598d-91ce-eb5e5cfcfb0f",
+      "name": "北京老爷车博物馆",
+      "longitude": 116.682646,
+      "latitude": 40.310009,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "c1a87eb8-17c7-5fd0-a7a1-6a0aa0084142",
+      "name": "中国电影博物馆",
+      "longitude": 116.520917,
+      "latitude": 39.997414,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "03516a86-af98-5a91-b5a5-f01fb3a51a90",
+      "name": "北京李大钊故居",
+      "longitude": 116.365905,
+      "latitude": 39.904911,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "33a26c71-eb74-5123-9656-6e376913fd7c",
+      "name": "北京励志堂科举匾额博物馆",
+      "longitude": 116.540901,
+      "latitude": 39.898248,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "09cb1dcd-5188-56f1-ba05-edf98883fd3c",
+      "name": "中国法院博物馆",
+      "longitude": 116.403622,
+      "latitude": 39.903658,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "599c34a0-f512-5ecb-bb8f-9ee842581300",
+      "name": "延庆博物馆",
+      "longitude": 115.97752,
+      "latitude": 40.4669,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "8ecb7be6-01e1-56b6-9105-fb3d1e6037f4",
+      "name": "北京西瓜博物馆",
+      "longitude": 116.323059,
+      "latitude": 39.633603,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "93392746-8cd4-52e7-a404-07b9f6f4d67b",
+      "name": "中国人民大学博物馆",
+      "longitude": 116.313465,
+      "latitude": 39.974059,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "e623b268-9a2b-5a8f-bcb7-445a55b43907",
+      "name": "北京空竹博物馆",
+      "longitude": 116.35845,
+      "latitude": 39.890164,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "5acce927-1b55-59a8-9e77-c820ffe35eee",
+      "name": "怀柔区博物馆",
+      "longitude": 116.63362,
+      "latitude": 40.313672,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "aeac028e-2df4-57a5-a5b0-c711d050008f",
+      "name": "喇叭沟门满族民俗博物馆",
+      "longitude": 116.623594,
+      "latitude": 40.903778,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "21e8c803-d2b8-53ac-bf55-c257758dd3e8",
+      "name": "中国妇女儿童博物馆",
+      "longitude": 116.423403,
+      "latitude": 39.910077,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "dae32403-1470-52ea-b21f-3f3046854664",
+      "name": "民航博物馆",
+      "longitude": 116.53775,
+      "latitude": 40.0196,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "3393cb6d-7357-5430-baf3-bae2d4813cf1",
+      "name": "中国传媒大学传媒博物馆",
+      "longitude": 116.553491,
+      "latitude": 39.914068,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "beb05485-8972-5cf0-aed2-1bf9b44c19df",
+      "name": "北京奥运博物馆",
+      "longitude": 116.393595,
+      "latitude": 39.993664,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "d99e1c7f-ac78-5624-bcb7-75ce23e2cf3f",
+      "name": "北京和苑博物馆",
+      "longitude": 116.473405,
+      "latitude": 39.964264,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "853e2925-f646-501b-b8ab-f682899c504d",
+      "name": "中国海关博物馆",
+      "longitude": 116.426544,
+      "latitude": 39.901034,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "37afa4ee-0614-51fc-aba3-55f555365f40",
+      "name": "平谷区博物馆",
+      "longitude": 117.083464,
+      "latitude": 40.144119,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "674ef936-5da2-5c4a-89b0-0a542c9f5812",
+      "name": "北京英杰硬石艺术博物馆",
+      "longitude": 116.443436,
+      "latitude": 39.944232,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "941fad72-ce00-5679-98a3-516e86b1c868",
+      "name": "北京税务博物馆",
+      "longitude": 116.435344,
+      "latitude": 39.991052,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "8f1e59aa-1fcc-58b2-ac7f-7abf6ffe97d2",
+      "name": "清华大学艺术博物馆",
+      "longitude": 116.323671,
+      "latitude": 40.012011,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "410857a6-8c78-592d-953f-d65e12f07f3f",
+      "name": "中国华侨历史博物馆",
+      "longitude": 116.423554,
+      "latitude": 39.943888,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "c7731f43-ced4-523f-99da-26bd0b120c7f",
+      "name": "中国人民大学家书博物馆",
+      "longitude": 116.313465,
+      "latitude": 39.974059,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "17b31d5e-9389-5f3e-9275-2f006a0ec9ba",
+      "name": "北京文旺阁木作博物馆",
+      "longitude": 116.683428,
+      "latitude": 39.834229,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "20a45af9-6088-5c5c-878c-6688bc7ce5f9",
+      "name": "延庆区地质博物馆",
+      "longitude": 115.983368,
+      "latitude": 40.454338,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "cf6c8ec0-5ed4-562e-868e-8904c5315e9d",
+      "name": "北京市姜杰钢琴手风琴博物馆",
+      "longitude": 116.313491,
+      "latitude": 40.034068,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "6291faba-a59e-53d6-bbfc-2550af3ea1eb",
+      "name": "首都粮食博物馆",
+      "longitude": 116.393594,
+      "latitude": 39.873665,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "c36fe5af-1d2f-5b75-9ffd-cf761fd08587",
+      "name": "香山革命纪念馆",
+      "longitude": 116.203404,
+      "latitude": 39.99422,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "6ee3dcc0-8862-5fbc-90f6-7914ab176b2d",
+      "name": "北京荣唐连环画博物馆",
+      "longitude": 116.56341,
+      "latitude": 39.854223,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "00190e98-ee6c-589f-a458-88d6ac6b81c8",
+      "name": "大兴区月季博物馆",
+      "longitude": 116.423552,
+      "latitude": 39.673888,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "f448e3d1-21ed-550e-b21f-3601a8aacbed",
+      "name": "北京皇城御窑金砖博物馆",
+      "longitude": 116.883623,
+      "latitude": 39.713657,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "b833a95a-301f-5b27-acf2-3645f4b010ef",
+      "name": "北京燕京八绝博物馆",
+      "longitude": 116.163636,
+      "latitude": 39.933664,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "6748d90e-dad7-541c-9461-78272bd1982d",
+      "name": "北京东璧堂中医药博物馆",
+      "longitude": 116.0336,
+      "latitude": 39.733668,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "b323653f-569a-5266-90cc-af978324fa56",
+      "name": "北京市和光书院博物馆",
+      "longitude": 116.453368,
+      "latitude": 39.994323,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "f57fdd86-4202-5560-9d31-0b8f2cd57811",
+      "name": "大戚收音机电影机博物馆",
+      "longitude": 116.724801,
+      "latitude": 39.96122,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "eb9669b0-4216-522a-9a0f-f42554f60362",
+      "name": "北京菜百黄金珠宝博物馆",
+      "longitude": 116.363446,
+      "latitude": 39.884112,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "923b8301-bd14-55e2-86f9-2ad135fcc917",
+      "name": "石景山区博物馆",
+      "longitude": 116.203441,
+      "latitude": 39.934233,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "edabc468-77c0-5a16-a559-eb28df8e8dec",
+      "name": "颐和园博物馆",
+      "longitude": 116.283599,
+      "latitude": 39.993651,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "241af572-a3a9-54bc-9bef-6aa47a393a05",
+      "name": "中国共产党早期北京革命活动纪念馆",
+      "longitude": 116.403636,
+      "latitude": 39.923663,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "12420bf4-9150-57a1-b3d1-6a7c17102c29",
+      "name": "北京京华茶叶博物馆",
+      "longitude": 116.323408,
+      "latitude": 39.884222,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "b2117b44-a8cf-5b4a-9af2-8bc33dec0c82",
+      "name": "北京文景珍本期刊博物馆",
+      "longitude": 116.0336,
+      "latitude": 39.733668,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "bf268955-e978-52e3-be02-61552f292121",
+      "name": "国家典籍博物馆",
+      "longitude": 116.324169,
+      "latitude": 39.943235,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "2d7206b5-8577-5b9c-817e-d81fca31bb1c",
+      "name": "北京航空航天模型博物馆",
+      "longitude": 115.943546,
+      "latitude": 40.433886,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "a20e89b7-4769-5942-9c9a-928b98110747",
+      "name": "北京法和律师博物馆",
+      "longitude": 116.423553,
+      "latitude": 39.913888,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "8043bea7-08c9-57ce-bb87-eac71ef0c828",
+      "name": "北京龙顺成京作非遗博物馆",
+      "longitude": 116.4036,
+      "latitude": 39.86365,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "83550e3e-c56d-5a4e-b181-e28b77ad3767",
+      "name": "中国共产党历史展览馆",
+      "longitude": 116.403604,
+      "latitude": 40.003652,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "513548a9-c245-5303-bc8a-ab86f2b10790",
+      "name": "顺义区博物馆",
+      "longitude": 116.67346,
+      "latitude": 40.114057,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "3b9c0f64-2878-5dcb-9ec4-c33e5b8529f9",
+      "name": "北京金漆镶嵌艺术博物馆",
+      "longitude": 116.433484,
+      "latitude": 39.834066,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "255f6ee1-c4db-5013-9539-207460d23896",
+      "name": "北京云汇网球木拍博物馆",
+      "longitude": 116.473427,
+      "latitude": 39.934272,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "b270f4ee-d107-5048-bd94-66dbded5ed2d",
+      "name": "北京自来水博物馆",
+      "longitude": 116.435317,
+      "latitude": 39.946902,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "d1b250e1-3369-5570-b6d3-f946ed3f4ff3",
+      "name": "中国佛教图书文物馆",
+      "longitude": 116.369999,
+      "latitude": 39.884449,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "25320b56-11ba-5fe4-bdb6-7677bb8b41dd",
+      "name": "北京劲飞京作红木文化博物馆",
+      "longitude": 116.323404,
+      "latitude": 40.10422,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "8c072a5a-8c05-5620-9963-4718775686e5",
+      "name": "中国考古博物馆",
+      "longitude": 116.403604,
+      "latitude": 40.003652,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "3cd6982e-1ae3-53ca-9c6c-f84c727e0000",
+      "name": "西黄寺博物馆",
+      "longitude": 116.393609,
+      "latitude": 39.963669,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "32822915-80dc-5dc5-96ce-7eef42c1cdc5",
+      "name": "北京中药炮制技术博物馆",
+      "longitude": 116.313496,
+      "latitude": 39.68407,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "37cacd13-4288-5577-8afa-5ce7319cbec6",
+      "name": "何扬·吴茜现代绘画馆",
+      "longitude": 116.558185,
+      "latitude": 40.004502,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "739c9657-814b-562f-be6f-2f07cb5a45d5",
+      "name": "平西抗日战争纪念馆",
+      "longitude": 115.583526,
+      "latitude": 39.643879,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "b0d7150b-0757-5b34-9013-aecb405f78cd",
+      "name": "北京中梦足球博物馆",
+      "longitude": 116.503572,
+      "latitude": 39.893771,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "d9ef04b4-f710-5e2e-874a-b25cee62f67b",
+      "name": "北京九鼎灶文化博物馆",
+      "longitude": 116.703369,
+      "latitude": 40.09434,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "2d76f80f-27ab-58cf-851c-16fae7105d94",
+      "name": "北京文博交流馆（北京市智化寺管理处）",
+      "longitude": 116.432417,
+      "latitude": 39.917256,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "01102e58-31c3-5a63-8644-c01132553102",
+      "name": "北京莱恩堡葡萄酒文化博物馆",
+      "longitude": 116.213391,
+      "latitude": 39.78433,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "5ce7b282-f897-5982-b59d-a654e5cbc88f",
+      "name": "北京百年世界老电话博物馆",
+      "longitude": 116.380278,
+      "latitude": 39.963094,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "a2100e6c-919b-5408-8552-cd9cebc3c82b",
+      "name": "国家动物博物馆",
+      "longitude": 116.381892,
+      "latitude": 40.002462,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "6fbecaab-3ce2-59e8-ac52-a8efa038ab92",
+      "name": "中国电信博物馆",
+      "longitude": 116.354341,
+      "latitude": 39.978439,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "4a9bfeaa-0ad2-5a1a-a334-7de626df1035",
+      "name": "中关村村史馆",
+      "longitude": 116.323409,
+      "latitude": 39.974222,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "ae836c55-a9b5-501c-802e-61b419321a1d",
+      "name": "中国化工博物馆",
+      "longitude": 116.308523,
+      "latitude": 39.9845,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "627e290a-9d19-5e25-913d-590fda98964a",
+      "name": "北京服装学院民族服饰博物馆",
+      "longitude": 116.432207,
+      "latitude": 39.974614,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "dc40a540-a6a0-5d08-8b15-b05bf17dacae",
+      "name": "北京工艺美术博物馆",
+      "longitude": 116.393881,
+      "latitude": 40.000681,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "25d352e3-ff39-52dc-a413-6e1eff123da2",
+      "name": "中央美术学院美术馆",
+      "longitude": 116.465093,
+      "latitude": 39.98449,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "07381ecb-7e11-59dd-ba37-a533a4276a50",
+      "name": "北京警察博物馆",
+      "longitude": 116.404922,
+      "latitude": 39.90207,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "9ccc8a13-3c6e-59ea-8707-262de0eeb652",
+      "name": "北京大运河博物馆",
+      "longitude": 116.713395,
+      "latitude": 39.884261,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "bd574687-cedd-565e-8597-f7f9b9797efe",
+      "name": "十三陵水库展览馆",
+      "longitude": 116.273608,
+      "latitude": 40.253669,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "6929283a-5314-5857-918c-134d58a9b6be",
+      "name": "国家大剧院台湖舞美艺术博物馆",
+      "longitude": 116.633618,
+      "latitude": 39.833672,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "9b8f603c-f3d6-5401-97fc-c1ddb4a418c2",
+      "name": "北京天桥印象博物馆",
+      "longitude": 116.393599,
+      "latitude": 39.883666,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "cde96012-6f02-5304-988a-9cfd18ac21d2",
+      "name": "北京牛栏山二锅头酒文化博物馆",
+      "longitude": 116.663528,
+      "latitude": 40.213879,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "34fe1b65-17bd-582a-a8a4-f8bfacf1de43",
+      "name": "石景山区石刻博物馆",
+      "longitude": 116.153631,
+      "latitude": 39.933678,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "39a4a775-3c58-5923-9072-5b68150f77e9",
+      "name": "北京公交馆",
+      "longitude": 116.303534,
+      "latitude": 39.893882,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "24f493f3-dea1-54e0-bdb3-31b1a4f809e0",
+      "name": "北京天元中医药博物馆",
+      "longitude": 116.513599,
+      "latitude": 39.883666,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "9bed1f18-5021-56ac-829b-fa18dce0f149",
+      "name": "视障文化博物馆",
+      "longitude": 116.383564,
+      "latitude": 39.883768,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "5bbface5-e3d8-5b98-b5ff-57c4566af406",
+      "name": "中国木偶艺术剧院",
+      "longitude": 116.401629,
+      "latitude": 39.96824,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "ede457fb-03c1-5f57-92cd-e2e181432eac",
+      "name": "景泰蓝艺术博物馆",
+      "longitude": 116.413573,
+      "latitude": 39.863728,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "d42cb08c-8c16-533f-baa8-399569b5256e",
+      "name": "北京六必居博物馆",
+      "longitude": 116.393607,
+      "latitude": 39.893669,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "df54937c-4ff6-5e0b-9e13-6cb499ac23bd",
+      "name": "北京福履布鞋文化博物馆",
+      "longitude": 116.393607,
+      "latitude": 39.893669,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "b059ae79-cc47-56b3-9fee-9a0df43d4e0f",
+      "name": "慈善寺",
+      "longitude": 116.126907,
+      "latitude": 39.955504,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "6afb884c-55b9-567e-bc3b-61fb9944854f",
+      "name": "中国科学家博物馆",
+      "longitude": 116.403604,
+      "latitude": 40.003652,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "6a1718bd-0dc8-5c0b-8bb7-b597ba58d69d",
+      "name": "全聚德博物馆",
+      "longitude": 116.383582,
+      "latitude": 39.903775,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "075f333e-ba4d-50e5-a0c4-534419f89ba5",
+      "name": "对外经贸博物馆",
+      "longitude": 116.43346,
+      "latitude": 39.984057,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "159cf11f-5576-5f99-a3b6-7743965b1998",
+      "name": "瀛海文史馆",
+      "longitude": 116.433464,
+      "latitude": 39.764059,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "56ae9ebd-c0af-52e0-b5c2-697cc1ecc29a",
+      "name": "北京舞蹈学院舞蹈博物馆",
+      "longitude": 116.323436,
+      "latitude": 39.944231,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "4f305cd8-4795-5f51-97fa-148b1e82fe8e",
+      "name": "北京市大兴区天宫院乡情文史馆",
+      "longitude": 116.323441,
+      "latitude": 39.684233,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "bde7cd4d-da04-5c0f-aec9-b13b12f8f589",
+      "name": "北京外国语大学校史馆、世界语言艺术博物馆",
+      "longitude": 116.313484,
+      "latitude": 39.954066,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "bf0621fc-358a-54bc-b7ae-5a13a8a7c256",
+      "name": "北京宝翠宫翡翠博物馆",
+      "longitude": 116.383584,
+      "latitude": 39.953775,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "cc67ca93-ca7a-5bde-9155-3fdf857b9dce",
+      "name": "京东方历史展览馆",
+      "longitude": 116.493509,
+      "latitude": 39.973932,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "c5f84985-3ab2-5c15-9cb3-b7f4ae682d2f",
+      "name": "水峪村生态博物馆",
+      "longitude": 115.83346,
+      "latitude": 39.754057,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "091d75d6-fe2c-500b-a1c6-878cb48841bb",
+      "name": "北京神州连环画博物馆",
+      "longitude": 116.393599,
+      "latitude": 39.883666,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "b91d22d6-5a36-5383-aa1a-98d93e74d313",
+      "name": "北京果脯博物馆",
+      "longitude": 116.61354,
+      "latitude": 40.283942,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "15a3a549-da40-5855-94c7-67f34cd2a88e",
+      "name": "北京市大兴区榆垡镇乡情文史馆",
+      "longitude": 116.303521,
+      "latitude": 39.513877,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "2b0ee915-96ae-5ccf-bad0-f5b4dddb414c",
+      "name": "北京遇见艺术博物馆",
+      "longitude": 116.493504,
+      "latitude": 39.98393,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "0cdc203f-9b38-58c6-b51f-22db84ab6ff7",
+      "name": "北京神农农耕文化博物馆（中国农耕博物馆）",
+      "longitude": 116.053573,
+      "latitude": 39.993729,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "8b2cc32a-2011-5e72-8e95-238ac37d7732",
+      "name": "清华大学科学博物馆",
+      "longitude": 116.323408,
+      "latitude": 40.004222,
+      "coordinateSystem": "GCJ-02",
+      "quality": "coarse"
+    },
+    {
+      "id": "bacfed3a-6525-5b46-b85d-52a5e9411922",
+      "name": "天安门广场",
+      "longitude": 116.396804,
+      "latitude": 39.922456,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "6c2a0ebc-3f26-55d7-98a2-cdb3b55c91aa",
+      "name": "天安门城楼",
+      "longitude": 116.397346,
+      "latitude": 39.908833,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "5f57141c-6c52-5b87-a2d1-fa6985c9e225",
+      "name": "北京环球影城",
+      "longitude": 116.679145,
+      "latitude": 39.849114,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "e12f835e-6d4c-561a-97f8-e64ba6cfb435",
+      "name": "古北水镇",
+      "longitude": 117.269943,
+      "latitude": 40.647414,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "b2a0f465-4f51-51f1-b701-9731cc8eb6ea",
+      "name": "798艺术区",
+      "longitude": 116.48814,
+      "latitude": 39.981852,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "e6d9d10d-f004-5e3d-b429-334d8ee4c536",
+      "name": "南锣鼓巷",
+      "longitude": 116.404796,
+      "latitude": 39.933549,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "487af340-41ab-5f47-9951-ba8b3398122a",
+      "name": "王府井天主教堂",
+      "longitude": 116.411348,
+      "latitude": 39.917377,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "c5899483-0eb3-52fe-b51b-1c8d03635d1a",
+      "name": "王府井大街",
+      "longitude": 116.415487,
+      "latitude": 39.932339,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "1bdf7547-f077-5263-94f0-76eca3572f0b",
+      "name": "什刹海",
+      "longitude": 116.381597,
+      "latitude": 39.941944,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "821473f3-8ba5-578a-9b70-64c715956f12",
+      "name": "国家大剧院",
+      "longitude": 116.389711,
+      "latitude": 39.906008,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "71b1b1d9-89e6-5af4-9826-23ba65ecbf23",
+      "name": "国家体育场（鸟巢）",
+      "longitude": 116.390163,
+      "latitude": 39.996221,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "1a35493c-57a8-57a1-abac-05960c0b8b95",
+      "name": "国家游泳中心（水立方）",
+      "longitude": 116.390285,
+      "latitude": 39.993008,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "c76553eb-b458-502d-a2fa-f3e12c43584a",
+      "name": "奥林匹克森林公园",
+      "longitude": 116.400912,
+      "latitude": 39.990033,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "4c9b7cb2-888a-5051-83cd-237de0862f23",
+      "name": "五道营胡同",
+      "longitude": 116.413768,
+      "latitude": 39.948414,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "3a280ae3-fdc7-542f-a2e3-1911bd0d6316",
+      "name": "烟袋斜街",
+      "longitude": 116.395996,
+      "latitude": 39.940136,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "85963e25-af7b-539c-9616-aa3503d44df2",
+      "name": "琉璃厂文化街",
+      "longitude": 116.384145,
+      "latitude": 39.897089,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "c0ad978f-3aec-54fa-b746-63e0961f702f",
+      "name": "大栅栏商业街区",
+      "longitude": 116.396622,
+      "latitude": 39.896991,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "1109e2db-8fc9-5830-8f0e-62f0bd079b6c",
+      "name": "杨梅竹斜街",
+      "longitude": 116.384417,
+      "latitude": 39.889038,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "c81266f2-201c-55fe-80ba-bdd5f55c35b1",
+      "name": "三里屯太古里",
+      "longitude": 116.456069,
+      "latitude": 39.933041,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "2302e0e3-067f-5ba2-9057-203085f37085",
+      "name": "亮马河国际风情水岸",
+      "longitude": 116.46657,
+      "latitude": 39.948757,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "54fe4ac5-4443-5c33-9628-005fe20575b7",
+      "name": "法源寺",
+      "longitude": 116.369999,
+      "latitude": 39.884449,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "76d920af-ee99-5b07-aeec-b737a6435397",
+      "name": "牛街礼拜寺",
+      "longitude": 116.361072,
+      "latitude": 39.890422,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "de83afef-232e-5613-b134-b4c22d940c8f",
+      "name": "西什库教堂",
+      "longitude": 116.379816,
+      "latitude": 39.92694,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "0d8cb656-54c5-5bd8-ab73-64c95d5ba589",
+      "name": "正乙祠",
+      "longitude": 116.386078,
+      "latitude": 39.898732,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "e003042f-29b2-5ad7-afc4-28e488d03918",
+      "name": "北京大学校园",
+      "longitude": 116.306299,
+      "latitude": 39.989476,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "597586cf-acbb-5414-a141-5ad273cde0f9",
+      "name": "清华大学校园",
+      "longitude": 116.326498,
+      "latitude": 40.00141,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "d7255c26-5f14-55a9-90fb-452300c76a84",
+      "name": "国家图书馆",
+      "longitude": 116.324833,
+      "latitude": 39.94321,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "d141ec87-a313-5a06-93d8-866ff4433e35",
+      "name": "中国长城博物馆",
+      "longitude": 115.976874,
+      "latitude": 40.362175,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "4f2eea65-41fa-5be3-82ad-f0b5c0d6637f",
+      "name": "南海子公园",
+      "longitude": 116.466051,
+      "latitude": 39.770617,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "e1cbf8dd-e440-5949-9a3a-63628307c7e8",
+      "name": "五棵松奥林匹克文化公园",
+      "longitude": 116.27512,
+      "latitude": 39.909109,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "cecc3a0c-a9d9-58ad-b024-5eefeaa06539",
+      "name": "北京展览馆",
+      "longitude": 116.344016,
+      "latitude": 39.940759,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "cba0c8d1-1a53-5138-9ba6-5877d7c403cc",
+      "name": "中央电视台总部大楼（外观）",
+      "longitude": 116.457722,
+      "latitude": 39.909649,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "a6cf9440-29b4-596c-a71d-c772147c4735",
+      "name": "国贸城市街区",
+      "longitude": 116.458508,
+      "latitude": 39.912372,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "33394efa-59a8-5bb1-8e41-eeba134e147d",
+      "name": "永定门公园",
+      "longitude": 116.39904,
+      "latitude": 39.87529,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "b08ecd5a-a46d-5222-81fd-499a82491515",
+      "name": "帽儿胡同",
+      "longitude": 116.397079,
+      "latitude": 39.936573,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
+    },
+    {
+      "id": "2be94324-c704-533a-b3ec-fb484db81a05",
+      "name": "火德真君庙",
+      "longitude": 116.395676,
+      "latitude": 39.936972,
+      "coordinateSystem": "GCJ-02",
+      "quality": "source_marker_unverified"
     }
   ]
 }

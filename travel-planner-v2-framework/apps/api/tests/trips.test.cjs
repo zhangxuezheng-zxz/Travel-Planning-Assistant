@@ -414,7 +414,7 @@ test('HTTP 接入鉴权、校验、创建、保存、读取、分页和错误格
   }
 });
 
-test('临时后端目录与前端 18 个景点资源 ID 一致', async () => {
+test('临时后端目录与前端399个可规划景点ID一致，待补坐标景点不能进入规划', async () => {
   const fs = require('node:fs');
   const path = require('node:path');
   const ts = require('typescript');
@@ -427,9 +427,18 @@ test('临时后端目录与前端 18 个景点资源 ID 一致', async () => {
   const city = frontend.exports.beijing;
   const places = frontend.exports.listPlaces(city.id);
   assert.equal(city.id, BEIJING_CITY_ID);
-  assert.equal(places.length, 18);
-  await new CuratedBeijingCatalog().assertPlacesBelongToCity(
+  assert.equal(places.length, 399);
+  const backend = new CuratedBeijingCatalog();
+  assert.deepEqual(
+    (await backend.getCityPlaces(city.id)).map((place) => place.id).sort(),
+    places.map((place) => place.id).sort(),
+  );
+  await backend.assertPlacesBelongToCity(
     city.id,
     places.map((place) => place.id),
   );
+  const excluded = require('../../../packages/shared/data/beijing.json').excludedPlaces;
+  for (const place of excluded) {
+    await assert.rejects(backend.assertPlacesBelongToCity(city.id, [place.id]));
+  }
 });

@@ -24,6 +24,11 @@ export type {
   PublicUser,
   RegisterRequest,
   RegisterResponse,
+  TravelPreferences,
+  UpdateProfileRequest,
+  ContactChannel,
+  VerificationPurpose,
+  VerificationResponse,
 } from './auth.js';
 
 export type {
@@ -34,6 +39,8 @@ export type {
   ScheduleItem,
   ScheduleDay,
   Trip,
+  TripActivity,
+  TripActivityInput,
   CreateTripRequest,
   UpdateTripRequest,
   UpdateTripSelectionsRequest,

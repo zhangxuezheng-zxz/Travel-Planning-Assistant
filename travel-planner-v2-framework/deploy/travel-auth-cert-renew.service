@@ -1,0 +1,8 @@
+[Unit]
+Description=Renew shared test IP HTTPS certificate
+After=network-online.target nginx.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/travel-auth-certbot/bin/certbot renew --quiet --cert-name travel-auth-profile-ip --deploy-hook "/usr/sbin/nginx -t && /bin/systemctl reload nginx"

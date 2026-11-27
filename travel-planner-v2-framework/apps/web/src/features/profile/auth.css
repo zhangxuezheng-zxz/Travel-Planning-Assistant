@@ -1,0 +1,120 @@
+.auth-page {
+  width: min(460px, calc(100% - 32px));
+  margin: 7vh auto;
+  box-sizing: border-box;
+}
+
+.auth-signout-notice {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 18px;
+  background: #fff1dd;
+  color: #72501c;
+  border: 1px solid #e8d3ac;
+  border-radius: 10px;
+  z-index: 1000;
+  max-width: calc(100% - 40px);
+  font-size: 13px;
+}
+.auth-page .auth-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: #7b8a7f;
+}
+.auth-page h2 {
+  font-size: 21px;
+  margin: 24px 0 8px;
+}
+.auth-page > p {
+  line-height: 1.7;
+}
+.auth-page fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+  display: grid;
+  gap: 14px;
+}
+.auth-page form {
+  display: grid;
+  gap: 16px;
+}
+.auth-page label {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  color: #40554a;
+}
+.auth-page input,
+.auth-page select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #dce4d8;
+  border-radius: 10px;
+  padding: 12px;
+  background: #fff;
+  color: #203b30;
+  min-height: 44px;
+}
+.verification-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.verification-row input {
+  min-width: 0;
+  flex: 1;
+}
+.verification-row button {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding: 8px 12px;
+  border: 1px solid #d6dfd4;
+  background: #f3f6ef;
+  color: #385342;
+  border-radius: 10px;
+}
+.auth-page .auth-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.auth-links button {
+  border: 0;
+  background: none;
+  color: #446653;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.auth-local-code {
+  background: #fff6dc;
+  border: 1px solid #eedda9;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #73551c;
+}
+.auth-local-code strong {
+  font-size: 18px;
+  letter-spacing: 0.12em;
+}
+.auth-page button:disabled,
+.account-security button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.auth-page :focus-visible,
+.account-security :focus-visible {
+  outline: 2px solid #688c71;
+  outline-offset: 3px;
+}
+@media (max-width: 480px) {
+  .auth-page {
+    margin: 24px auto;
+    padding: 24px;
+  }
+}

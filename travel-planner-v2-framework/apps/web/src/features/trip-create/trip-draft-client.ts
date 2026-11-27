@@ -7,6 +7,8 @@ import type {
   Destination,
   PageResult,
   TripStateDocument,
+  TripActivityInput,
+  FootprintPlaceSearchResult,
 } from '@travel/shared';
 import type {
   CreateTripRequest,
@@ -45,6 +47,15 @@ export interface TripDraftApi {
   updateSchedule(id: string, expectedRevision: number, days: ScheduleDay[]): Promise<Trip>;
   getState(id: string): Promise<TripStateDocument>;
   saveState(id: string, patch: Partial<TripStateDocument>): Promise<TripStateDocument>;
+  searchActivityLocations(
+    id: string,
+    keywords: string,
+    signal?: AbortSignal,
+  ): Promise<FootprintPlaceSearchResult[]>;
+  saveActivity(id: string, input: TripActivityInput, activityId?: string): Promise<Trip>;
+  removeActivity(id: string, expectedRevision: number, activityId: string): Promise<Trip>;
+  addScenic(id: string, expectedRevision: number, placeId: string, date: string): Promise<Trip>;
+  removeScenic(id: string, expectedRevision: number, placeId: string): Promise<Trip>;
 
   create(input: CreateTripRequest): Promise<Trip>;
   get(id: string): Promise<Trip>;
@@ -167,6 +178,31 @@ export function createTripDraftApi(options: {
       request(resource(id) + '/schedule', 'PUT', { expectedRevision, days }),
     getState: (id) => request(resource(id) + '/state'),
     saveState: (id, patch) => request(resource(id) + '/state', 'PUT', patch),
+    searchActivityLocations: (id, keywords, signal) =>
+      request(
+        `${resource(id)}/activity-locations?keywords=${encodeURIComponent(keywords)}`,
+        'GET',
+        undefined,
+        signal,
+      ),
+    saveActivity: (id, input, activityId) =>
+      request(
+        `${resource(id)}/activities${activityId ? `/${encodeURIComponent(activityId)}` : ''}`,
+        activityId ? 'PATCH' : 'POST',
+        input,
+      ),
+    removeActivity: (id, expectedRevision, activityId) =>
+      request(
+        `${resource(id)}/activities/${encodeURIComponent(activityId)}?expectedRevision=${expectedRevision}`,
+        'DELETE',
+      ),
+    addScenic: (id, expectedRevision, placeId, date) =>
+      request(`${resource(id)}/scenic-stops`, 'POST', { expectedRevision, placeId, date }),
+    removeScenic: (id, expectedRevision, placeId) =>
+      request(
+        `${resource(id)}/scenic-stops/${encodeURIComponent(placeId)}?expectedRevision=${expectedRevision}`,
+        'DELETE',
+      ),
     create: (input) => request('/trips', 'POST', input),
     get: (id) => request(resource(id)),
     list: (page = 1, pageSize = 20) => request(`/trips?page=${page}&pageSize=${pageSize}`),

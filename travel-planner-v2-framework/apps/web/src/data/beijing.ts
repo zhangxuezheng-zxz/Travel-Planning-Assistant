@@ -17,7 +17,7 @@ export interface Attraction {
   suggestedDurationMinutes: number;
   sourceUrl: string;
   verifiedAt: string;
-  source: 'curated';
+  source: 'curated' | 'amap';
 }
 export const beijing: City = catalog.city;
 export function listCities(): City[] {
@@ -29,5 +29,5 @@ export function listPlaces(cityId: string): Attraction[] {
 
 export function getBeijingVisitInfo(placeId: string) {
   const info = catalog.places.find((place) => place.id === placeId)?.visitInfo;
-  return info && { ...info, checkedAt: catalog.visitInfoCheckedAt };
+  return info;
 }

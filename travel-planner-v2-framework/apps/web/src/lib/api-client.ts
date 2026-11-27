@@ -109,6 +109,9 @@ export function createApiClient(options: ApiClientOptions): ApiClient {
   }
 
   async function readError(response: Response): Promise<ApiError> {
+    if (response.status === 401 && typeof window !== 'undefined') {
+      window.dispatchEvent(new Event('travel:unauthenticated'));
+    }
     const payload: unknown = await response.json().catch(() => null);
     const record =
       payload && typeof payload === 'object' ? (payload as Record<string, unknown>) : {};
