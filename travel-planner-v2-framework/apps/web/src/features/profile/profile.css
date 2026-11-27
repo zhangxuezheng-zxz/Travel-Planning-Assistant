@@ -12,6 +12,121 @@
   cursor: pointer;
 }
 
+.profile-preferences,
+.account-security fieldset {
+  border: 0;
+  padding: 0;
+  margin: 12px 0 0;
+  min-width: 0;
+}
+.profile-form textarea,
+.profile-form select {
+  border: 1px solid #dce4d3;
+  border-radius: 10px;
+  background: white;
+  color: #263b30;
+  padding: 11px 14px;
+  font: inherit;
+  box-sizing: border-box;
+  width: 100%;
+}
+.profile-form textarea {
+  resize: vertical;
+  line-height: 1.7;
+}
+.profile-form small {
+  color: #859183;
+  text-align: right;
+}
+.profile-theme-options {
+  border: 0;
+  padding: 0;
+  margin: 18px 0 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.profile-theme-options legend {
+  font-size: 12px;
+  color: #56685a;
+  margin-bottom: 8px;
+}
+.profile-theme-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  border: 1px solid #dce4d3;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+.profile-theme-options label:has(input:checked) {
+  background: #edf3e8;
+  border-color: #8ca087;
+}
+.profile-theme-options input {
+  accent-color: #587d65;
+  padding: 0;
+  width: 15px;
+  height: 15px;
+}
+.profile-preference-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.profile-preference-summary p {
+  color: #637563;
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 8px 0;
+}
+.profile-bio {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.security-status {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 0;
+  color: #637563;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+.account-security .security-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 8px 0;
+}
+.account-security .security-buttons button {
+  border: 1px solid #dce4d3;
+  border-radius: 8px;
+  width: auto;
+  padding: 8px 12px;
+  height: auto;
+  font-size: 12px;
+}
+.account-security h4 {
+  font-size: 13px;
+  color: #324f3c;
+}
+.account-security .verification-row button {
+  display: block;
+  width: auto;
+  height: auto;
+  border: 1px solid #d6dfd4;
+  border-radius: 10px;
+  font-size: 12px;
+}
+@media (max-width: 480px) {
+  .profile-preference-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .profile-alert,
 .profile-notice {
   margin: 0 0 12px;

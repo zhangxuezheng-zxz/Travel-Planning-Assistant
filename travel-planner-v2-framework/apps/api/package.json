@@ -8,6 +8,8 @@
     "build": "tsc -p tsconfig.build.json",
     "start": "node dist/main.js",
     "test": "node --test tests/*.test.cjs",
+    "test:auth": "npm run build && node scripts/test-auth-profile.cjs",
+    "auth:email:check": "npm run build && node scripts/check-email.cjs",
     "typecheck": "tsc --noEmit",
     "db:migrate": "node-pg-migrate up -m migrations --envPath ../../.env",
     "db:migrate:status": "node scripts/migration-status.cjs",
@@ -23,12 +25,15 @@
     "@travel/shared": "*",
     "dotenv": "^16.4.7",
     "node-pg-migrate": "^8.0.0",
+    "nodemailer": "^10.6.1",
     "pg": "^8.16.3",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.2"
+    "rxjs": "^7.8.2",
+    "tencentcloud-sdk-nodejs-sms": "^4.1.306"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
+    "@types/nodemailer": "^8.0.2",
     "@types/pg": "^8.15.5",
     "tsx": "^4.21.0"
   }

@@ -8,7 +8,11 @@ import { ApiExceptionFilter } from './common/api-exception.filter';
 export async function createApp(options?: NestApplicationOptions) {
   const app = await NestFactory.create(AppModule, options);
   app.setGlobalPrefix('api');
-  app.enableCors({ origin: app.get(ConfigService).values.corsOrigins });
+  const config = app.get(ConfigService).values;
+  if (config.trustLoopbackProxy) {
+    app.getHttpAdapter().getInstance().set('trust proxy', 'loopback');
+  }
+  app.enableCors({ origin: config.corsOrigins });
   app.useGlobalFilters(new ApiExceptionFilter());
   return app;
 }

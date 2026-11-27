@@ -1,5 +1,14 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { BPlaces, PublicUser, Trip, TripList, Place, Destination } from '@travel/shared';
+import type {
+  BPlaces,
+  PublicUser,
+  TravelPreferences,
+  Trip,
+  TripList,
+  Place,
+  Destination,
+} from '@travel/shared';
+import { tripPreferenceDefaults } from '../profile/travel-preferences';
 import { dateRange } from '../../data/planner';
 import { normalizeThemes } from '../../data/planner-storage';
 import type { PlannerState } from '../../data/planner-storage';
@@ -23,15 +32,13 @@ export interface TripWorkspaceProps extends TripHostEvents {
   embedded?: boolean;
   entry?: TripEntry;
 }
-function emptyState(cityId: string): PlannerState {
+function emptyState(cityId: string, preferences?: TravelPreferences): PlannerState {
   return {
     draft: {
       cityId,
       startDate: '',
       endDate: '',
-      themes: [],
-      pace: 'standard',
-      transport: 'transit',
+      ...tripPreferenceDefaults(preferences),
       selectedPlaceIds: [],
     },
     trip: null,
@@ -82,6 +89,7 @@ function TripEditor({
   resource,
   readOnly = false,
   ownerId,
+  preferences,
   onBack,
   places,
   city,
@@ -94,6 +102,7 @@ function TripEditor({
   resource: Trip | null;
   readOnly?: boolean;
   ownerId: string;
+  preferences?: TravelPreferences;
   onBack: () => void;
   places: Place[];
   city: Destination;
@@ -111,7 +120,7 @@ function TripEditor({
     }),
   );
   const [initial] = useState(() => {
-    const serverState = resource ? fromServerTrip(resource) : emptyState(city.id);
+    const serverState = resource ? fromServerTrip(resource) : emptyState(city.id, preferences);
     // 仅恢复同一用户、同一资源和同一版本的未提交输入，不覆盖较新的服务端版本。
     try {
       const cached = JSON.parse(
@@ -474,6 +483,7 @@ export default function TripWorkspace({
           resource={editor.resource}
           readOnly={editor.readOnly}
           ownerId={user.id}
+          preferences={user.travelPreferences}
           onBack={back}
           places={places}
           city={city}

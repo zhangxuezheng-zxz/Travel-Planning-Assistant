@@ -55,3 +55,11 @@ test('invalid numeric configuration and CORS origins are rejected', () => {
   assert.throws(() => readConfig({ ...database, DB_QUERY_TIMEOUT_MS: '0' }));
   assert.throws(() => readConfig({ ...database, DB_CONNECTION_TIMEOUT_MS: '60001' }));
 });
+
+test('reverse proxy trust is off by default and only loopback can be enabled', () => {
+  assert.equal(readConfig(database).trustLoopbackProxy, false);
+  assert.equal(readConfig({ ...database, TRUST_PROXY: 'loopback' }).trustLoopbackProxy, true);
+  for (const TRUST_PROXY of ['true', '*', '1']) {
+    assert.throws(() => readConfig({ ...database, TRUST_PROXY }), /TRUST_PROXY/);
+  }
+});
