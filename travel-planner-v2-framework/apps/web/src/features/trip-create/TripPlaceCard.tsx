@@ -208,6 +208,7 @@ export default function TripPlaceCard({
             ) : (
               <p>请查阅景点官方票务公告。</p>
             )}
+            {visitInfo && <p>{visitInfo.priceText}</p>}
             {booking !== 'booked' && bookedForAnotherDate && (
               <p className="trip-booking-note">该景点有其他日期的预约标记，请核对票面日期。</p>
             )}
@@ -251,6 +252,12 @@ export default function TripPlaceCard({
             <p className="trip-place-card-hours">{place.openingHours || '开放时间待核实'}</p>
           )}
         </div>
+        {visitInfo?.openingHoursText && (
+          <details className="trip-place-other-hours">
+            <summary>资料中的完整开放说明</summary>
+            <p>{visitInfo.openingHoursText}</p>
+          </details>
+        )}
         {overview && <p className="trip-place-card-overview">{overview}</p>}
         {visitInfo && (
           <div>
@@ -266,6 +273,7 @@ export default function TripPlaceCard({
           <div>
             <h4>参观提示</h4>
             <p>{visitInfo.tips}</p>
+            <p>{visitInfo.coordinateNote}</p>
           </div>
         )}
       </div>
@@ -283,7 +291,7 @@ export default function TripPlaceCard({
                 <a href={visitInfo.sourceUrl} target="_blank" rel="noreferrer">
                   开放时间来源 <span aria-hidden="true">↗</span>
                 </a>
-                <small>{visitInfo.checkedAt} 核实</small>
+                <small>资料日期：{visitInfo.checkedAt}，以出行日公告为准</small>
               </div>
             )}
             {directions && (
