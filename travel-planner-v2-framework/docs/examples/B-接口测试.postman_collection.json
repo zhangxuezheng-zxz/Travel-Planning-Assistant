@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "旅行规划助手 B 接口测试",
-    "description": "配套 docs/B-完整测试流程与用例.md。仅分组 01 当前可手工运行；后续分组需要 C 注册真实认证并填写真实 token。测试脚本内的假 token 无法登录正式应用。按各组 Key 前提分开执行。",
+    "description": "配套 docs/delivery/B-验收汇总.md。仅分组 01 当前可手工运行；后续分组需要 C 注册真实认证并填写真实 token。测试脚本内的假 token 无法登录正式应用。按各组 Key 前提分开执行。",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "auth": {

@@ -3,6 +3,7 @@ import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
 import { BModule } from './b/b.module';
 import { B_AUTHENTICATOR } from './b/identity';
+import { ChatModule } from './chat/chat.module';
 import { ConfigModule } from './config/config.module';
 import { DatabaseModule } from './database/database.module';
 import { FootprintsModule } from './footprints/footprints.module';
@@ -39,6 +40,7 @@ import { UsersModule } from './users/users.module';
     FootprintsModule,
     JournalsModule,
     MediaModule,
+    ChatModule,
   ],
 })
 export class AppModule {}

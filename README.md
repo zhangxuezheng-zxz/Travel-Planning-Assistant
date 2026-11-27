@@ -21,6 +21,6 @@
 
 现有的 `integration`、`integration-2`、成员姓名分支及 `week-8/zhaofutao` 全部保留；本轮没有删除或重写这些分支。
 
-完整的模块路径、共享文件规则及起点记录见 [分支结构与协作约定](docs/branches/分支结构与协作约定.md)。日常 Git 命令见 [分支操作指南](GitHub分支操作指南.md)，会议记录使用 [会议记录模板](docs/meetings/会议记录模板.md)。
+完整的模块路径、共享文件规则及起点记录见 [分支结构与协作约定](docs/branches/分支结构与协作约定.md)。日常 Git 命令见 [分支操作指南](GitHub分支操作指南.md)，会议纪要与决策见 [11.20 会议纪要](docs/meetings/11.20会议.docx)。
 
 项目启动说明见 [工程 README](travel-planner-v2-framework/README.md)，测试代码与使用方法见 [测试 README](APP_Test/README.md)。分支整理只同步已有整合版本，不表示新增功能开发完成或全软件测试已经通过。

@@ -76,3 +76,12 @@ export type {
 } from './footprints.js';
 
 export type { CreateJournalInput, Journal, JournalListPage } from './journals.js';
+
+export type {
+  ChatContext,
+  ChatMessage,
+  ChatNotice,
+  ChatReply,
+  ChatRequest,
+  ChatRole,
+} from './chat.js';

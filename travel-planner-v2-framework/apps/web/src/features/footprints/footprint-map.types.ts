@@ -3,7 +3,7 @@ import type { Coordinates, FootprintMapCity, FootprintMapLocation } from '@trave
 /**
  * D 交给 A 嵌入的地图组件属性。
  *
- * 与 `docs/D-足迹与地图手账开发说明.md` 第 3 节的目标接口保持一致，字段名按当前
+ * 与 `docs/development/D-足迹与地图手账开发说明.md` 第 3 节的目标接口保持一致，字段名按当前
  * `packages/shared/src/footprints.ts` 的契约落定：
  * - 文档里的 `VisitedPlace[]` 即 `GET /api/footprints/map` 返回的 `FootprintMapLocation[]`；
  * - 文档里的 `litCities[].visitCount` 在共享契约中叫 `checkInCount`。
